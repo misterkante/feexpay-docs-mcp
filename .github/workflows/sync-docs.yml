@@ -1,0 +1,51 @@
+name: Sync FeexPay docs
+
+# Re-scrapes https://docs.feexpay.me every day and commits the Markdown snapshot if it changed.
+# The MCP server reads this snapshot from the main branch, so users get fresh docs without updating.
+
+on:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-docs
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Scrape docs.feexpay.me
+        run: npm run scrape
+
+      - name: Test against the new snapshot
+        run: npm test
+
+      - name: Commit if the docs changed
+        run: |
+          if git diff --quiet -- docs; then
+            echo "No documentation change."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git commit -m "docs: sync FeexPay documentation ($(date -u +%Y-%m-%d))"
+          git push

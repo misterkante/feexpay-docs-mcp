@@ -1,0 +1,58 @@
+{
+  "name": "feexpay-docs-mcp",
+  "version": "0.1.0",
+  "description": "Unofficial MCP server that gives AI assistants up-to-date access to the FeexPay payment API documentation (Benin, West Africa: Mobile Money payin/payout, cards, SDKs, webhooks).",
+  "type": "module",
+  "bin": {
+    "feexpay-docs-mcp": "src/server.js"
+  },
+  "main": "src/server.js",
+  "files": [
+    "src",
+    "docs",
+    "README.md",
+    "README.fr.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node src/server.js",
+    "scrape": "node scraper/scrape.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "feexpay",
+    "payment",
+    "mobile-money",
+    "benin",
+    "africa",
+    "mtn",
+    "moov",
+    "documentation",
+    "ai",
+    "llm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/misterkante/feexpay-docs-mcp.git"
+  },
+  "homepage": "https://github.com/misterkante/feexpay-docs-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/misterkante/feexpay-docs-mcp/issues"
+  },
+  "author": "misterkante",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "playwright": "^1.55.0",
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2"
+  }
+}
