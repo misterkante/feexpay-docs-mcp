@@ -4,7 +4,7 @@ title: "Payouts"
 group: dashboard
 lang: en
 source: https://docs.feexpay.me/?section=dashboard-reversements&version=v2
-updated_at: 2026-10-10T13:08:51.084Z
+updated_at: 2026-10-10T13:38:59.990Z
 ---
 
 # Payouts
@@ -35,7 +35,7 @@ Welcome to the Payouts menu. You can initiate payouts of your funds and also vie
 
 Where do I configure my numbers?
 
-Payout numbers are no longer configured from your profile. They are grouped by country and by network in the [Configuration](?section=dashboard-configuration) tab of the dashboard.
+Payout numbers are no longer configured from your profile. They are grouped by country and by network in the [Configuration](https://docs.feexpay.me/?section=dashboard-configuration) tab of the dashboard.
 
  [Previous
 

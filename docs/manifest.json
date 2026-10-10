@@ -1,7 +1,7 @@
 {
   "source": "https://docs.feexpay.me/",
   "api_version": "v2",
-  "generated_at": "2026-10-10T13:29:12.014Z",
+  "generated_at": "2026-10-10T13:38:59.990Z",
   "langs": [
     "en",
     "fr"
@@ -13,8 +13,8 @@
       "title": "Welcome to FeexPay!",
       "group": "introduction",
       "source": "https://docs.feexpay.me/?section=overview&version=v2",
-      "hash": "4856df47cfa8998f",
-      "updated_at": "2026-10-10T13:29:12.014Z",
+      "hash": "7beb260f8ff01d81",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1363
     },
     {
@@ -23,8 +23,8 @@
       "title": "Benefits",
       "group": "introduction",
       "source": "https://docs.feexpay.me/?section=advantages&version=v2",
-      "hash": "b4085b1debc42653",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "e64fe0b815e14b17",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1019
     },
     {
@@ -33,8 +33,8 @@
       "title": "Key concepts",
       "group": "introduction",
       "source": "https://docs.feexpay.me/?section=key-concepts&version=v2",
-      "hash": "981c8e768a10f62e",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "c3f40c7faf17223a",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1534
     },
     {
@@ -43,9 +43,9 @@
       "title": "Create an account",
       "group": "gettingStarted",
       "source": "https://docs.feexpay.me/?section=create-account&version=v2",
-      "hash": "7fe1f27fbfff16cc",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 908
+      "hash": "2636ab5cf2f3fcf4",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 996
     },
     {
       "id": "account-validation",
@@ -53,9 +53,9 @@
       "title": "Account verification",
       "group": "gettingStarted",
       "source": "https://docs.feexpay.me/?section=account-validation&version=v2",
-      "hash": "a540d7e24b054827",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1026
+      "hash": "8f438ba60be02c9e",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1136
     },
     {
       "id": "payment-methods",
@@ -63,9 +63,9 @@
       "title": "Méthodes de paiement",
       "group": "gettingStarted",
       "source": "https://docs.feexpay.me/?section=payment-methods&version=v2",
-      "hash": "59299b8ebf46d5e8",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1332
+      "hash": "25d944ffdfffb580",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1931
     },
     {
       "id": "dashboard",
@@ -73,9 +73,9 @@
       "title": "Dashboard",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard&version=v2",
-      "hash": "5041687f2f747aec",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 3449
+      "hash": "99ed1e0a359cc4a2",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 3493
     },
     {
       "id": "dashboard-boutiques",
@@ -83,9 +83,9 @@
       "title": "Shops",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-boutiques&version=v2",
-      "hash": "faa83c0667aa5efb",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1567
+      "hash": "2337f75ac11ba25d",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1589
     },
     {
       "id": "dashboard-transactions",
@@ -93,9 +93,9 @@
       "title": "Collections",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-transactions&version=v2",
-      "hash": "1809d4da168dda70",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1726
+      "hash": "7c84b8af9e29428c",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1748
     },
     {
       "id": "dashboard-reversements",
@@ -103,9 +103,9 @@
       "title": "Payouts",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-reversements&version=v2",
-      "hash": "c79ab40e8aceea56",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 969
+      "hash": "4e951da63fb4e092",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1081
     },
     {
       "id": "dashboard-payout-api",
@@ -113,9 +113,9 @@
       "title": "Payout API",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-payout-api&version=v2",
-      "hash": "44f43e6cd72a8e2f",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1972
+      "hash": "ad120690e5910662",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1994
     },
     {
       "id": "dashboard-exporter",
@@ -123,9 +123,9 @@
       "title": "Export",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-exporter&version=v2",
-      "hash": "12ff7720f2aa1302",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1440
+      "hash": "4b024f4a15fb90ef",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1506
     },
     {
       "id": "dashboard-feexlinks",
@@ -133,9 +133,9 @@
       "title": "FeexLink",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-feexlinks&version=v2",
-      "hash": "7516ed8a9a52c8ba",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 982
+      "hash": "6fb87087cc69d8bf",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1092
     },
     {
       "id": "dashboard-quicklinks",
@@ -143,9 +143,9 @@
       "title": "F-QR Code",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-quicklinks&version=v2",
-      "hash": "3eee0365be52769f",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1105
+      "hash": "7b5f329d12750de4",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1171
     },
     {
       "id": "dashboard-feexpage",
@@ -153,9 +153,9 @@
       "title": "FeexPage",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-feexpage&version=v2",
-      "hash": "22b07abe81771895",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1631
+      "hash": "4dfb6f1be653ee59",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1763
     },
     {
       "id": "dashboard-list",
@@ -163,9 +163,9 @@
       "title": "List - Bulk sending",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-list&version=v2",
-      "hash": "e9fafe391d1cd1f7",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 2004
+      "hash": "1f005f1da33f6c53",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 2092
     },
     {
       "id": "dashboard-notifications",
@@ -173,9 +173,9 @@
       "title": "Notifications",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-notifications&version=v2",
-      "hash": "ba6db0230418c445",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1693
+      "hash": "39519d385200cfed",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1715
     },
     {
       "id": "dashboard-cards-kyc",
@@ -183,9 +183,9 @@
       "title": "Cards KYB",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-cards-kyc&version=v2",
-      "hash": "163865963f0feb86",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1811
+      "hash": "fd471997887a5f50",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1879
     },
     {
       "id": "dashboard-developers",
@@ -193,9 +193,9 @@
       "title": "Developers",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-developers&version=v2",
-      "hash": "a3d6e25280ae6f77",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1383
+      "hash": "e597dc20e9150a81",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1449
     },
     {
       "id": "dashboard-adresse-ip",
@@ -203,9 +203,9 @@
       "title": "IP Address",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-adresse-ip&version=v2",
-      "hash": "46f80d9b9ee2a8af",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1535
+      "hash": "7ca36031896ab968",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1601
     },
     {
       "id": "dashboard-team",
@@ -213,9 +213,9 @@
       "title": "Team",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-team&version=v2",
-      "hash": "1fc0162c1a2ae86d",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1796
+      "hash": "2c0825d8e23b4ea1",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1862
     },
     {
       "id": "dashboard-configuration",
@@ -223,8 +223,8 @@
       "title": "Configuration",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-configuration&version=v2",
-      "hash": "d763b1dc988a6ea6",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "21916a15df5ebd1f",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1953
     },
     {
@@ -233,8 +233,8 @@
       "title": "API - Payin",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-rest-integrations&version=v2",
-      "hash": "d3e8a73c65ee1a19",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "723e3eba9e22fbf8",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 29866
     },
     {
@@ -243,8 +243,8 @@
       "title": "Payin status",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-rest-status&version=v2",
-      "hash": "e219b85da7a8d0bc",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "24dac76d3c758160",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1818
     },
     {
@@ -253,8 +253,8 @@
       "title": "API - Payout",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=services-payout&version=v2",
-      "hash": "41be06a212e93b96",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "bef11d9f373295ec",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 24219
     },
     {
@@ -263,8 +263,8 @@
       "title": "Payout status",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-payout-status&version=v2",
-      "hash": "a087fd6f1e341eae",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "23e1bfd64d4c4e7f",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1267
     },
     {
@@ -273,9 +273,9 @@
       "title": "Card payment collection",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-rest-card&version=v2",
-      "hash": "6bc0226c84516a99",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 5003
+      "hash": "c6109563e7098347",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 5047
     },
     {
       "id": "api-payment-history",
@@ -283,8 +283,8 @@
       "title": "API — Transaction history",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-payment-history&version=v2",
-      "hash": "29edeb0f54fff306",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "519a01880f69dece",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 7909
     },
     {
@@ -293,8 +293,8 @@
       "title": "ORM Utils",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=orm-utils&version=v2",
-      "hash": "b4541ad35968c45d",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "9e96bb46c138bf6d",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1719
     },
     {
@@ -303,8 +303,8 @@
       "title": "Error Codes",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=error-codes&version=v2",
-      "hash": "9e8843e98be08814",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "907ebca00adb11b5",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 4159
     },
     {
@@ -313,9 +313,9 @@
       "title": "Sandbox environment",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=sandbox&version=v2",
-      "hash": "8d10c20a0882758b",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 10491
+      "hash": "c4e20342c4796ec0",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 10646
     },
     {
       "id": "javascript-sdk",
@@ -323,9 +323,9 @@
       "title": "JavaScript",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=javascript-sdk&version=v2",
-      "hash": "95e8d1dbb78e8fb4",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 3688
+      "hash": "9fbbe9b8ef2c5d9f",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 3710
     },
     {
       "id": "react-sdk",
@@ -333,9 +333,9 @@
       "title": "React",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=react-sdk&version=v2",
-      "hash": "7d983c19554edc74",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 5319
+      "hash": "e519b3568f100210",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 5341
     },
     {
       "id": "php-sdk",
@@ -343,9 +343,9 @@
       "title": "PHP",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=php-sdk&version=v2",
-      "hash": "f5d69c5da6b965aa",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 5898
+      "hash": "4dd98de9433d6bc0",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 5920
     },
     {
       "id": "flutter-android-sdk",
@@ -353,8 +353,8 @@
       "title": "FLUTTER AND ANDROID SDK",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=flutter-android-sdk&version=v2",
-      "hash": "b8718fd042663ba7",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "2790a3899cb4e312",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 2297
     },
     {
@@ -363,9 +363,9 @@
       "title": "WordPress (WooCommerce)",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=wordpress-sdk&version=v2",
-      "hash": "3d36e10ef362bf5d",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 931
+      "hash": "1bc60af83ad3b589",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 975
     },
     {
       "id": "postman",
@@ -373,8 +373,8 @@
       "title": "Postman Collection",
       "group": "tools",
       "source": "https://docs.feexpay.me/?section=postman&version=v2",
-      "hash": "7fa962baf7850dbd",
-      "updated_at": "2026-10-10T13:29:12.014Z",
+      "hash": "1429e49e61789f69",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1098
     },
     {
@@ -383,8 +383,8 @@
       "title": "Feex Method",
       "group": "services",
       "source": "https://docs.feexpay.me/?section=services-payout-method&version=v2",
-      "hash": "46a89ddfa07d8ccd",
-      "updated_at": "2026-10-10T13:29:12.014Z",
+      "hash": "f86d866f44a40053",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 2955
     },
     {
@@ -393,8 +393,8 @@
       "title": "Webhook",
       "group": "general",
       "source": "https://docs.feexpay.me/?section=webhook&version=v2",
-      "hash": "c04f027af1d5eb12",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "58a4fd6eb4cdb033",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 2271
     },
     {
@@ -403,8 +403,8 @@
       "title": "Security",
       "group": "general",
       "source": "https://docs.feexpay.me/?section=security&version=v2",
-      "hash": "fe74d5fb409ec538",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "72bf0d885ea49c35",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 4500
     },
     {
@@ -413,8 +413,8 @@
       "title": "Bienvenue sur FeexPay !",
       "group": "introduction",
       "source": "https://docs.feexpay.me/?section=overview&version=v2",
-      "hash": "eccc5255581a9189",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "d2419da40b2320a0",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1653
     },
     {
@@ -423,8 +423,8 @@
       "title": "Avantages",
       "group": "introduction",
       "source": "https://docs.feexpay.me/?section=advantages&version=v2",
-      "hash": "e72de2f994afd96f",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "b5ed3ffa6e531043",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1163
     },
     {
@@ -433,8 +433,8 @@
       "title": "Concepts clés",
       "group": "introduction",
       "source": "https://docs.feexpay.me/?section=key-concepts&version=v2",
-      "hash": "8db67d38fa9d060f",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "368c60540357519e",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1857
     },
     {
@@ -443,9 +443,9 @@
       "title": "Créer un compte",
       "group": "gettingStarted",
       "source": "https://docs.feexpay.me/?section=create-account&version=v2",
-      "hash": "84c5c9a2506aea4d",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1039
+      "hash": "1d31965e383c3a2c",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1127
     },
     {
       "id": "account-validation",
@@ -453,9 +453,9 @@
       "title": "Validation de compte",
       "group": "gettingStarted",
       "source": "https://docs.feexpay.me/?section=account-validation&version=v2",
-      "hash": "fa1832211358714e",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1198
+      "hash": "bed8efd842e4ab22",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1308
     },
     {
       "id": "payment-methods",
@@ -463,9 +463,9 @@
       "title": "Méthodes de paiement",
       "group": "gettingStarted",
       "source": "https://docs.feexpay.me/?section=payment-methods&version=v2",
-      "hash": "45ef8044ebfe4e85",
-      "updated_at": "2026-10-10T13:29:12.014Z",
-      "chars": 1319
+      "hash": "9302acdf7a3b08e4",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1934
     },
     {
       "id": "dashboard",
@@ -473,9 +473,9 @@
       "title": "Tableau de bord",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard&version=v2",
-      "hash": "5cb42d0d2575df6f",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 3993
+      "hash": "169b84e6ba113b0b",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 4037
     },
     {
       "id": "dashboard-boutiques",
@@ -483,9 +483,9 @@
       "title": "Boutiques",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-boutiques&version=v2",
-      "hash": "99dc19fa6fe07eb5",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1834
+      "hash": "1a8ae58a68594a0f",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1856
     },
     {
       "id": "dashboard-transactions",
@@ -493,9 +493,9 @@
       "title": "Collectes",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-transactions&version=v2",
-      "hash": "bcc95138acf22aa3",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1926
+      "hash": "f2eb57d6c66cf25b",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1948
     },
     {
       "id": "dashboard-reversements",
@@ -503,9 +503,9 @@
       "title": "Reversement",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-reversements&version=v2",
-      "hash": "42f84823087e71cb",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1176
+      "hash": "ca964cf79c8903ac",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1288
     },
     {
       "id": "dashboard-payout-api",
@@ -513,9 +513,9 @@
       "title": "Payout API",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-payout-api&version=v2",
-      "hash": "364ba27f55ec0324",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 2237
+      "hash": "205af32c152b0439",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 2259
     },
     {
       "id": "dashboard-exporter",
@@ -523,9 +523,9 @@
       "title": "Exporter",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-exporter&version=v2",
-      "hash": "d22472c98420d0ae",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1694
+      "hash": "f93b0dabd65c1638",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1760
     },
     {
       "id": "dashboard-feexlinks",
@@ -533,9 +533,9 @@
       "title": "FeexLink",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-feexlinks&version=v2",
-      "hash": "b488a38c69a53a77",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1279
+      "hash": "59cb835cd435d508",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1389
     },
     {
       "id": "dashboard-quicklinks",
@@ -543,9 +543,9 @@
       "title": "F-QR Code",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-quicklinks&version=v2",
-      "hash": "467651385db1a27c",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1332
+      "hash": "c26bd71079a80da1",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1398
     },
     {
       "id": "dashboard-feexpage",
@@ -553,9 +553,9 @@
       "title": "FeexPage",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-feexpage&version=v2",
-      "hash": "0c24d9958bdade48",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 2033
+      "hash": "9a9d8a667410e38b",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 2165
     },
     {
       "id": "dashboard-list",
@@ -563,9 +563,9 @@
       "title": "Liste - Envoi en masse",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-list&version=v2",
-      "hash": "25c8d4feee2bc5ce",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 2257
+      "hash": "5b4aeddeb1fdd607",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 2345
     },
     {
       "id": "dashboard-notifications",
@@ -573,9 +573,9 @@
       "title": "Notifications",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-notifications&version=v2",
-      "hash": "ba6db0230418c445",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1693
+      "hash": "39519d385200cfed",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1715
     },
     {
       "id": "dashboard-cards-kyc",
@@ -583,9 +583,9 @@
       "title": "Cards KYB",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-cards-kyc&version=v2",
-      "hash": "5a4e3d0b93b9b634",
-      "updated_at": "2026-10-10T13:29:12.014Z",
-      "chars": 2107
+      "hash": "dd14bb13e37067ef",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 2175
     },
     {
       "id": "dashboard-developers",
@@ -593,9 +593,9 @@
       "title": "Développeurs",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-developers&version=v2",
-      "hash": "e125a2889be8dc3e",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1601
+      "hash": "2b81c28da7af369e",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1667
     },
     {
       "id": "dashboard-adresse-ip",
@@ -603,9 +603,9 @@
       "title": "Adresse IP",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-adresse-ip&version=v2",
-      "hash": "7f491ed817f899a7",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1740
+      "hash": "3417f9a5ddfdd6de",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1806
     },
     {
       "id": "dashboard-team",
@@ -613,9 +613,9 @@
       "title": "Équipe",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-team&version=v2",
-      "hash": "33a00d322ef16937",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1993
+      "hash": "1d8461c8055b07ff",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 2059
     },
     {
       "id": "dashboard-configuration",
@@ -623,8 +623,8 @@
       "title": "Configuration",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-configuration&version=v2",
-      "hash": "a04340ea032790ea",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "c77f3f91016dcdeb",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 2031
     },
     {
@@ -633,8 +633,8 @@
       "title": "API - Payin",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-rest-integrations&version=v2",
-      "hash": "b4fa7b354caa7330",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "34b47eec26b9227f",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 31025
     },
     {
@@ -643,8 +643,8 @@
       "title": "Statut des payins",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-rest-status&version=v2",
-      "hash": "ef09df63604f3f47",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "1f91ddd23ecbafbe",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1853
     },
     {
@@ -653,8 +653,8 @@
       "title": "API - Payout",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=services-payout&version=v2",
-      "hash": "df76fa071b0415fb",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "0f748d65ecae11c6",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 25923
     },
     {
@@ -663,8 +663,8 @@
       "title": "Statut des payouts",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-payout-status&version=v2",
-      "hash": "e9636f7ca841694a",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "1b53b02834a9b6a1",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1328
     },
     {
@@ -673,9 +673,9 @@
       "title": "Collecte par carte bancaire",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-rest-card&version=v2",
-      "hash": "cdc2304ec1791241",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 5487
+      "hash": "e335443f2117f84f",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 5531
     },
     {
       "id": "api-payment-history",
@@ -683,8 +683,8 @@
       "title": "API — Historique des transactions",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-payment-history&version=v2",
-      "hash": "503ea28cb29043e8",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "20766bd7b6bdb7f6",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 8284
     },
     {
@@ -693,8 +693,8 @@
       "title": "ORM Utils",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=orm-utils&version=v2",
-      "hash": "1ecf4eccc10b09f9",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "172ad5d870df77fc",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1831
     },
     {
@@ -703,8 +703,8 @@
       "title": "Codes d'Erreur",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=error-codes&version=v2",
-      "hash": "8d90c3c29a52b976",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "322eef9399f5fa89",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 4494
     },
     {
@@ -713,9 +713,9 @@
       "title": "Environnement sandbox",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=sandbox&version=v2",
-      "hash": "aef0b7964750efce",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 11061
+      "hash": "01dbaefd9a39edca",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 11216
     },
     {
       "id": "javascript-sdk",
@@ -723,9 +723,9 @@
       "title": "JavaScript",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=javascript-sdk&version=v2",
-      "hash": "09ec9db4a8015eff",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 3873
+      "hash": "72c6ee06b338eb17",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 3895
     },
     {
       "id": "react-sdk",
@@ -733,9 +733,9 @@
       "title": "React",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=react-sdk&version=v2",
-      "hash": "7423c1c0cc73df87",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 5582
+      "hash": "ccf8cc3b26f19f81",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 5604
     },
     {
       "id": "php-sdk",
@@ -743,9 +743,9 @@
       "title": "PHP",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=php-sdk&version=v2",
-      "hash": "77822947d38aef45",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 6190
+      "hash": "edb20f7ac65229da",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 6212
     },
     {
       "id": "flutter-android-sdk",
@@ -753,8 +753,8 @@
       "title": "FLUTTER ET ANDROID SDK",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=flutter-android-sdk&version=v2",
-      "hash": "e0ec5930dec56fdb",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "a41857127d234582",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 2433
     },
     {
@@ -763,9 +763,9 @@
       "title": "WordPress (WooCommerce)",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=wordpress-sdk&version=v2",
-      "hash": "dda3586de0ee2a91",
-      "updated_at": "2026-10-10T13:08:51.084Z",
-      "chars": 1029
+      "hash": "3acd63e0603f8a82",
+      "updated_at": "2026-10-10T13:38:59.990Z",
+      "chars": 1073
     },
     {
       "id": "postman",
@@ -773,8 +773,8 @@
       "title": "Collection Postman",
       "group": "tools",
       "source": "https://docs.feexpay.me/?section=postman&version=v2",
-      "hash": "333867d065f08635",
-      "updated_at": "2026-10-10T13:29:12.014Z",
+      "hash": "e8dc2d010e23f268",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 1296
     },
     {
@@ -783,8 +783,8 @@
       "title": "Feex Methode",
       "group": "services",
       "source": "https://docs.feexpay.me/?section=services-payout-method&version=v2",
-      "hash": "f804b5d64e44a0fe",
-      "updated_at": "2026-10-10T13:29:12.014Z",
+      "hash": "1aad46bb65888587",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 3268
     },
     {
@@ -793,8 +793,8 @@
       "title": "Webhook",
       "group": "general",
       "source": "https://docs.feexpay.me/?section=webhook&version=v2",
-      "hash": "f85189e9f1571ed4",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "a50d57e51e5a19e3",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 2383
     },
     {
@@ -803,8 +803,8 @@
       "title": "Sécurité",
       "group": "general",
       "source": "https://docs.feexpay.me/?section=security&version=v2",
-      "hash": "82ccdaa05364ad41",
-      "updated_at": "2026-10-10T13:08:51.084Z",
+      "hash": "3d21ee5405770c50",
+      "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 4963
     }
   ]

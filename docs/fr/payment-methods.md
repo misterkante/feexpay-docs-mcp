@@ -4,7 +4,7 @@ title: "Méthodes de paiement"
 group: gettingStarted
 lang: fr
 source: https://docs.feexpay.me/?section=payment-methods&version=v2
-updated_at: 2026-10-10T13:29:12.014Z
+updated_at: 2026-10-10T13:38:59.990Z
 ---
 
 # Méthodes de paiement
@@ -45,7 +45,7 @@ Moov
 
 Wave
 
-![Drapeau CI](https://docs.feexpay.me/flags/ci.svg)
+🇨🇮![Drapeau CI](https://docs.feexpay.me/flags/ci.svg)
 
 ### Côte d'Ivoire
 
@@ -65,7 +65,7 @@ Wave
 
 Orange
 
-![Drapeau SN](https://docs.feexpay.me/flags/sn.svg)
+🇸🇳![Drapeau SN](https://docs.feexpay.me/flags/sn.svg)
 
 ### Sénégal
 
@@ -81,7 +81,7 @@ Wave
 
 Free
 
-![Drapeau TG](https://docs.feexpay.me/flags/tg.svg)
+🇹🇬![Drapeau TG](https://docs.feexpay.me/flags/tg.svg)
 
 ### Togo
 
@@ -93,7 +93,7 @@ Togocom
 
 Moov
 
-![Drapeau CG](https://docs.feexpay.me/flags/cg.svg)
+🇨🇬![Drapeau CG](https://docs.feexpay.me/flags/cg.svg)
 
 ### Congo Brazzaville
 
@@ -105,7 +105,7 @@ MTN
 
 VISA, MASTERCARD
 
-L'activation des paiements par carte nécessite la validation du dossier KYB de votre boutique. Consultez la [page dédiée à la collecte par carte](?section=api-rest-card) pour la démarche KYB et l'endpoint d'intégration.
+L'activation des paiements par carte nécessite la validation du dossier KYB de votre boutique. Consultez la [page dédiée à la collecte par carte](https://docs.feexpay.me/?section=api-rest-card) pour la démarche KYB et l'endpoint d'intégration.
 
 ![VISA](https://docs.feexpay.me/card/brands/visa.svg)
 

@@ -4,7 +4,7 @@ title: "Benefits"
 group: introduction
 lang: en
 source: https://docs.feexpay.me/?section=advantages&version=v2
-updated_at: 2026-10-10T13:08:51.084Z
+updated_at: 2026-10-10T13:38:59.990Z
 ---
 
 # Benefits

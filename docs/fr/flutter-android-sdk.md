@@ -4,7 +4,7 @@ title: "FLUTTER ET ANDROID SDK"
 group: sdks
 lang: fr
 source: https://docs.feexpay.me/?section=flutter-android-sdk&version=v2
-updated_at: 2026-10-10T13:08:51.084Z
+updated_at: 2026-10-10T13:38:59.990Z
 ---
 
 # FLUTTER ET ANDROID SDK

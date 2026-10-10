@@ -4,7 +4,7 @@ title: "Welcome to FeexPay!"
 group: introduction
 lang: en
 source: https://docs.feexpay.me/?section=overview&version=v2
-updated_at: 2026-10-10T13:29:12.014Z
+updated_at: 2026-10-10T13:38:59.990Z
 ---
 
 # Welcome to FeexPay!

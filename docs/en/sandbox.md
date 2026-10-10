@@ -4,14 +4,14 @@ title: "Sandbox environment"
 group: api
 lang: en
 source: https://docs.feexpay.me/?section=sandbox&version=v2
-updated_at: 2026-10-10T13:08:51.084Z
+updated_at: 2026-10-10T13:38:59.990Z
 ---
 
 # Sandbox environment
 
 The sandbox is an isolated test environment: **no real operator is contacted and no money moves**. This isolation is enforced in code, whatever the configuration.
 
-The outcome of each transaction depends on the **last 2 digits of the phone number** (see [Test numbers](#sandbox-test-numbers)).
+The outcome of each transaction depends on the **last 2 digits of the phone number** (see [Test numbers](https://docs.feexpay.me/?section=sandbox&version=v2#sandbox-test-numbers)).
 
 Requests, responses and webhooks are the same as in production. Only the webhook `env` field differs: it is set to `"sandbox"`.
 
@@ -25,7 +25,7 @@ Requests, responses and webhooks are the same as in production. Only the webhook
 
 ## Create a test account
 
-1.  Sign up on the [sandbox dashboard](https://sandbox-app.feexpay.me) with your first name, last name, email and shop name.
+1.  Sign up on the [sandbox dashboard](https://sandbox-app.feexpay.me/) with your first name, last name, email and shop name.
 2.  Click the confirmation link sent by email. It is valid for **3 hours**.
 3.  Choose a password (at least 8 characters) and accept the terms.
 
@@ -180,7 +180,7 @@ Only the 00 suffix gives an immediate success
 `00` is the **only** immediate success. A real customer number therefore always fails.
 
 -   With `05`/`06`, the transaction stays PENDING for about 20 seconds. The final status can arrive up to about 1 minute later, depending on the channel.
--   The number must also match the channel format (see [Available channels](#sandbox-channels)). For example, for Moov BJ, the `00` scenario is written `2290197000000`.
+-   The number must also match the channel format (see [Available channels](https://docs.feexpay.me/?section=sandbox&version=v2#sandbox-channels)). For example, for Moov BJ, the `00` scenario is written `2290197000000`.
 
 ## Check a transaction status
 
@@ -254,7 +254,7 @@ What you need to do
 | 400 (validation) | missing or malformed field (number format, `amount`…) |
 | 400 INVALID\_PHONE\_NUMBER | test scenario `04` |
 | 400 CHANNEL\_NOT\_AVAILABLE\_IN\_SANDBOX | channel not simulated |
-| 400 Low Balance | payout not funded (see [Payout](#sandbox-channels)) |
+| 400 Low Balance | payout not funded (see [Payout](https://docs.feexpay.me/?section=sandbox&version=v2#sandbox-channels)) |
 | 401 UNAUTHORIZED / API\_KEY\_BLOCKED | invalid or disabled key |
 | 404 Merchant or Shop not found | wrong shop ID, or a shop belonging to another account |
 | 503 | test scenario `02` (the body shows "Internal Server Error") |
@@ -262,7 +262,7 @@ What you need to do
 ## Going live
 
 1.  Replace the sandbox API URL with the production one: `https://api-v2.feexpay.me`.
-2.  Replace the `test_key_…` key with your production key, available on the [production dashboard](https://app-v2.feexpay.me) after KYC validation.
+2.  Replace the `test_key_…` key with your production key, available on the [production dashboard](https://app-v2.feexpay.me/) after KYC validation.
 3.  Use real numbers: test suffixes have no effect in production.
 
 Handle the PENDING response from day one

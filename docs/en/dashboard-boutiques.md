@@ -4,7 +4,7 @@ title: "Shops"
 group: dashboard
 lang: en
 source: https://docs.feexpay.me/?section=dashboard-boutiques&version=v2
-updated_at: 2026-10-10T13:08:51.084Z
+updated_at: 2026-10-10T13:38:59.990Z
 ---
 
 # Shops

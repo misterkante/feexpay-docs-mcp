@@ -4,14 +4,14 @@ title: "Environnement sandbox"
 group: api
 lang: fr
 source: https://docs.feexpay.me/?section=sandbox&version=v2
-updated_at: 2026-10-10T13:08:51.084Z
+updated_at: 2026-10-10T13:38:59.990Z
 ---
 
 # Environnement sandbox
 
 La sandbox est un environnement de test isolé : **aucun opérateur réel n'est contacté et aucun argent ne circule**. Cette isolation est imposée par le code, quelle que soit la configuration.
 
-Le résultat de chaque transaction dépend des **2 derniers chiffres du numéro de téléphone** (voir [Numéros de test](#sandbox-test-numbers)).
+Le résultat de chaque transaction dépend des **2 derniers chiffres du numéro de téléphone** (voir [Numéros de test](https://docs.feexpay.me/?section=sandbox&version=v2#sandbox-test-numbers)).
 
 Les requêtes, les réponses et les webhooks sont ceux de la production. Seul le champ `env` des webhooks diffère : il vaut `"sandbox"`.
 
@@ -25,7 +25,7 @@ Les requêtes, les réponses et les webhooks sont ceux de la production. Seul le
 
 ## Créer un compte de test
 
-1.  Inscrivez-vous sur le [dashboard sandbox](https://sandbox-app.feexpay.me) avec votre prénom, votre nom, votre e-mail et le nom de votre boutique.
+1.  Inscrivez-vous sur le [dashboard sandbox](https://sandbox-app.feexpay.me/) avec votre prénom, votre nom, votre e-mail et le nom de votre boutique.
 2.  Cliquez sur le lien de confirmation reçu par e-mail. Il est valable **3 heures**.
 3.  Choisissez un mot de passe (8 caractères minimum) et acceptez les conditions.
 
@@ -180,7 +180,7 @@ Seul le suffixe 00 donne un succès immédiat
 `00` est le **seul** succès immédiat. Un vrai numéro client échoue donc toujours.
 
 -   Avec `05`/`06`, la transaction reste PENDING environ 20 secondes. Le statut final peut arriver jusqu'à environ 1 minute plus tard, selon le canal.
--   Le numéro doit aussi respecter le format du canal (voir [Canaux disponibles](#sandbox-channels)). Par exemple, pour Moov BJ, le scénario `00` s'écrit `2290197000000`.
+-   Le numéro doit aussi respecter le format du canal (voir [Canaux disponibles](https://docs.feexpay.me/?section=sandbox&version=v2#sandbox-channels)). Par exemple, pour Moov BJ, le scénario `00` s'écrit `2290197000000`.
 
 ## Consulter le statut d'une transaction
 
@@ -254,7 +254,7 @@ FeexPay envoie un `POST` JSON pour chaque statut final. **Aucun webhook n'est en
 | 400 (validation) | champ manquant ou mal formé (format du numéro, `amount`…) |
 | 400 INVALID\_PHONE\_NUMBER | scénario de test `04` |
 | 400 CHANNEL\_NOT\_AVAILABLE\_IN\_SANDBOX | canal non simulé |
-| 400 Low Balance | payout non financé (voir [Payout](#sandbox-channels)) |
+| 400 Low Balance | payout non financé (voir [Payout](https://docs.feexpay.me/?section=sandbox&version=v2#sandbox-channels)) |
 | 401 UNAUTHORIZED / API\_KEY\_BLOCKED | clé invalide ou désactivée |
 | 404 Merchant or Shop not found | identifiant de boutique erroné, ou boutique d'un autre compte |
 | 503 | scénario de test `02` (le corps affiche « Internal Server Error ») |
@@ -262,7 +262,7 @@ FeexPay envoie un `POST` JSON pour chaque statut final. **Aucun webhook n'est en
 ## Passage en production
 
 1.  Remplacez l'URL de l'API sandbox par celle de production : `https://api-v2.feexpay.me`.
-2.  Remplacez la clé `test_key_…` par votre clé de production, obtenue sur le [dashboard de production](https://app-v2.feexpay.me) après validation KYC.
+2.  Remplacez la clé `test_key_…` par votre clé de production, obtenue sur le [dashboard de production](https://app-v2.feexpay.me/) après validation KYC.
 3.  Utilisez de vrais numéros : les suffixes de test n'ont aucun effet en production.
 
 Gérez la réponse PENDING dès le départ

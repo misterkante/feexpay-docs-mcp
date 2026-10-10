@@ -4,7 +4,7 @@ title: "Méthodes de paiement"
 group: gettingStarted
 lang: en
 source: https://docs.feexpay.me/?section=payment-methods&version=v2
-updated_at: 2026-10-10T13:08:51.084Z
+updated_at: 2026-10-10T13:38:59.990Z
 ---
 
 # Méthodes de paiement
@@ -105,7 +105,7 @@ MTN
 
 VISA, MASTERCARD
 
-L'activation des paiements par carte nécessite la validation du dossier KYB de votre boutique. Consultez la [page dédiée à la collecte par carte](?section=api-rest-card) pour la démarche KYB et l'endpoint d'intégration.
+L'activation des paiements par carte nécessite la validation du dossier KYB de votre boutique. Consultez la [page dédiée à la collecte par carte](https://docs.feexpay.me/?section=api-rest-card) pour la démarche KYB et l'endpoint d'intégration.
 
 ![VISA](https://docs.feexpay.me/card/brands/visa.svg)
 

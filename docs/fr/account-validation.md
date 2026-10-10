@@ -4,7 +4,7 @@ title: "Validation de compte"
 group: gettingStarted
 lang: fr
 source: https://docs.feexpay.me/?section=account-validation&version=v2
-updated_at: 2026-10-10T13:08:51.084Z
+updated_at: 2026-10-10T13:38:59.990Z
 ---
 
 # Validation de compte

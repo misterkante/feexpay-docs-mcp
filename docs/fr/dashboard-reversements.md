@@ -4,7 +4,7 @@ title: "Reversement"
 group: dashboard
 lang: fr
 source: https://docs.feexpay.me/?section=dashboard-reversements&version=v2
-updated_at: 2026-10-10T13:08:51.084Z
+updated_at: 2026-10-10T13:38:59.990Z
 ---
 
 # Reversement
@@ -35,7 +35,7 @@ Bienvenue au menu Reversement. Vous avez la possibilité d'initier le reversemen
 
 Où configurer vos numéros ?
 
-Les numéros de reversement ne se configurent plus depuis votre profil. Ils sont regroupés par pays et par réseau dans l'onglet [Configuration](?section=dashboard-configuration) du tableau de bord.
+Les numéros de reversement ne se configurent plus depuis votre profil. Ils sont regroupés par pays et par réseau dans l'onglet [Configuration](https://docs.feexpay.me/?section=dashboard-configuration) du tableau de bord.
 
  [Précédent
 

@@ -4,7 +4,7 @@ title: "Cards KYB"
 group: dashboard
 lang: fr
 source: https://docs.feexpay.me/?section=dashboard-cards-kyc&version=v2
-updated_at: 2026-10-10T13:29:12.014Z
+updated_at: 2026-10-10T13:38:59.990Z
 ---
 
 # Cards KYB
