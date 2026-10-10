@@ -1,12 +1,47 @@
 # FeexPay Docs MCP
 
+**Demande à ton assistant IA d'intégrer FeexPay : il répond avec les vrais endpoints au lieu de les inventer.**
+
 [![CI](https://github.com/misterkante/feexpay-docs-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/misterkante/feexpay-docs-mcp/actions/workflows/ci.yml)
-[![Sync FeexPay docs](https://github.com/misterkante/feexpay-docs-mcp/actions/workflows/sync-docs.yml/badge.svg)](https://github.com/misterkante/feexpay-docs-mcp/actions/workflows/sync-docs.yml)
+[![Docs synced](https://img.shields.io/github/last-commit/misterkante/feexpay-docs-mcp/main?path=docs&label=docs%20synced&color=brightgreen)](https://github.com/misterkante/feexpay-docs-mcp/commits/main/docs)
+![Sections](https://img.shields.io/badge/sections-40%20%C3%97%20EN%2FFR-blue)
 [![Licence : MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
 
 [English](README.md) · **Français**
 
-Un serveur [MCP](https://modelcontextprotocol.io) qui donne aux assistants de code IA (Claude Code, Claude Desktop, Cursor, VS Code Copilot, Windsurf…) **un accès complet et à jour à la documentation développeur de [FeexPay](https://feexpay.me)**. Ils peuvent ainsi intégrer les paiements FeexPay sans deviner.
+[![Install in Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=feexpay-docs&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsImdpdGh1YjptaXN0ZXJrYW50ZS9mZWV4cGF5LWRvY3MtbWNwIl19)
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_MCP-0098FF?logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=feexpay-docs&config=%7B%22type%22%3A%22stdio%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22github%3Amisterkante/feexpay-docs-mcp%22%5D%7D)
+
+```bash
+claude mcp add feexpay-docs -- npx -y github:misterkante/feexpay-docs-mcp
+```
+
+## En action
+
+> **Toi :** *Ajoute les payouts Mobile Money vers le Togo à mon backend.*
+
+Sans ce serveur, ton assistant ouvre `docs.feexpay.me`, tombe sur une coquille JavaScript vide et devine. Avec, il appelle `search_docs("payout togo")` et obtient ceci depuis le dernier snapshot :
+
+```markdown
+### API - Payout › Togo › Payout Global Togo (TOGOCOM/Moov TG)
+section: services-payout | source: https://docs.feexpay.me/?section=services-payout&version=v2
+
+##### URL
+`https://api-v2.feexpay.me/api/payouts/public/togo`
+
+##### Méthode
+POST
+
+| Paramètre   | Statut      | Description                                         | Exemple     |
+| ----------- | ----------- | --------------------------------------------------- | ----------- |
+| phoneNumber | Obligatoire | Un numéro de téléphone                              | 22871000000 |
+| amount      | Obligatoire | Le montant de la transaction minimum 100            | 100         |
+| network     | Obligatoire | Le réseau mobile (TOGOCOM TG ou MOOV TG)            | TOGOCOM TG  |
+| motif       | Obligatoire | 30 caractères maximum, pas de caractères spéciaux   | FeexPay     |
+…
+```
+
+Il écrit ensuite l'intégration à partir de ça, avec la bonne URL, le bon corps de requête et les bonnes contraintes, et il cite sa source.
 
 > **Projet non officiel**, sans lien avec FeexPay ni validé par FeexPay. Le contenu de la documentation appartient à FeexPay ; l'original est sur [docs.feexpay.me](https://docs.feexpay.me).
 
@@ -51,7 +86,8 @@ Il faut **Node.js 18+** et **git**. Les commandes ci-dessous lancent le serveur 
 claude mcp add feexpay-docs -- npx -y github:misterkante/feexpay-docs-mcp
 ```
 
-### Claude Desktop, Cursor, Windsurf
+<details>
+<summary><b>Claude Desktop, Cursor, Windsurf</b></summary>
 
 Ajoute ce bloc à ton fichier de configuration MCP. C'est `claude_desktop_config.json` pour Claude Desktop, `~/.cursor/mcp.json` ou `.cursor/mcp.json` pour Cursor, et `~/.codeium/windsurf/mcp_config.json` pour Windsurf :
 
@@ -67,7 +103,10 @@ Ajoute ce bloc à ton fichier de configuration MCP. C'est `claude_desktop_config
 }
 ```
 
-### VS Code (GitHub Copilot)
+</details>
+
+<details>
+<summary><b>VS Code (GitHub Copilot)</b></summary>
 
 Mets ceci dans `.vscode/mcp.json` :
 
@@ -84,13 +123,18 @@ Mets ceci dans `.vscode/mcp.json` :
 }
 ```
 
-### Depuis un clone local
+</details>
+
+<details>
+<summary><b>Depuis un clone local</b></summary>
 
 ```bash
 git clone https://github.com/misterkante/feexpay-docs-mcp.git
 cd feexpay-docs-mcp && npm ci --omit=dev
 # puis configure ton client avec : node /chemin/absolu/feexpay-docs-mcp/src/server.js
 ```
+
+</details>
 
 ## Outils
 

@@ -1,12 +1,41 @@
 # FeexPay Docs MCP
 
+**Ask your AI assistant to integrate FeexPay, and it answers with the real endpoints instead of making them up.**
+
 [![CI](https://github.com/misterkante/feexpay-docs-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/misterkante/feexpay-docs-mcp/actions/workflows/ci.yml)
-[![Sync FeexPay docs](https://github.com/misterkante/feexpay-docs-mcp/actions/workflows/sync-docs.yml/badge.svg)](https://github.com/misterkante/feexpay-docs-mcp/actions/workflows/sync-docs.yml)
+[![Docs synced](https://img.shields.io/github/last-commit/misterkante/feexpay-docs-mcp/main?path=docs&label=docs%20synced&color=brightgreen)](https://github.com/misterkante/feexpay-docs-mcp/commits/main/docs)
+![Sections](https://img.shields.io/badge/sections-40%20%C3%97%20EN%2FFR-blue)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 **English** · [Français](README.fr.md)
 
-An [MCP](https://modelcontextprotocol.io) server that gives AI coding assistants (Claude Code, Claude Desktop, Cursor, VS Code Copilot, Windsurf…) **complete and up-to-date access to the [FeexPay](https://feexpay.me) developer documentation**, so they can integrate FeexPay payments without guessing.
+[![Install in Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=feexpay-docs&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsImdpdGh1YjptaXN0ZXJrYW50ZS9mZWV4cGF5LWRvY3MtbWNwIl19)
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_MCP-0098FF?logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=feexpay-docs&config=%7B%22type%22%3A%22stdio%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22github%3Amisterkante/feexpay-docs-mcp%22%5D%7D)
+
+```bash
+claude mcp add feexpay-docs -- npx -y github:misterkante/feexpay-docs-mcp
+```
+
+## See it in action
+
+> **You:** *Add MTN Mobile Money payments in Benin to my backend.*
+
+Without this server, your assistant fetches `docs.feexpay.me`, gets an empty JavaScript shell and guesses. With it, it calls `search_docs("payin mtn benin")` and gets this from the latest snapshot:
+
+```markdown
+### Sandbox environment › Payin (collection)
+section: sandbox | source: https://docs.feexpay.me/?section=sandbox&version=v2
+
+| Channel       | Endpoint (POST)                                    | Phone number format          |
+| ------------- | -------------------------------------------------- | ---------------------------- |
+| MTN Benin     | `/api/transactions/public/requesttopay/mtn`        | any (e.g. `22997000000`)     |
+| Moov Benin    | `/api/transactions/public/requesttopay/moov`       | `22901` + 8 digits           |
+| Celtiis Benin | `/api/transactions/public/requesttopay/celtiis_bj` | `22901` + 8 digits           |
+| Wave CI       | `/api/transactions/public/requesttopay/wave_ci`    | starts with `225`            |
+…
+```
+
+Then it writes the integration from that, with the right path, the right body and the right phone format, and cites its source.
 
 > **Unofficial project.** It is not affiliated with or endorsed by FeexPay. The documentation content belongs to FeexPay; the original is at [docs.feexpay.me](https://docs.feexpay.me).
 
@@ -51,7 +80,8 @@ You need **Node.js 18+** and **git**. The commands below run the server straight
 claude mcp add feexpay-docs -- npx -y github:misterkante/feexpay-docs-mcp
 ```
 
-### Claude Desktop, Cursor, Windsurf
+<details>
+<summary><b>Claude Desktop, Cursor, Windsurf</b></summary>
 
 Add this to your MCP config file. That is `claude_desktop_config.json` for Claude Desktop, `~/.cursor/mcp.json` or `.cursor/mcp.json` for Cursor, and `~/.codeium/windsurf/mcp_config.json` for Windsurf:
 
@@ -66,7 +96,10 @@ Add this to your MCP config file. That is `claude_desktop_config.json` for Claud
 }
 ```
 
-### VS Code (GitHub Copilot)
+</details>
+
+<details>
+<summary><b>VS Code (GitHub Copilot)</b></summary>
 
 Put this in `.vscode/mcp.json`:
 
@@ -82,13 +115,18 @@ Put this in `.vscode/mcp.json`:
 }
 ```
 
-### From a local clone
+</details>
+
+<details>
+<summary><b>From a local clone</b></summary>
 
 ```bash
 git clone https://github.com/misterkante/feexpay-docs-mcp.git
 cd feexpay-docs-mcp && npm ci --omit=dev
 # then point your client at: node /absolute/path/to/feexpay-docs-mcp/src/server.js
 ```
+
+</details>
 
 ## Tools
 
