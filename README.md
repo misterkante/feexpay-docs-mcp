@@ -80,8 +80,7 @@ You need **Node.js 18+** and **git**. The commands below run the server straight
 claude mcp add feexpay-docs -- npx -y github:misterkante/feexpay-docs-mcp
 ```
 
-<details>
-<summary><b>Claude Desktop, Cursor, Windsurf</b></summary>
+### Claude Desktop, Cursor, Windsurf
 
 Add this to your MCP config file. That is `claude_desktop_config.json` for Claude Desktop, `~/.cursor/mcp.json` or `.cursor/mcp.json` for Cursor, and `~/.codeium/windsurf/mcp_config.json` for Windsurf:
 
@@ -96,10 +95,7 @@ Add this to your MCP config file. That is `claude_desktop_config.json` for Claud
 }
 ```
 
-</details>
-
-<details>
-<summary><b>VS Code (GitHub Copilot)</b></summary>
+### VS Code (GitHub Copilot)
 
 Put this in `.vscode/mcp.json`:
 
@@ -115,18 +111,13 @@ Put this in `.vscode/mcp.json`:
 }
 ```
 
-</details>
-
-<details>
-<summary><b>From a local clone</b></summary>
+### From a local clone
 
 ```bash
 git clone https://github.com/misterkante/feexpay-docs-mcp.git
 cd feexpay-docs-mcp && npm ci --omit=dev
 # then point your client at: node /absolute/path/to/feexpay-docs-mcp/src/server.js
 ```
-
-</details>
 
 ## Tools
 
