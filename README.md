@@ -6,6 +6,7 @@
 [![Docs synced](https://img.shields.io/github/last-commit/misterkante/feexpay-docs-mcp/main?path=docs&label=docs%20synced&color=brightgreen)](https://github.com/misterkante/feexpay-docs-mcp/commits/main/docs)
 ![Sections](https://img.shields.io/badge/sections-40%20%C3%97%20EN%2FFR-blue)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![M8ven Score](https://m8ven.ai/badge/mcp/misterkante-feexpay-docs-mcp-hkm9i0?v=61fec7f150d6a50fa1ef7c58439ae466&variant=verified)](https://m8ven.ai/mcp/misterkante-feexpay-docs-mcp-hkm9i0?s=readme)
 
 **English** · [Français](README.fr.md)
 
