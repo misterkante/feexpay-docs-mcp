@@ -4,7 +4,7 @@ title: "PHP"
 group: sdks
 lang: fr
 source: https://docs.feexpay.me/?section=php-sdk&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-10-14T10:10:02.461Z
 ---
 
 # PHP
@@ -125,7 +125,7 @@ header("Location: $redirectUrl");
 exit();
 ```
 
-Attention : `callback_url` n'est pas utilisé quand vous appelez directement les méthodes du SDK. Vous pouvez passer "" pour cet argument. Respectez l'ordre exact des paramètres. Pour `paiementCard`, tous les arguments sont obligatoires et `country` est un code ISO à 2 lettres (`BJ`, `CI`, `SN`…). La méthode renvoie `["url", "payment_url", "reference"]`, ou `null` en cas d'échec (raison via `getLastError()`).
+Attention : respectez l'ordre exact des paramètres. Pour `paiementCard`, tous les arguments sont obligatoires et `country` est un code ISO à 2 lettres (`BJ`, `CI`, `SN`…). La méthode renvoie `["url", "payment_url", "reference"]`, ou `null` en cas d'échec (raison via `getLastError()`).
 
 ### 6\. Bouton de paiement côté interface (ex: Laravel)
 
