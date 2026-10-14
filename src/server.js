@@ -33,7 +33,7 @@ server.registerTool(
     description:
       'Lists every section of the FeexPay documentation (id, title, group, source URL, last change date). Groups: introduction, gettingStarted, dashboard (merchant dashboard: shops, payouts, API keys, IP whitelist, team…), api, sdks, tools, services, general (webhook, security).',
     inputSchema: { lang },
-    annotations: { readOnlyHint: true, openWorldHint: false },
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
   },
   async ({ lang }) => {
     const sections = await store.listSections(lang);
@@ -49,7 +49,7 @@ server.registerTool(
     description:
       'Returns the full Markdown of one section, including every country/network tab (endpoints, request body, headers, code examples, responses). Use list_sections to get the ids, e.g. "api-rest-integrations" (payin), "services-payout", "api-rest-status", "webhook", "react-sdk", "error-codes".',
     inputSchema: { id: z.string().regex(/^[a-z0-9-]+$/).describe('Section id from list_sections'), lang },
-    annotations: { readOnlyHint: true, openWorldHint: false },
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
   },
   async ({ id, lang }) => {
     const s = await store.getSection(id, lang);
@@ -72,7 +72,7 @@ server.registerTool(
       lang,
       limit: z.number().int().min(1).max(20).default(5),
     },
-    annotations: { readOnlyHint: true, openWorldHint: false },
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
   },
   async ({ query, lang, limit }) => {
     const hits = await store.search(query, lang, limit);
@@ -99,7 +99,7 @@ server.registerTool(
         .optional()
         .describe('Restrict to one sidebar group: introduction, gettingStarted, dashboard, api, sdks, tools, services, general'),
     },
-    annotations: { readOnlyHint: true, openWorldHint: false },
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
   },
   async ({ lang, group }) => {
     const pages = await store.getAll(lang, group);
