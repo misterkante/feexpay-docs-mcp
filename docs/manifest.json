@@ -1,7 +1,7 @@
 {
   "source": "https://docs.feexpay.me/",
   "api_version": "v2",
-  "generated_at": "2026-10-14T10:10:02.461Z",
+  "generated_at": "2026-10-16T09:46:31.651Z",
   "langs": [
     "en",
     "fr"
@@ -313,9 +313,9 @@
       "title": "Sandbox environment",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=sandbox&version=v2",
-      "hash": "06bc9f80cdb703a8",
-      "updated_at": "2026-10-14T10:10:02.461Z",
-      "chars": 15642
+      "hash": "9699ce452420aa22",
+      "updated_at": "2026-10-16T09:46:31.651Z",
+      "chars": 22416
     },
     {
       "id": "javascript-sdk",
@@ -713,9 +713,9 @@
       "title": "Environnement sandbox",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=sandbox&version=v2",
-      "hash": "63f46de49e089749",
-      "updated_at": "2026-10-14T10:10:02.461Z",
-      "chars": 16484
+      "hash": "3d46c5cc5d5e9ac1",
+      "updated_at": "2026-10-16T09:46:31.651Z",
+      "chars": 23754
     },
     {
       "id": "javascript-sdk",

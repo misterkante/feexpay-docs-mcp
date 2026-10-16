@@ -4,7 +4,7 @@ title: "Environnement sandbox"
 group: api
 lang: fr
 source: https://docs.feexpay.me/?section=sandbox&version=v2
-updated_at: 2026-10-14T10:10:02.461Z
+updated_at: 2026-10-16T09:46:31.651Z
 ---
 
 # Environnement sandbox
@@ -12,6 +12,8 @@ updated_at: 2026-10-14T10:10:02.461Z
 La sandbox est un environnement de test isolé : **aucun opérateur réel n'est contacté et aucun argent ne circule**. Cette isolation est imposée par le code, quelle que soit la configuration.
 
 Le résultat de chaque transaction dépend des **2 derniers chiffres du numéro de téléphone** (voir [Numéros de test](https://docs.feexpay.me/?section=sandbox&version=v2#sandbox-test-numbers)).
+
+La sandbox permet aussi de tester le [paiement par carte](https://docs.feexpay.me/?section=sandbox&version=v2#sandbox-card) (Visa, Mastercard), en plus des canaux mobile money.
 
 Les requêtes, les réponses et les webhooks sont ceux de la production. Seul le champ `env` des webhooks diffère : il vaut `"sandbox"`.
 
@@ -24,10 +26,6 @@ Aucune configuration préalable n'est nécessaire.
 ##### Dashboard marchand
 
 `https://sandbox-app.feexpay.me`
-
-##### Documentation Swagger
-
-`https://sandbox-api.feexpay.me/docs`
 
 ## Créer un compte de test
 
@@ -45,13 +43,6 @@ Dès que le mot de passe est défini, la sandbox crée automatiquement :
 -   **Inscription interrompue avant le mot de passe** : inscrivez-vous à nouveau avec le même e-mail pour reprendre.
 -   **Connexion avant d'avoir choisi le mot de passe** : un message indique que l'inscription n'est pas terminée.
 -   **Page du mot de passe** : son lien est valable **3 heures**.
-
-### Inscription par API
-
-Pour créer le compte par API plutôt que par le dashboard :
-
-1.  `POST /api/auth/register` avec `first_name`, `last_name`, `email` et `shop`. La réponse contient `data.registration_token`.
-2.  `PUT /api/auth/register/init-password` avec `token`, `password` et `terms_accepted`.
 
 ## Authentification
 
@@ -93,6 +84,7 @@ Téléchargez la collection Postman de la sandbox pour tester tous les canaux si
 | 3\. Payout | un payout par canal simulé |
 | 4\. Statut | statut du dernier payin (par référence ou par description) et du dernier payout |
 | 5\. Erreurs | canal non simulé, clé API invalide, boutique introuvable |
+| 6\. Paiement par carte | préparation d'un paiement en XOF et en EUR (avec `payment_url` à ouvrir), devise non acceptée |
 
 ### Utiliser la collection
 
@@ -210,6 +202,7 @@ Le payout Orange Côte d'Ivoire n'est pas encore disponible : il renvoie une err
 -   **Crédit** : chaque payin `SUCCESSFUL` crédite le solde de la boutique sur le canal concerné, du montant net (après frais).
 -   **Débit** : un payout débite le montant plus les frais. Par exemple, aux taux par défaut, un payout de 300 coûte 306 au Sénégal et 309 au Togo.
 -   **Remboursement** : un payout `FAILED` est remboursé automatiquement.
+-   **Solde CARD** : un paiement par carte réussi crédite le solde `CARD` de la boutique, distinct des soldes mobile money, du montant net.
 
 Un payout doit être financé
 
@@ -264,6 +257,162 @@ Seul le suffixe 00 donne un succès immédiat
 
 -   Avec `05`/`06`, la transaction reste PENDING environ 20 secondes. Le statut final arrive en général en moins de 30 secondes.
 -   Le numéro doit aussi respecter le format du canal (voir [Canaux disponibles](https://docs.feexpay.me/?section=sandbox&version=v2#sandbox-channels)). Par exemple, pour Moov BJ, le scénario `00` s'écrit `2290197000000`.
+-   Le contrôle des numéros de test ne s'applique pas au [paiement par carte](https://docs.feexpay.me/?section=sandbox&version=v2#sandbox-card) : le `phoneNumber` y sert seulement à la facturation.
+
+## Paiement par carte
+
+En sandbox, le paiement par carte (Visa, Mastercard) est disponible pour tous les marchands, **sans KYC carte**.
+
+Aucune vraie carte n'est débitée : la page de paiement est simulée et le résultat dépend de la **carte de test** saisie.
+
+Le parcours, les réponses, les frais, le reçu, le webhook et le crédit du solde sont les mêmes qu'en production.
+
+### Le parcours
+
+1.  Le marchand prépare le paiement avec l'API.
+2.  Il redirige son client vers la `payment_url` reçue.
+3.  Le client remplit la page de paiement :
+    -   ses coordonnées s'affichent pré-remplies ;
+    -   il saisit sa carte, choisit la zone d'émission (le montant se met à jour), la date d'expiration et le CVC ;
+    -   il clique sur **« Payer »**.
+4.  Le client arrive sur un reçu FeexPay. Le bouton **« Terminer »** le renvoie vers l'URL de retour du marchand.
+5.  Le marchand reçoit le statut final par webhook, et peut aussi le consulter via la route de statut.
+
+### Étape 1 : préparer le paiement
+
+POST
+
+`https://sandbox-api.feexpay.me/api/transactions/public/requesttopay/init`
+
+En-têtes :
+
+```http
+Authorization: Bearer test_key_...
+Content-Type: application/json
+```
+
+Corps de la requête :
+
+```json
+{
+  "shop": "<SHOP_ID>",
+  "amount": 100,
+  "currency": "XOF",
+  "first_name": "Awa",
+  "last_name": "Kone",
+  "email": "awa@exemple.com",
+  "phoneNumber": "+22997123456",
+  "return_url": "https://marchand.exemple.com/retour",
+  "cancel_url": "https://marchand.exemple.com/annulation",
+  "description": "Commande 42",
+  "callback_info": { "order": "cmd-42" }
+}
+```
+
+| Champ | Requis | Description |
+| --- | --- | --- |
+| `shop` | ✅ | identifiant public de la boutique |
+| `amount` | ✅ | montant de la commande, dans la devise `currency` |
+| `first_name``last_name``email` | ✅ | coordonnées du client, affichées sur la page de paiement |
+| `phoneNumber` | ✅ | téléphone du client. Il sert seulement à la facturation : ce n'est pas un numéro de test, n'importe quel numéro valide est accepté |
+| `currency` | — | `XOF` par défaut. Voir [Devises](https://docs.feexpay.me/?section=sandbox&version=v2#sandbox-card-currencies) |
+| `return_url` | — | page du marchand où revient le client (bouton « Terminer » du reçu) |
+| `cancel_url` | — | page de retour en cas d'annulation |
+| `description``callback_info` | — | repris dans le webhook |
+
+Réponse (200) :
+
+```json
+{
+  "reference": "FZgr9WLAXnrD",
+  "status": "PENDING",
+  "message": "Accepted",
+  "payment_url": "https://sandbox-api.feexpay.me/api/card/sandbox/checkout/card-details?ref=FZgr9WLAXnrD",
+  "currency": "XOF",
+  "amount": 100,
+  "amount_xof": 100,
+  "amount_to_pay_xof": 104,
+  "expires_at": "2026-10-15T10:34:53.722Z"
+}
+```
+
+-   `payment_url` : page vers laquelle rediriger le client ;
+-   `amount_to_pay_xof` : montant débité au client, frais compris, avant le choix de la zone. Le taux international (3,9 %) s'applique par défaut ;
+-   `expires_at` : fin de validité de la session de paiement (60 minutes).
+
+### Étape 2 : page de paiement et cartes de test
+
+Le résultat dépend des **4 derniers chiffres de la carte**. La date d'expiration et le CVC peuvent être quelconques.
+
+| Carte se terminant par | Résultat |
+| --- | --- |
+| 0000 | `SUCCESSFUL` |
+| 0001 | `FAILED`, fonds insuffisants |
+| 0002 | `FAILED`, erreur système |
+| 0003 | `FAILED`, carte expirée |
+| 0004 | `FAILED`, échec de l'authentification 3-D Secure |
+| 0005 | `PENDING` (revue antifraude), puis `SUCCESSFUL` après environ 20 s |
+| 0006 | `PENDING` (revue antifraude), puis `FAILED` après environ 20 s |
+| Autre | refusée par la page (« Carte de test non reconnue ») : le client peut réessayer |
+
+Exemples : `4000 0000 0000 0000` (Visa, succès) ou `5100 0000 0000 0001` (Mastercard, fonds insuffisants).
+
+### Étape 3 : reçu et retour chez le marchand
+
+Après le paiement, le client voit le reçu FeexPay : « Paiement réussi », « Paiement refusé » ou « Paiement en cours de vérification ». Le bouton **« Terminer »** l'envoie vers :
+
+```text
+<return_url>?ref=<reference>&status=<SUCCESSFUL|FAILED|PENDING|CANCELLED>
+```
+
+**Choix de l'URL** : si le paiement échoue, c'est `cancel_url` qui est utilisée lorsqu'elle est fournie ; sinon, `return_url`.
+
+Le statut de l'URL n'est qu'une indication
+
+Le paramètre `status` de l'URL peut être modifié par le client. Confirmez toujours le statut par le webhook ou par la route de statut avant de livrer.
+
+### Étape 4 : statut final
+
+-   **Webhook** : un `POST` vers votre URL, au même format que pour le mobile money. Les événements sont `transaction.successful` / `transaction.failed`, et le payload contient `"env": "sandbox"`.
+-   **Route de statut** : `GET /api/transactions/public/single/status/{reference}`. Elle renvoie `status` et `reason`, par exemple « Fonds insuffisants sur le compte. ».
+-   **Paiement non abouti** : si le client ne paie pas avant `expires_at`, la transaction passe en `FAILED`.
+
+### Frais
+
+| Zone d'émission de la carte | Frais (payés par le client) |
+| --- | --- |
+| UEMOA | 3,5 % |
+| Toute autre zone | 3,9 % |
+
+Exemple : pour une commande de 10 000 F, le client paie 10 350 F avec une carte UEMOA, ou 10 390 F avec une carte émise ailleurs. Le marchand reçoit 10 000 F.
+
+### Devises
+
+-   **Débit toujours en XOF** : le paiement est débité en XOF, quelle que soit la devise de la commande.
+-   **Commande en devise étrangère** : si `currency` est une autre devise acceptée (EUR, USD, GBP, CHF, CAD, XAF, NGN, GHS…), le montant est converti en XOF au taux fixe de la sandbox, par exemple 1 EUR = 655,957 XOF ou 1 USD = 600 XOF.
+-   **Commission de change** : 3 % du montant converti, retenue au marchand.
+-   **Devise non acceptée** : erreur `400 currency_not_supported`, avec la liste des devises acceptées.
+
+Exemple : 1 000 EUR, carte de l'UE
+
+-   montant converti : 655 957 XOF ;
+-   payé par le client : 681 539 XOF (frais carte de 3,9 % compris) ;
+-   reçu par le marchand : 636 278 XOF (après la commission de change de 3 %).
+
+En production, les taux suivent le marché et sont mis à jour toutes les heures : les montants convertis seront donc différents.
+
+### Solde
+
+Un paiement par carte réussi crédite le solde `CARD` de la boutique, distinct des soldes mobile money, du montant net.
+
+### Erreurs propres au paiement par carte
+
+| Code | Cause |
+| --- | --- |
+| 400 currency\_not\_supported | devise non acceptée |
+| 400 (validation) | champ requis manquant ou mal formé |
+| 401 UNAUTHORIZED | clé API absente ou invalide |
+| 404 Merchant or Shop not found | identifiant de boutique erroné |
 
 ## Consulter le statut d'une transaction
 
@@ -354,6 +503,13 @@ Deux règles absentes de la sandbox s'appliquent aussi en production :
 
 -   la confirmation de l'e-mail est obligatoire à l'inscription ;
 -   une liste blanche d'adresses IP est exigée pour les payouts.
+
+Pour le paiement par carte :
+
+-   **KYC carte obligatoire** : le paiement par carte n'est ouvert qu'après validation du KYC carte du marchand ;
+-   **vraies cartes**, avec authentification 3-D Secure ;
+-   **taux de change du marché**, au lieu des taux fixes de la sandbox ;
+-   **réserve de garantie** : une partie de chaque paiement par carte peut être retenue pendant 180 jours pour couvrir les litiges (chargebacks), selon le profil de risque du marchand. Cette réserve n'existe pas en sandbox.
 
 Gérez la réponse PENDING dès le départ
 
