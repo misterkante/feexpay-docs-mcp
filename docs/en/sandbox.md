@@ -4,7 +4,7 @@ title: "Sandbox environment"
 group: api
 lang: en
 source: https://docs.feexpay.me/?section=sandbox&version=v2
-updated_at: 2026-10-16T09:46:31.651Z
+updated_at: 2026-10-17T09:19:36.636Z
 ---
 
 # Sandbox environment
@@ -82,7 +82,7 @@ Download the sandbox Postman collection to test every simulated channel and test
 | 1\. Payin | one payin per simulated channel, with a number ending in `00` (success) |
 | 2\. Scénarios de test | one MTN Benin payin per test suffix (`00` to `06`) and one unrecognised number |
 | 3\. Payout | one payout per simulated channel |
-| 4\. Statut | status of the last payin (by reference or by description) and of the last payout |
+| 4\. Statut | status of the last payin (by reference or by description), of the last payout, and shop balance |
 | 5\. Erreurs | channel not simulated, invalid API key, shop not found |
 | 6\. Paiement par carte | payment preparation in XOF and in EUR (with a `payment_url` to open), unsupported currency |
 
@@ -203,6 +203,13 @@ Orange Côte d'Ivoire payout is not available yet: it returns a `503` "not avail
 -   **Debit**: a payout debits the amount plus fees. For example, at the default rates, a payout of 300 costs 306 in Senegal and 309 in Togo.
 -   **Refund**: a `FAILED` payout is refunded automatically.
 -   **CARD balance**: a successful card payment credits the shop `CARD` balance, separate from the mobile money balances, with the net amount.
+
+**Checking the balance**: `GET /api/balance/public/getByShop/{id}`, where `{id}` is the shop public ID (the same as the `shop` field). The response gives the balance of each channel: check it before sending a payout.
+
+```bash
+curl -X GET https://sandbox-api.feexpay.me/api/balance/public/getByShop/<SHOP_ID> \
+  -H "Authorization: Bearer test_key_..."
+```
 
 A payout must be funded
 

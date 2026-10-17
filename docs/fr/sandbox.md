@@ -4,7 +4,7 @@ title: "Environnement sandbox"
 group: api
 lang: fr
 source: https://docs.feexpay.me/?section=sandbox&version=v2
-updated_at: 2026-10-16T09:46:31.651Z
+updated_at: 2026-10-17T09:19:36.636Z
 ---
 
 # Environnement sandbox
@@ -82,7 +82,7 @@ Téléchargez la collection Postman de la sandbox pour tester tous les canaux si
 | 1\. Payin | un payin par canal simulé, avec un numéro se terminant par `00` (succès) |
 | 2\. Scénarios de test | un payin MTN Bénin par suffixe de test (`00` à `06`) et un numéro non reconnu |
 | 3\. Payout | un payout par canal simulé |
-| 4\. Statut | statut du dernier payin (par référence ou par description) et du dernier payout |
+| 4\. Statut | statut du dernier payin (par référence ou par description), du dernier payout, et solde de la boutique |
 | 5\. Erreurs | canal non simulé, clé API invalide, boutique introuvable |
 | 6\. Paiement par carte | préparation d'un paiement en XOF et en EUR (avec `payment_url` à ouvrir), devise non acceptée |
 
@@ -203,6 +203,13 @@ Le payout Orange Côte d'Ivoire n'est pas encore disponible : il renvoie une err
 -   **Débit** : un payout débite le montant plus les frais. Par exemple, aux taux par défaut, un payout de 300 coûte 306 au Sénégal et 309 au Togo.
 -   **Remboursement** : un payout `FAILED` est remboursé automatiquement.
 -   **Solde CARD** : un paiement par carte réussi crédite le solde `CARD` de la boutique, distinct des soldes mobile money, du montant net.
+
+**Consulter le solde** : `GET /api/balance/public/getByShop/{id}`, où `{id}` est l'identifiant public de la boutique (le même que le champ `shop`). La réponse donne le solde de chaque canal : vérifiez-le avant de lancer un payout.
+
+```bash
+curl -X GET https://sandbox-api.feexpay.me/api/balance/public/getByShop/<SHOP_ID> \
+  -H "Authorization: Bearer test_key_..."
+```
 
 Un payout doit être financé
 
