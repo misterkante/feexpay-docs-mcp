@@ -1,7 +1,7 @@
 {
   "source": "https://docs.feexpay.me/",
   "api_version": "v2",
-  "generated_at": "2026-10-17T09:19:36.636Z",
+  "generated_at": "2026-10-20T10:01:44.033Z",
   "langs": [
     "en",
     "fr"
@@ -408,6 +408,16 @@
       "chars": 4500
     },
     {
+      "id": "two-factor-auth",
+      "lang": "en",
+      "title": "Enable two-factor authentication (2FA)",
+      "group": "general",
+      "source": "https://docs.feexpay.me/?section=two-factor-auth&version=v2",
+      "hash": "069c50343f9f8f0c",
+      "updated_at": "2026-10-20T10:01:44.033Z",
+      "chars": 4356
+    },
+    {
       "id": "overview",
       "lang": "fr",
       "title": "Bienvenue sur FeexPay !",
@@ -806,6 +816,16 @@
       "hash": "3d21ee5405770c50",
       "updated_at": "2026-10-10T13:38:59.990Z",
       "chars": 4963
+    },
+    {
+      "id": "two-factor-auth",
+      "lang": "fr",
+      "title": "Activer la double authentification (2FA)",
+      "group": "general",
+      "source": "https://docs.feexpay.me/?section=two-factor-auth&version=v2",
+      "hash": "67abae3139815cc3",
+      "updated_at": "2026-10-20T10:01:44.033Z",
+      "chars": 5059
     }
   ]
 }
