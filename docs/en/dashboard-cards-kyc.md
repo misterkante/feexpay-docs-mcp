@@ -4,7 +4,7 @@ title: "Cards KYB"
 group: dashboard
 lang: en
 source: https://docs.feexpay.me/?section=dashboard-cards-kyc&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-10-23T10:08:13.250Z
 ---
 
 # Cards KYB
@@ -61,6 +61,6 @@ For any assistance regarding enabling card payments, contact our technical suppo
 
  [Previous
 
-Payouts]  [Next
+Reversals]  [Next
 
 Developers]

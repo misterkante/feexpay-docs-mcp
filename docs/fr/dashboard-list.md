@@ -4,7 +4,7 @@ title: "Liste - Envoi en masse"
 group: dashboard
 lang: fr
 source: https://docs.feexpay.me/?section=dashboard-list&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-10-23T10:08:13.250Z
 ---
 
 # Liste - Envoi en masse
@@ -63,9 +63,30 @@ Remplissez le fichier Excel avec les informations des destinataires, puis dans l
 
 ### 4\. Récapitulatif et confirmation
 
-Vérifiez le récapitulatif de votre liste avec le nombre de destinataires et le montant total. Si tout est correct, cliquez sur **Confirmer l'envoi** pour lancer les transactions.
+Vérifiez le récapitulatif de votre liste avec le nombre de destinataires et le montant total, puis enregistrez-la. L'envoi n'a lieu qu'après la validation décrite ci-dessous.
 
 ![Récapitulatif et confirmation](https://docs.feexpay.me/list/recap_confirm.png)
+
+### Simuler les frais
+
+Après l'import du fichier, cliquez sur **Simuler les frais** pour afficher, sans rien débiter ni envoyer, le **montant total**, les **frais totaux**, le **total débité** et le détail des frais par ligne.
+
+### Enregistrement et validation
+
+Cliquez sur **Enregistrer** : la liste est enregistrée comme brouillon, sans débit ni envoi. Elle doit ensuite être validée en deux temps depuis sa page de détail :
+
+1.  **Valider - Niveau 1** : vérifie et approuve la liste. Son statut passe à _En attente - Validation finale_. Rien n'est encore débité.
+2.  **Valider - Validation finale** : déclenche immédiatement le débit de votre solde et l'envoi vers les opérateurs.
+
+Tant qu'elle n'est pas validée, la liste affiche le statut _En attente - Validation N1_ puis _En attente - Validation finale_.
+
+Séparation des rôles
+
+Pour les membres de votre équipe, l'initiateur, le validateur Niveau 1 et le validateur final doivent être trois personnes différentes. Chaque étape est réservée aux membres disposant du sous-rôle correspondant (voir [Équipe](https://docs.feexpay.me/?section=dashboard-team)). Le propriétaire du compte peut effectuer toutes les étapes lui-même.
+
+Un brouillon peut être supprimé tant que la validation finale n'a pas eu lieu, par son initiateur ou par le propriétaire du compte. Une liste déjà envoyée ne peut pas être supprimée.
+
+Les lignes en échec confirmé par l'opérateur sont automatiquement recréditées sur votre solde. Le bouton **Actualiser** de la page de détail met à jour le statut de la liste.
 
 Important
 

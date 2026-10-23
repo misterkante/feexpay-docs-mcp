@@ -4,7 +4,7 @@ title: "List - Bulk sending"
 group: dashboard
 lang: en
 source: https://docs.feexpay.me/?section=dashboard-list&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-10-23T10:08:13.250Z
 ---
 
 # List - Bulk sending
@@ -63,9 +63,30 @@ Fill in the Excel file with recipients information, then in the dashboard:
 
 ### 4\. Summary and confirmation
 
-Check the summary of your list with the number of recipients and the total amount. If everything is correct, click **Confirm sending** to start the transactions.
+Check the summary of your list with the number of recipients and the total amount, then save it. Payments are only sent after the approval described below.
 
 ![Summary and confirmation](https://docs.feexpay.me/list/recap_confirm.png)
+
+### Simulate fees
+
+After importing the file, click **Simuler les frais** (simulate fees) to see, without debiting or sending anything, the **total amount**, **total fees**, **total debited** and the fee breakdown per line.
+
+### Saving and approval
+
+Click **Save**: the list is saved as a draft, with no debit and no transfer. It must then be approved in two stages from its detail page:
+
+1.  **Validate - Level 1**: reviews and approves the list. Its status becomes _Pending - Final validation_. Nothing is debited yet.
+2.  **Validate - Final validation**: immediately debits your balance and sends the payments to the operators.
+
+Until it is approved, the list shows the status _Pending - Validation L1_, then _Pending - Final validation_.
+
+Separation of duties
+
+For your team members, the initiator, the Level 1 validator and the final validator must be three different people. Each stage is reserved for members with the matching sub-role (see [Team](https://docs.feexpay.me/?section=dashboard-team)). The account owner can perform every stage themselves.
+
+A draft can be deleted until the final validation, by its initiator or by the account owner. A list that has already been sent cannot be deleted.
+
+Lines whose failure is confirmed by the operator are automatically credited back to your balance. The **Refresh** button on the detail page updates the list status.
 
 Important
 

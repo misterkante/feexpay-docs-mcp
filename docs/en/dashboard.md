@@ -4,7 +4,7 @@ title: "Dashboard"
 group: dashboard
 lang: en
 source: https://docs.feexpay.me/?section=dashboard&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-10-23T10:08:13.250Z
 ---
 
 # Dashboard
@@ -37,7 +37,7 @@ To retrieve a shop or check its balance, use the corresponding API endpoints.
 
 ### Balance
 
-The total balance is the sum of all amounts collected across each network, minus payouts (reversements).
+The total balance is the sum of all amounts collected across each network, minus reversals.
 
 You can view the balance for each network by country, using the country selection field.
 
@@ -64,7 +64,7 @@ Authorization: Bearer <votre-api-key>
 ### The available menus are:
 
 -   Collections
--   Payouts
+-   Reversals
 -   Payout API
 -   Export
 -   FeexLink

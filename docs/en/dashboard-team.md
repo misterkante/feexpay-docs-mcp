@@ -4,7 +4,7 @@ title: "Team"
 group: dashboard
 lang: en
 source: https://docs.feexpay.me/?section=dashboard-team&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-10-23T10:08:13.250Z
 ---
 
 # Team
@@ -43,6 +43,18 @@ When inviting, you choose the pages the member will have access to:
 -   Feexlinks
 -   F-QR Code
 -   And other available sections depending on account type
+
+### Bulk payout sub-roles (List)
+
+When a member has the **List** permission, you can give them one or more sub-roles, which define the bulk payout stages they can perform:
+
+| Sub-role | What the member can do |
+| --- | --- |
+| Initiation | Create and save a payment list, and delete their own drafts. |
+| Level 1 validation | Review and approve a list before the final validation. |
+| Final validation | Give final approval to a list and trigger the transfer of funds. |
+
+The same member cannot act at two stages of the same list: the initiator, the Level 1 validator and the final validator must be different. Unticking the List permission clears the member's sub-roles.
 
 ### Tracking invitations
 

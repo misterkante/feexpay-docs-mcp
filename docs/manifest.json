@@ -1,7 +1,7 @@
 {
   "source": "https://docs.feexpay.me/",
   "api_version": "v2",
-  "generated_at": "2026-10-20T10:01:44.033Z",
+  "generated_at": "2026-10-23T10:08:13.250Z",
   "langs": [
     "en",
     "fr"
@@ -73,9 +73,9 @@
       "title": "Dashboard",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard&version=v2",
-      "hash": "99ed1e0a359cc4a2",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 3493
+      "hash": "04d6c5eae4920fc3",
+      "updated_at": "2026-10-23T10:08:13.250Z",
+      "chars": 3482
     },
     {
       "id": "dashboard-boutiques",
@@ -100,12 +100,12 @@
     {
       "id": "dashboard-reversements",
       "lang": "en",
-      "title": "Payouts",
+      "title": "Reversals",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-reversements&version=v2",
-      "hash": "4e951da63fb4e092",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 1081
+      "hash": "79b3c16187857027",
+      "updated_at": "2026-10-23T10:08:13.250Z",
+      "chars": 3836
     },
     {
       "id": "dashboard-payout-api",
@@ -123,9 +123,9 @@
       "title": "Export",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-exporter&version=v2",
-      "hash": "4b024f4a15fb90ef",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 1506
+      "hash": "e796031ad14b0444",
+      "updated_at": "2026-10-23T10:08:13.250Z",
+      "chars": 1514
     },
     {
       "id": "dashboard-feexlinks",
@@ -163,9 +163,9 @@
       "title": "List - Bulk sending",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-list&version=v2",
-      "hash": "1f005f1da33f6c53",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 2092
+      "hash": "a500123acc70350c",
+      "updated_at": "2026-10-23T10:08:13.250Z",
+      "chars": 3459
     },
     {
       "id": "dashboard-notifications",
@@ -183,9 +183,9 @@
       "title": "Cards KYB",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-cards-kyc&version=v2",
-      "hash": "fd471997887a5f50",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 1879
+      "hash": "bf90d6483441a845",
+      "updated_at": "2026-10-23T10:08:13.250Z",
+      "chars": 1881
     },
     {
       "id": "dashboard-developers",
@@ -213,9 +213,9 @@
       "title": "Team",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-team&version=v2",
-      "hash": "2c0825d8e23b4ea1",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 1862
+      "hash": "eae6b2fd574cd86c",
+      "updated_at": "2026-10-23T10:08:13.250Z",
+      "chars": 2535
     },
     {
       "id": "dashboard-configuration",
@@ -223,9 +223,9 @@
       "title": "Configuration",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-configuration&version=v2",
-      "hash": "21916a15df5ebd1f",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 1953
+      "hash": "590e998ae0d2d485",
+      "updated_at": "2026-10-23T10:08:13.250Z",
+      "chars": 1967
     },
     {
       "id": "api-rest-integrations",
@@ -393,9 +393,9 @@
       "title": "Webhook",
       "group": "general",
       "source": "https://docs.feexpay.me/?section=webhook&version=v2",
-      "hash": "58a4fd6eb4cdb033",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 2271
+      "hash": "74a1547cab1f38ad",
+      "updated_at": "2026-10-23T10:08:13.250Z",
+      "chars": 3254
     },
     {
       "id": "security",
@@ -513,9 +513,9 @@
       "title": "Reversement",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-reversements&version=v2",
-      "hash": "ca964cf79c8903ac",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 1288
+      "hash": "146a8d48b2422118",
+      "updated_at": "2026-10-23T10:08:13.250Z",
+      "chars": 4284
     },
     {
       "id": "dashboard-payout-api",
@@ -573,9 +573,9 @@
       "title": "Liste - Envoi en masse",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-list&version=v2",
-      "hash": "5b4aeddeb1fdd607",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 2345
+      "hash": "ce59bb40a530f982",
+      "updated_at": "2026-10-23T10:08:13.250Z",
+      "chars": 3883
     },
     {
       "id": "dashboard-notifications",
@@ -623,9 +623,9 @@
       "title": "Équipe",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-team&version=v2",
-      "hash": "1d8461c8055b07ff",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 2059
+      "hash": "eb6a4b55beace03a",
+      "updated_at": "2026-10-23T10:08:13.250Z",
+      "chars": 2824
     },
     {
       "id": "dashboard-configuration",
@@ -803,9 +803,9 @@
       "title": "Webhook",
       "group": "general",
       "source": "https://docs.feexpay.me/?section=webhook&version=v2",
-      "hash": "a50d57e51e5a19e3",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 2383
+      "hash": "f0bbee6efe958711",
+      "updated_at": "2026-10-23T10:08:13.250Z",
+      "chars": 3420
     },
     {
       "id": "security",

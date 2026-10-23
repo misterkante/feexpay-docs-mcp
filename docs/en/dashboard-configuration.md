@@ -4,14 +4,14 @@ title: "Configuration"
 group: dashboard
 lang: en
 source: https://docs.feexpay.me/?section=dashboard-configuration&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-10-23T10:08:13.250Z
 ---
 
 # Configuration
 
-Aggregation key, payout numbers and notification preferences
+Aggregation key, reversal numbers and notification preferences
 
-The **Configuration** tab groups your FeexPay account settings: aggregation key, payout numbers proposed per country, payout bank account and email notifications.
+The **Configuration** tab groups your FeexPay account settings: aggregation key, reversal numbers proposed per country, reversal bank account and email notifications.
 
 ### Wave aggregation key
 
@@ -21,9 +21,9 @@ Enables you to collect Wave payments as a FeexPay aggregated merchant.
 
 Wave key active
 
-### Payout numbers
+### Reversal numbers
 
-Mobile money numbers automatically proposed when making a payout.
+Mobile money numbers automatically proposed when making a reversal.
 
 Configure a new number
 
@@ -56,7 +56,7 @@ Configure a new number
 | --- | --- | --- |
 | MTNMTN Côte d'Ivoire | +225 05XXXXXXXX | Active |
 | MOOVMOOV Côte d'Ivoire | +225 01XXXXXXXX | Active |
-| ORANGEORANGE Côte d'Ivoire | — | Payout unavailable |
+| ORANGEORANGE Côte d'Ivoire | — | Reversal unavailable |
 | WAVEWAVE Côte d'Ivoire | — | Not configured |
 
 🇸🇳
@@ -86,7 +86,7 @@ Configure a new number
 | --- | --- | --- |
 | MTNMTN Congo | — | Not configured |
 
-### Payout bank account
+### Reversal bank account
 
 Set up your account.
 

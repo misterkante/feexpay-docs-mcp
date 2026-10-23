@@ -4,7 +4,7 @@ title: "Équipe"
 group: dashboard
 lang: fr
 source: https://docs.feexpay.me/?section=dashboard-team&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-10-23T10:08:13.250Z
 ---
 
 # Équipe
@@ -43,6 +43,18 @@ Lors de l'invitation, vous choisissez les pages auxquelles le membre aura accès
 -   Feexlinks
 -   F-QR Code
 -   Et autres sections disponibles selon le type de compte
+
+### Sous-rôles de l'envoi en masse (Liste)
+
+Lorsqu'un membre a la permission **Liste**, vous pouvez lui attribuer un ou plusieurs sous-rôles, qui déterminent les étapes de l'envoi en masse qu'il peut effectuer :
+
+| Sous-rôle | Ce que le membre peut faire |
+| --- | --- |
+| Initiation | Créer et enregistrer une liste de paiement, et supprimer ses propres brouillons. |
+| Validation Niveau 1 | Vérifier et approuver une liste avant la validation finale. |
+| Validation finale | Valider définitivement une liste et déclencher l'envoi des fonds. |
+
+Un même membre ne peut pas intervenir à deux étapes d'une même liste : l'initiateur, le validateur Niveau 1 et le validateur final doivent être différents. Décocher la permission Liste efface les sous-rôles du membre.
 
 ### Suivi des invitations
 
