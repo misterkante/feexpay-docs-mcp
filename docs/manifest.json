@@ -1,7 +1,7 @@
 {
   "source": "https://docs.feexpay.me/",
   "api_version": "v2",
-  "generated_at": "2026-10-23T10:08:13.250Z",
+  "generated_at": "2026-10-27T10:38:57.348Z",
   "langs": [
     "en",
     "fr"
@@ -223,9 +223,9 @@
       "title": "Configuration",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-configuration&version=v2",
-      "hash": "590e998ae0d2d485",
-      "updated_at": "2026-10-23T10:08:13.250Z",
-      "chars": 1967
+      "hash": "1d9d8bcd3d5a87b4",
+      "updated_at": "2026-10-27T10:38:57.348Z",
+      "chars": 2804
     },
     {
       "id": "api-rest-integrations",
@@ -233,9 +233,9 @@
       "title": "API - Payin",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-rest-integrations&version=v2",
-      "hash": "723e3eba9e22fbf8",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 29866
+      "hash": "d5523747af70bcc6",
+      "updated_at": "2026-10-27T10:38:57.348Z",
+      "chars": 30472
     },
     {
       "id": "api-rest-status",
@@ -633,9 +633,9 @@
       "title": "Configuration",
       "group": "dashboard",
       "source": "https://docs.feexpay.me/?section=dashboard-configuration&version=v2",
-      "hash": "c77f3f91016dcdeb",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 2031
+      "hash": "376f3b257f0eef7f",
+      "updated_at": "2026-10-27T10:38:57.348Z",
+      "chars": 3060
     },
     {
       "id": "api-rest-integrations",
@@ -643,9 +643,9 @@
       "title": "API - Payin",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-rest-integrations&version=v2",
-      "hash": "34b47eec26b9227f",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 31025
+      "hash": "cfe706cc52c54335",
+      "updated_at": "2026-10-27T10:38:57.348Z",
+      "chars": 31674
     },
     {
       "id": "api-rest-status",

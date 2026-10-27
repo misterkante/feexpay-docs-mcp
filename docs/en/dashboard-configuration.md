@@ -4,28 +4,68 @@ title: "Configuration"
 group: dashboard
 lang: en
 source: https://docs.feexpay.me/?section=dashboard-configuration&version=v2
-updated_at: 2026-10-23T10:08:13.250Z
+updated_at: 2026-10-27T10:38:57.348Z
 ---
 
 # Configuration
 
-Aggregation key, reversal numbers and notification preferences
+Card payments, aggregation key, reversal numbers and notification preferences
 
-The **Configuration** tab groups your FeexPay account settings: aggregation key, reversal numbers proposed per country, reversal bank account and email notifications.
+The **Configuration** tab groups your FeexPay account settings: card payment activation, Wave aggregated key, reversal numbers proposed per country, reversal bank account and email notifications.
 
-### Wave aggregation key
+### Card payment activation
+
+Approved
+
+Required to accept card payments.
+
+View
+
+### Wave aggregated key
 
 Active
 
-Enables you to collect Wave payments as a FeexPay aggregated merchant.
+Lets you collect Wave payments as a FeexPay aggregated merchant.
 
-Wave key active
+View
 
 ### Reversal numbers
 
-Mobile money numbers automatically proposed when making a reversal.
+Mobile money numbers suggested automatically when you request a reversal.
 
-Configure a new number
+Add
+
+6 number(s) configured out of 17 networks
+
+ [Show] 
+
+### Reversal bank account
+
+Configure your account.
+
+Configure
+
+No bank account configured yet.
+
+### Receive an email for every payment received
+
+You'll get an email every time this shop receives a payment.
+
+### Send a confirmation email to the customer
+
+The paying customer receives an email confirming their payment on this shop.
+
+Both notifications are set per shop: the name of the shop concerned is shown next to each option.
+
+ [Previous
+
+Developers]
+
+---
+
+## Tab: Show
+
+[Hide]
 
 🇧🇯
 
@@ -88,16 +128,22 @@ Configure a new number
 
 ### Reversal bank account
 
-Set up your account.
+Configure your account.
 
 Configure
 
-No bank account configured at the moment.
+No bank account configured yet.
 
-### Receive an email for each payment received
+### Receive an email for every payment received
 
-An email will be sent to you for every payment received on this shop.
+You'll get an email every time this shop receives a payment.
 
- [Previous
+### Send a confirmation email to the customer
+
+The paying customer receives an email confirming their payment on this shop.
+
+Both notifications are set per shop: the name of the shop concerned is shown next to each option.
+
+[Previous
 
 Developers]

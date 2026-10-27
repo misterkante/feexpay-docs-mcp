@@ -4,7 +4,7 @@ title: "API - Payin"
 group: api
 lang: fr
 source: https://docs.feexpay.me/?section=api-rest-integrations&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-10-27T10:38:57.348Z
 ---
 
 # API - Payin
@@ -305,6 +305,8 @@ POST
 | shop | Obligatoire | Id de la boutique (menu Développeur sur FeexPay) | Ayg9lkjkhurIvNp |
 | first\_name | Optionnel | Prénom client | FeexPay |
 | last\_name | Optionnel | Nom client | FeexPay |
+| return\_url | Optionnel | URL vers laquelle le client est redirigé après un paiement réussi | http://feexpay.me |
+| cancel\_url | Optionnel | URL de redirection en cas d’échec | http://feexpay.me/cancel |
 | description | Optionnel | Une description sur la transaction (texte sans caractère spécial, 40 caractères maximum) | FeexPay |
 | callback\_info | Optionnel | Informations additionnelles renvoyées par le webhook | order\_12345 |
 
@@ -329,6 +331,8 @@ axios({
     shop: 'Ayg9lkjkhurIvNp',
     amount: 200,
     phoneNumber: 221771740002,
+    return_url: 'http://feexpay.me',
+    cancel_url: 'http://feexpay.me/cancel',
   }
 });
 ```
@@ -343,6 +347,10 @@ axios({
   "payment_url": "https://sugu.orange-sonatel.com/mp/dmeHRjpE-cIy9AHDkEON"
 }
 ```
+
+Processus de paiement
+
+L'utilisateur doit être redirigé vers **payment\_url** pour finaliser le paiement. Une fois le paiement réussi, il sera redirigé vers votre **return\_url**.
 
 ---
 
@@ -771,7 +779,7 @@ POST
 | shop | Obligatoire | Identifiant de la boutique | Ayg9lkjkhurIvNp |
 | first\_name | Optionnel | Prénom client | FeexPay |
 | last\_name | Optionnel | Nom client | FeexPay |
-| return\_url | Optionnel | apiPayin.fieldDescriptions.returnUrl | apiPayin.fieldDescriptions.returnUrl | http://feexpay.me |
+| return\_url | Optionnel | URL de redirection après paiement | URL de redirection après paiement | http://feexpay.me |
 | description | Optionnel | Une description sur la transaction (40 caractères maximum) | FeexPay |
 | callback\_info | Optionnel | Informations additionnelles renvoyées par le webhook | order\_12345 |
 
@@ -843,7 +851,7 @@ POST
 | shop | Obligatoire | Id de la boutique (menu Développeur FeexPay) | Ayg9lkjkhurIvNp |
 | first\_name | Optionnel | Prénom client | FeexPay |
 | last\_name | Optionnel | Nom client | FeexPay |
-| return\_url | Optionnel | apiPayin.fieldDescriptions.returnUrl | http://feexpay.me |
+| return\_url | Optionnel | URL vers laquelle le client est redirigé après un paiement réussi | http://feexpay.me |
 | cancel\_url | Optionnel | URL de redirection en cas d’échec | http://feexpay.me/cancel |
 | description | Optionnel | Une description sur la transaction (40 caractères maximum) | FeexPay |
 | callback\_info | Optionnel | Informations additionnelles renvoyées par le webhook | order\_12345 |
@@ -913,7 +921,7 @@ POST
 | shop | Obligatoire | Id de la boutique (menu Développeur FeexPay) | Ayg9lkjkhurIvNp |
 | first\_name | Optionnel | Prénom client | FeexPay |
 | last\_name | Optionnel | Nom client | FeexPay |
-| return\_url | Optionnel | apiPayin.fieldDescriptions.returnUrl | http://feexpay.me |
+| return\_url | Optionnel | URL de redirection après paiement | http://feexpay.me |
 | description | Optionnel | Une description sur la transaction (40 caractères maximum) | FeexPay |
 | callback\_info | Optionnel | Informations additionnelles renvoyées par le webhook | order\_12345 |
 
@@ -981,7 +989,8 @@ POST
 | shop | Obligatoire | Id de la boutique (menu Développeur sur FeexPay) | Ayg9lkjkhurIvNp |
 | first\_name | Optionnel | Prénom client | FeexPay |
 | last\_name | Optionnel | Nom client | FeexPay |
-| return\_url | Optionnel | L'url vers laquelle l'utilisateur sera redirigé après paiement | http://feexpay.me |
+| return\_url | Optionnel | URL vers laquelle le client est redirigé après un paiement réussi | http://feexpay.me |
+| cancel\_url | Optionnel | URL de redirection en cas d’échec | http://feexpay.me/cancel |
 | description | Optionnel | Une description sur la transaction (40 caractères maximum) | Paiement test |
 | callback\_info | Optionnel | Informations additionnelles renvoyées par le webhook | order\_12345 |
 
@@ -1007,6 +1016,7 @@ axios({
     amount: 100,
     phoneNumber: 221771740000,
     return_url: 'http://feexpay.me',
+    cancel_url: 'http://feexpay.me/cancel',
   }
 });
 ```
@@ -1024,7 +1034,7 @@ axios({
 
 Processus de paiement
 
-L'utilisateur doit être redirigé vers **payment\_url** pour finaliser le paiement. Une fois terminé, il sera redirigé vers votre **return\_url**.
+L'utilisateur doit être redirigé vers **payment\_url** pour finaliser le paiement. Une fois le paiement réussi, il sera redirigé vers votre **return\_url**.
 
 ---
 
@@ -1093,7 +1103,7 @@ axios({
 
 Processus de paiement
 
-L'utilisateur doit être redirigé vers **payment\_url** pour finaliser le paiement. Une fois terminé, il sera redirigé vers votre **return\_url**.
+L'utilisateur doit être redirigé vers **payment\_url** pour finaliser le paiement. Une fois le paiement réussi, il sera redirigé vers votre **return\_url**.
 
 ---
 

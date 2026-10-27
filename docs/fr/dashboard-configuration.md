@@ -4,14 +4,22 @@ title: "Configuration"
 group: dashboard
 lang: fr
 source: https://docs.feexpay.me/?section=dashboard-configuration&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-10-27T10:38:57.348Z
 ---
 
 # Configuration
 
-Clés d'agrégation, numéros de reversement et préférences de notification
+Paiement par carte, clé d'agrégation, numéros de reversement et préférences de notification
 
-L'onglet **Configuration** regroupe les réglages de votre compte FeexPay: clé d'agrégation, numéros de reversement proposés par pays, compte bancaire de reversement et notifications par email.
+L'onglet **Configuration** regroupe les réglages de votre compte FeexPay : activation du paiement par carte, clé d'agrégation Wave, numéros de reversement proposés par pays, compte bancaire de reversement et notifications par email.
+
+### Activation du paiement par carte
+
+Approuvée
+
+Nécessaire pour accepter les paiements par carte.
+
+Voir
 
 ### Clé agrégée Wave
 
@@ -19,13 +27,45 @@ Active
 
 Permet d'encaisser des paiements Wave en tant que marchand agrégé FeexPay.
 
-Clé Wave active
+Voir
 
 ### Numéros de reversement
 
-Numéros mobile money proposés automatiquement lors d'un reversement.
+Numéros mobile money proposés automatiquement lorsque vous demandez un reversement.
 
-Configurer un nouveau numéro
+Ajouter
+
+6 numéro(s) configuré(s) sur 17 réseaux
+
+ [Afficher] 
+
+### Compte bancaire de reversement
+
+Configurez votre compte.
+
+Configurer
+
+Aucun compte bancaire configuré pour le moment.
+
+### Recevoir un email à chaque paiement reçu
+
+Vous recevrez un email à chaque fois que cette boutique reçoit un paiement.
+
+### Envoyer un email de confirmation au client
+
+Le client qui paie reçoit un email confirmant son paiement sur cette boutique.
+
+Ces deux notifications se règlent boutique par boutique : le nom de la boutique concernée est affiché à côté de chaque option.
+
+ [Précédent
+
+Développeurs]
+
+---
+
+## Tab: Afficher
+
+[Masquer]
 
 🇧🇯
 
@@ -96,8 +136,14 @@ Aucun compte bancaire configuré pour le moment.
 
 ### Recevoir un email à chaque paiement reçu
 
-Un email vous sera envoyé à chaque paiement reçu sur cette boutique.
+Vous recevrez un email à chaque fois que cette boutique reçoit un paiement.
 
- [Précédent
+### Envoyer un email de confirmation au client
+
+Le client qui paie reçoit un email confirmant son paiement sur cette boutique.
+
+Ces deux notifications se règlent boutique par boutique : le nom de la boutique concernée est affiché à côté de chaque option.
+
+[Précédent
 
 Développeurs]
