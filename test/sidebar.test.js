@@ -17,6 +17,11 @@ test('parseSidebar reads groups, nested groups and top-level pages', () => {
   ]);
 });
 
+test('parseSidebar reads a bundle whose minifier emits backtick strings', () => {
+  // Since 2026-11-10 the bundle writes id:`overview` instead of id:"overview".
+  assert.deepEqual(parseSidebar(BUNDLE.replaceAll('"', '`')), parseSidebar(BUNDLE));
+});
+
 test('parseSidebar fails loudly when the bundle format changes', () => {
   assert.throws(() => parseSidebar('const a=[{id:"x"}]'), /Sidebar not found/);
 });
