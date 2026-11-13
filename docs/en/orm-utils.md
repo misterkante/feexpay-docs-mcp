@@ -4,7 +4,7 @@ title: "ORM Utils"
 group: api
 lang: en
 source: https://docs.feexpay.me/?section=orm-utils&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-11-13T14:52:32.783Z
 ---
 
 # ORM Utils
@@ -60,6 +60,7 @@ axios({
         "MOOV": 0,
         "CELTIIS BJ": 0,
         "CORIS": 0,
+        "BMO": 0,
         "MTN CI": 0,
         "MOOV CI": 0,
         "ORANGE CI": 0,

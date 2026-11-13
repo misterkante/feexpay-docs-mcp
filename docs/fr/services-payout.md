@@ -4,7 +4,7 @@ title: "API - Payout"
 group: api
 lang: fr
 source: https://docs.feexpay.me/?section=services-payout&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-11-13T14:52:32.783Z
 ---
 
 # API - Payout
@@ -23,7 +23,7 @@ Sur la V2, le lancement d'un payout renvoie immédiatement un statut PENDING. Vo
 
 ### Réseaux disponibles
 
- [MTN/MOOV]  [CELTIIS BJ] 
+ [MTN/MOOV]  [CELTIIS BJ]  [BMO BJ] 
 
 #### A) Payout Global Bénin (MTN/Moov)
 
@@ -497,6 +497,84 @@ axios({
   "callback_info": null
 }
 ```
+
+---
+
+## Tab: BMO BJ
+
+#### Payout BMO Bénin
+
+Permet d'effectuer des payouts vers BMO (wallet) au Bénin
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/bmo`
+
+##### Méthode
+
+POST
+
+##### Corps de la requête
+
+| Paramètre | Statut | Description | Exemple |
+| --- | --- | --- | --- |
+| phoneNumber | Obligatoire | Numéro de téléphone béninois du bénéficiaire — conservez le 0 initial du numéro local (ex: 0167399785) | 0167399785 |
+| amount | Obligatoire | Montant de la transaction, entier entre 10 et 2 000 000 XOF | 1500 |
+| shop | Obligatoire | ID boutique | Ayg9lkjkhurIvNp |
+| motif | Obligatoire | Motif / description de la transaction | FeexPay |
+| first\_name | Conditionnel | Prénom du bénéficiaire — obligatoire uniquement si le numéro n'est pas déjà client B-MO | Jean |
+| last\_name | Conditionnel | Nom du bénéficiaire — obligatoire uniquement si le numéro n'est pas déjà client B-MO | Kouassi |
+| email | Optionnel | Adresse e-mail du bénéficiaire | jean.kouassi@exemple.com |
+| callback\_info | Optionnel | Informations libres, renvoyées telles quelles | order\_12345 |
+
+Prénom et nom conditionnels
+
+B-MO exige first\_name et last\_name uniquement si le bénéficiaire n'est pas déjà client B-MO. Envoyez-les toujours : cela n'a aucun effet si le bénéficiaire existe déjà.
+
+##### Entetes (Headers)
+
+Ajoutez `Authorization: Bearer <votre-api-key>` dans les headers.
+
+Important
+
+Sans cet entête au niveau de votre requête vous ne serez pas autorisé(e) et votre requête n'aboutira pas.
+
+##### Exemple (axios)
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/payouts/public/bmo",
+  method: 'post',
+  headers: {
+    Authorization: 'Bearer fp_M6tuzYgsYl39d6kJvdaLmYGQcEAWvLRivVhbeK4UCwbDiyMlj9UPMO',
+  },
+  data: {
+    shop: 'Ayg9lkjkhurIvNp',
+    amount: 1500,
+    phoneNumber: '0167399785',
+    motif: 'FeexPay',
+    first_name: 'Jean',
+    last_name: 'Kouassi'
+  }
+});
+```
+
+##### Réponse de la requête (exemple)
+
+```json
+{
+  "reference": "a30d7ad5-2c88-4121-aee1-d1bc9959a939",
+  "status": "SUCCESSFUL",
+  "description": "FeexPay",
+  "phone_number": "+2290167399785",
+  "amount": 1500,
+  "callback_info": null
+}
+```
+
+-   `SUCCESSFUL` — le transfert est effectué ;
+-   `FAILED` — le transfert a échoué, le champ message donne le motif ;
+-   `PENDING` — le transfert est traité automatiquement en arrière-plan, aucune action n'est requise de votre part.
 
 ---
 

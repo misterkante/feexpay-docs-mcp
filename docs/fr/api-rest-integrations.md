@@ -4,7 +4,7 @@ title: "API - Payin"
 group: api
 lang: fr
 source: https://docs.feexpay.me/?section=api-rest-integrations&version=v2
-updated_at: 2026-10-27T10:38:57.348Z
+updated_at: 2026-11-13T14:52:32.783Z
 ---
 
 # API - Payin
@@ -19,7 +19,7 @@ Veuillez noter que le montant minimum est de 100 et le maximum est de 2.000.000 
 
 ### Réseaux disponibles
 
- [MTN BENIN]  [MOOV BENIN]  [CELTIIS BENIN]  [CORIS BENIN] 
+ [MTN BENIN]  [MOOV BENIN]  [CELTIIS BENIN]  [CORIS BENIN]  [BMO BENIN] 
 
 #### MTN Mobile Money Bénin
 
@@ -687,6 +687,178 @@ axios({
 Processus Coris
 
 1) Envoyez la requête pour déclencher l'OTP. 2) Renvoyez la même requête avec le champ otp rempli.
+
+---
+
+## Tab: BMO BENIN
+
+#### B-MO Bénin
+
+Paiements via B-MO (Bénin) en 3 appels séparés : initiation (envoi d'un code par SMS), confirmation (avec le code), et annulation en cas d'abandon.
+
+Code valable 1 minute seulement
+
+Contrairement aux autres opérateurs, B-MO annule automatiquement la demande si le code n'est pas confirmé dans la minute qui suit l'étape 1. Aucun renvoi de code n'est possible : en cas d'expiration, annulez la demande puis recommencez une nouvelle initiation.
+
+Conservez le 0 initial du numéro
+
+Envoyez le numéro local béninois tel quel, par exemple 0167399785 : ne retirez pas le 0 initial et n'ajoutez pas l'indicatif 229. La réponse renvoie ensuite le numéro au format international (+2290167399785).
+
+Processus B-MO
+
+1) Appelez /requesttopay/bmo pour déclencher l'envoi du code par SMS. 2) Appelez /requesttopay/bmo/confirm avec la reference et le code reçu. 3) En cas d'abandon, appelez /requesttopay/bmo/cancel avec la reference.
+
+##### Étape 1 — Initier la demande (envoi du code par SMS)
+
+###### URL
+
+`https://api-v2.feexpay.me/api/transactions/public/requesttopay/bmo`
+
+POST
+
+| Paramètre | Statut | Description | Exemple |
+| --- | --- | --- | --- |
+| phoneNumber | Obligatoire | Numéro local béninois, sans indicatif : conservez le 0 initial | 0167399785 |
+| amount | Obligatoire | Montant de la transaction, entier entre 200 et 2 000 000 XOF | 1500 |
+| shop | Obligatoire | ID de la boutique | Ayg9lkjkhurIvNp |
+| first\_name | Conditionnel | Prénom du client — obligatoire uniquement si le numéro n'est pas déjà client B-MO | Jean |
+| last\_name | Conditionnel | Nom du client — obligatoire uniquement si le numéro n'est pas déjà client B-MO | Kouassi |
+| email | Optionnel | Adresse e-mail du client | jean.kouassi@exemple.com |
+| description | Optionnel | Description de la transaction (40 caractères maximum) | Paiement commande |
+| callback\_info | Optionnel | Informations additionnelles renvoyées par le webhook | order\_12345 |
+
+first\_name / last\_name conditionnels
+
+B-MO exige first\_name et last\_name uniquement si le numéro n'est pas déjà connu comme client B-MO. Nous recommandons de toujours les renseigner : cela n'a aucun effet si le client existe déjà.
+
+Si ces champs manquent pour un client inconnu de B-MO, la requête échoue :
+
+```json
+{
+  "message": "first_name and last_name are required: customer is not an existing BMO customer",
+  "status": "FAILED"
+}
+```
+
+###### Exemple (axios) — Étape 1 : initiation
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/transactions/public/requesttopay/bmo",
+  method: 'post',
+  headers: {
+    Authorization: 'Bearer fp_votreApiKey',
+  },
+  data: {
+    shop: 'Ayg9lkjkhurIvNp',
+    amount: 1500,
+    phoneNumber: '0167399785',
+    first_name: 'Jean',
+    last_name: 'Kouassi',
+    description: 'Paiement commande'
+  }
+});
+```
+
+```json
+{
+  "reference": "4oJPO7co4G2M",
+  "message": "Un code de confirmation a été envoyé par SMS",
+  "status": "PENDING",
+  "requires_otp": true,
+  "amount": 1500,
+  "description": "Paiement commande",
+  "callback_info": null,
+  "phoneNumber": "+2290167399785"
+}
+```
+
+##### Étape 2 — Confirmer avec le code reçu par SMS
+
+Appelez /requesttopay/bmo/confirm avec la reference reçue à l'étape 1 et le code OTP reçu par SMS.
+
+###### URL
+
+`https://api-v2.feexpay.me/api/transactions/public/requesttopay/bmo/confirm`
+
+POST
+
+```json
+{
+  "reference": "4oJPO7co4G2M",
+  "otp": "118422"
+}
+```
+
+###### Exemple (axios) — Étape 2 : confirmation
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/transactions/public/requesttopay/bmo/confirm",
+  method: 'post',
+  headers: {
+    Authorization: 'Bearer fp_votreApiKey',
+  },
+  data: {
+    reference: '4oJPO7co4G2M',
+    otp: '118422'
+  }
+});
+```
+
+```json
+{
+  "reference": "4oJPO7co4G2M",
+  "status": "SUCCESSFUL"
+}
+```
+
+La réponse donne le statut final : SUCCESSFUL ou FAILED. Si le code est invalide ou a expiré, annulez la demande puis recommencez à l'étape 1 (nouveau SMS).
+
+Pas de webhook B-MO
+
+Le statut final n'est connu qu'à la réponse de l'étape 2 (confirmation), ou en interrogeant l'API de statut générique avec la reference.
+
+##### Étape 3 — Annuler (si le client abandonne)
+
+Appelez /requesttopay/bmo/cancel avec la reference si le client ne confirme jamais le code.
+
+###### URL
+
+`https://api-v2.feexpay.me/api/transactions/public/requesttopay/bmo/cancel`
+
+POST
+
+```json
+{
+  "reference": "4oJPO7co4G2M"
+}
+```
+
+###### Exemple (axios) — Étape 3 : annulation
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/transactions/public/requesttopay/bmo/cancel",
+  method: 'post',
+  headers: {
+    Authorization: 'Bearer fp_votreApiKey',
+  },
+  data: {
+    reference: '4oJPO7co4G2M'
+  }
+});
+```
+
+##### Codes d'erreur B-MO
+
+| Cas | Code HTTP | Message |
+| --- | --- | --- |
+| Numéro inconnu de B-MO, sans prénom ni nom | 400 | `first_name and last_name are required: customer is not an existing BMO customer` |
+| Code SMS invalide ou expiré | 400 | code invalide ou expiré : proposez au client de recommencer |
+| Transaction déjà finalisée (SUCCESSFUL ou FAILED) | 400 | `Transaction already SUCCESSFUL` |
+| Référence inconnue | 404 | `Transaction not found` |
+| B-MO temporairement indisponible | 503 | `B-MO service is temporarily unavailable, please retry later` |
 
 ---
 

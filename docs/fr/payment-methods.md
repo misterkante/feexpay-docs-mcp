@@ -4,7 +4,7 @@ title: "Méthodes de paiement"
 group: gettingStarted
 lang: fr
 source: https://docs.feexpay.me/?section=payment-methods&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-11-13T14:52:32.783Z
 ---
 
 # Méthodes de paiement
@@ -28,6 +28,10 @@ Celtiis
 ![Coris](https://docs.feexpay.me/operator/coris.png)
 
 Coris
+
+![B-MO](https://docs.feexpay.me/operator/bmo.png)
+
+B-MO
 
 🇧🇫![Drapeau BF](https://docs.feexpay.me/flags/bf.svg)
 

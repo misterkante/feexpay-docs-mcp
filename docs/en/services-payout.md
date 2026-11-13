@@ -4,7 +4,7 @@ title: "API - Payout"
 group: api
 lang: en
 source: https://docs.feexpay.me/?section=services-payout&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-11-13T14:52:32.783Z
 ---
 
 # API - Payout
@@ -23,7 +23,7 @@ On V2, launching a payout immediately returns a PENDING status. You must then ve
 
 ### Available networks
 
- [MTN/MOOV]  [CELTIIS BJ] 
+ [MTN/MOOV]  [CELTIIS BJ]  [BMO BJ] 
 
 #### A) Global Payout Benin (MTN/Moov)
 
@@ -497,6 +497,84 @@ axios({
   "callback_info": null
 }
 ```
+
+---
+
+## Tab: BMO BJ
+
+#### B-MO Benin Payout
+
+Send payouts to B-MO (wallet) in Benin
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/bmo`
+
+##### Method
+
+POST
+
+##### Request body
+
+| Parameter | Status | Description | Example |
+| --- | --- | --- | --- |
+| phoneNumber | Required | Beneficiary's Benin phone number — keep the leading 0 of the local number (e.g. 0167399785) | 0167399785 |
+| amount | Required | Transaction amount, integer between 10 and 2,000,000 XOF | 1500 |
+| shop | Required | Shop ID | Ayg9lkjkhurIvNp |
+| motif | Required | Reason / description of the transaction | FeexPay |
+| first\_name | Conditional | Beneficiary's first name — required only if the number is not already a B-MO customer | Jean |
+| last\_name | Conditional | Beneficiary's last name — required only if the number is not already a B-MO customer | Kouassi |
+| email | Optional | Beneficiary's email address | jean.kouassi@exemple.com |
+| callback\_info | Optional | Free-form data, returned as-is | order\_12345 |
+
+Conditional first and last name
+
+B-MO requires first\_name and last\_name only if the beneficiary is not already a B-MO customer. Always send them: it has no effect if the beneficiary already exists.
+
+##### Headers
+
+Add `Authorization: Bearer <votre-api-key>` to the headers.
+
+Important
+
+Without this header in your request, you will not be authorized and your request will not succeed.
+
+##### Example (axios)
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/payouts/public/bmo",
+  method: 'post',
+  headers: {
+    Authorization: 'Bearer fp_M6tuzYgsYl39d6kJvdaLmYGQcEAWvLRivVhbeK4UCwbDiyMlj9UPMO',
+  },
+  data: {
+    shop: 'Ayg9lkjkhurIvNp',
+    amount: 1500,
+    phoneNumber: '0167399785',
+    motif: 'FeexPay',
+    first_name: 'Jean',
+    last_name: 'Kouassi'
+  }
+});
+```
+
+##### Response (example)
+
+```json
+{
+  "reference": "a30d7ad5-2c88-4121-aee1-d1bc9959a939",
+  "status": "SUCCESSFUL",
+  "description": "FeexPay",
+  "phone_number": "+2290167399785",
+  "amount": 1500,
+  "callback_info": null
+}
+```
+
+-   `SUCCESSFUL` — the transfer is complete;
+-   `FAILED` — the transfer failed, the message field gives the reason;
+-   `PENDING` — the transfer is processed automatically in the background, no action is needed on your side.
 
 ---
 

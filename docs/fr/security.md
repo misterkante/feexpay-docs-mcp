@@ -4,7 +4,7 @@ title: "Sécurité"
 group: general
 lang: fr
 source: https://docs.feexpay.me/?section=security&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-11-13T14:52:32.783Z
 ---
 
 # Sécurité
@@ -167,4 +167,4 @@ Si vous suspectez que vos clés API ont été compromises :
 1.  **Révoquez immédiatement** les clés compromises depuis votre dashboard
 2.  **Générez de nouvelles clés** et mettez à jour vos applications
 3.  **Vérifiez l'historique** des transactions pour détecter toute activité suspecte
-4.  **Contactez notre support** à support@feexpay.com pour nous informer
+4.  **Contactez notre support** à support@feexpay.me pour nous informer

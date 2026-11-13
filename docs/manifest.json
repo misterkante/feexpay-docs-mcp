@@ -1,7 +1,7 @@
 {
   "source": "https://docs.feexpay.me/",
   "api_version": "v2",
-  "generated_at": "2026-10-27T10:38:57.348Z",
+  "generated_at": "2026-11-13T14:52:32.783Z",
   "langs": [
     "en",
     "fr"
@@ -63,9 +63,9 @@
       "title": "Méthodes de paiement",
       "group": "gettingStarted",
       "source": "https://docs.feexpay.me/?section=payment-methods&version=v2",
-      "hash": "25d944ffdfffb580",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 1931
+      "hash": "f894037f4e59cf8f",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 1988
     },
     {
       "id": "dashboard",
@@ -233,9 +233,9 @@
       "title": "API - Payin",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-rest-integrations&version=v2",
-      "hash": "d5523747af70bcc6",
-      "updated_at": "2026-10-27T10:38:57.348Z",
-      "chars": 30472
+      "hash": "e8e311cdf8ad8b94",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 35607
     },
     {
       "id": "api-rest-status",
@@ -253,9 +253,9 @@
       "title": "API - Payout",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=services-payout&version=v2",
-      "hash": "bef11d9f373295ec",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 24219
+      "hash": "4599c619afd53494",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 26485
     },
     {
       "id": "api-payout-status",
@@ -283,9 +283,9 @@
       "title": "API — Transaction history",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-payment-history&version=v2",
-      "hash": "519a01880f69dece",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 7909
+      "hash": "57221664b1fbfd2f",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 7915
     },
     {
       "id": "orm-utils",
@@ -293,9 +293,19 @@
       "title": "ORM Utils",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=orm-utils&version=v2",
-      "hash": "9e96bb46c138bf6d",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 1719
+      "hash": "1eb637136c683e21",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 1737
+    },
+    {
+      "id": "idempotency",
+      "lang": "en",
+      "title": "Request idempotency (Idempotency-Key)",
+      "group": "api",
+      "source": "https://docs.feexpay.me/?section=idempotency&version=v2",
+      "hash": "03d7e7ed115193b8",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 3522
     },
     {
       "id": "error-codes",
@@ -323,9 +333,9 @@
       "title": "JavaScript",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=javascript-sdk&version=v2",
-      "hash": "9fbbe9b8ef2c5d9f",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 3710
+      "hash": "cf918cab4158b09c",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 3715
     },
     {
       "id": "react-sdk",
@@ -393,9 +403,9 @@
       "title": "Webhook",
       "group": "general",
       "source": "https://docs.feexpay.me/?section=webhook&version=v2",
-      "hash": "74a1547cab1f38ad",
-      "updated_at": "2026-10-23T10:08:13.250Z",
-      "chars": 3254
+      "hash": "3a53184970b02a1d",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 13234
     },
     {
       "id": "security",
@@ -403,9 +413,9 @@
       "title": "Security",
       "group": "general",
       "source": "https://docs.feexpay.me/?section=security&version=v2",
-      "hash": "72bf0d885ea49c35",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 4500
+      "hash": "8792c65a1432738e",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 4499
     },
     {
       "id": "two-factor-auth",
@@ -473,9 +483,9 @@
       "title": "Méthodes de paiement",
       "group": "gettingStarted",
       "source": "https://docs.feexpay.me/?section=payment-methods&version=v2",
-      "hash": "9302acdf7a3b08e4",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 1934
+      "hash": "ca072133dde5ffaf",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 1991
     },
     {
       "id": "dashboard",
@@ -643,9 +653,9 @@
       "title": "API - Payin",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-rest-integrations&version=v2",
-      "hash": "cfe706cc52c54335",
-      "updated_at": "2026-10-27T10:38:57.348Z",
-      "chars": 31674
+      "hash": "9d0da15031b5c625",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 36945
     },
     {
       "id": "api-rest-status",
@@ -663,9 +673,9 @@
       "title": "API - Payout",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=services-payout&version=v2",
-      "hash": "0f748d65ecae11c6",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 25923
+      "hash": "b331dbb9c2eaf9a7",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 28312
     },
     {
       "id": "api-payout-status",
@@ -693,9 +703,9 @@
       "title": "API — Historique des transactions",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-payment-history&version=v2",
-      "hash": "20766bd7b6bdb7f6",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 8284
+      "hash": "2ea0b5a5225c4d82",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 8290
     },
     {
       "id": "orm-utils",
@@ -703,9 +713,19 @@
       "title": "ORM Utils",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=orm-utils&version=v2",
-      "hash": "172ad5d870df77fc",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 1831
+      "hash": "4667dbbc1df8363a",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 1849
+    },
+    {
+      "id": "idempotency",
+      "lang": "fr",
+      "title": "Idempotence des requêtes (Idempotency-Key)",
+      "group": "api",
+      "source": "https://docs.feexpay.me/?section=idempotency&version=v2",
+      "hash": "c805b6b7d94eb280",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 3810
     },
     {
       "id": "error-codes",
@@ -733,9 +753,9 @@
       "title": "JavaScript",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=javascript-sdk&version=v2",
-      "hash": "72c6ee06b338eb17",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 3895
+      "hash": "799f65c6f3fd34d8",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 3900
     },
     {
       "id": "react-sdk",
@@ -803,9 +823,9 @@
       "title": "Webhook",
       "group": "general",
       "source": "https://docs.feexpay.me/?section=webhook&version=v2",
-      "hash": "f0bbee6efe958711",
-      "updated_at": "2026-10-23T10:08:13.250Z",
-      "chars": 3420
+      "hash": "e32b4d30ac283bd5",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 14016
     },
     {
       "id": "security",
@@ -813,9 +833,9 @@
       "title": "Sécurité",
       "group": "general",
       "source": "https://docs.feexpay.me/?section=security&version=v2",
-      "hash": "3d21ee5405770c50",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 4963
+      "hash": "9a59dd25948aa164",
+      "updated_at": "2026-11-13T14:52:32.783Z",
+      "chars": 4962
     },
     {
       "id": "two-factor-auth",

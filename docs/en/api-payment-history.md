@@ -4,7 +4,7 @@ title: "API — Transaction history"
 group: api
 lang: en
 source: https://docs.feexpay.me/?section=api-payment-history&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-11-13T14:52:32.783Z
 ---
 
 # API — Transaction history
@@ -43,7 +43,7 @@ This route returns matching transactions immediately. It is suited for short loo
 
 Accepted network codes (reseau parameter)
 
-ALLMTNMOOVCELTIIS BJCORISMTN CIMOOV CIORANGE CIWAVE CIMTN CGMOOV TGTOGOCOM TGORANGE SNFREE SNWAVE SNMOOV BFORANGE BF
+ALLMTNMOOVCELTIIS BJCORISBMOMTN CIMOOV CIORANGE CIWAVE CIMTN CGMOOV TGTOGOCOM TGORANGE SNFREE SNWAVE SNMOOV BFORANGE BF
 
 Use ALL to every network at once. Codes must be written exactly as shown above, in uppercase.
 
@@ -148,7 +148,7 @@ Prerequisites
 
 Accepted network codes (reseau parameter)
 
-ALLMTNMOOVCELTIIS BJCORISMTN CIMOOV CIORANGE CIWAVE CIMTN CGMOOV TGTOGOCOM TGORANGE SNFREE SNWAVE SNMOOV BFORANGE BF
+ALLMTNMOOVCELTIIS BJCORISBMOMTN CIMOOV CIORANGE CIWAVE CIMTN CGMOOV TGTOGOCOM TGORANGE SNFREE SNWAVE SNMOOV BFORANGE BF
 
 Use ALL to every network at once. Codes must be written exactly as shown above, in uppercase.
 

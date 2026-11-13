@@ -4,7 +4,7 @@ title: "API — Historique des transactions"
 group: api
 lang: fr
 source: https://docs.feexpay.me/?section=api-payment-history&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-11-13T14:52:32.783Z
 ---
 
 # API — Historique des transactions
@@ -43,7 +43,7 @@ Cette route renvoie immédiatement les transactions trouvées. Elle est adaptée
 
 Paramètres reseaux acceptés
 
-ALLMTNMOOVCELTIIS BJCORISMTN CIMOOV CIORANGE CIWAVE CIMTN CGMOOV TGTOGOCOM TGORANGE SNFREE SNWAVE SNMOOV BFORANGE BF
+ALLMTNMOOVCELTIIS BJCORISBMOMTN CIMOOV CIORANGE CIWAVE CIMTN CGMOOV TGTOGOCOM TGORANGE SNFREE SNWAVE SNMOOV BFORANGE BF
 
 Utilisez ALL pour tous les réseaux à la fois. Les codes doivent être écrits exactement comme ci-dessus, en majuscules.
 
@@ -148,7 +148,7 @@ Pré-requis
 
 Paramètres reseaux acceptés
 
-ALLMTNMOOVCELTIIS BJCORISMTN CIMOOV CIORANGE CIWAVE CIMTN CGMOOV TGTOGOCOM TGORANGE SNFREE SNWAVE SNMOOV BFORANGE BF
+ALLMTNMOOVCELTIIS BJCORISBMOMTN CIMOOV CIORANGE CIWAVE CIMTN CGMOOV TGTOGOCOM TGORANGE SNFREE SNWAVE SNMOOV BFORANGE BF
 
 Utilisez ALL pour tous les réseaux à la fois. Les codes doivent être écrits exactement comme ci-dessus, en majuscules.
 
