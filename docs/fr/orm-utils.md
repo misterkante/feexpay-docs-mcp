@@ -4,7 +4,7 @@ title: "ORM Utils"
 group: api
 lang: fr
 source: https://docs.feexpay.me/?section=orm-utils&version=v2
-updated_at: 2026-11-13T14:52:32.783Z
+updated_at: 2026-11-17T14:20:58.694Z
 ---
 
 # ORM Utils
@@ -65,6 +65,7 @@ axios({
         "MOOV CI": 0,
         "ORANGE CI": 0,
         "WAVE CI": 0,
+        "DJAMO CI": 0,
         "MTN CG": 0,
         "MOOV TG": 0,
         "TOGOCOM TG": 0,

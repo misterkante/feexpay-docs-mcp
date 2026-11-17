@@ -4,7 +4,7 @@ title: "API - Payin"
 group: api
 lang: fr
 source: https://docs.feexpay.me/?section=api-rest-integrations&version=v2
-updated_at: 2026-11-13T14:52:32.783Z
+updated_at: 2026-11-17T14:20:58.694Z
 ---
 
 # API - Payin
@@ -152,7 +152,7 @@ axios({
 
 ## Tab: Côte d'Ivoire
 
-[MTN COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]
+[MTN COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
 
 #### MTN Mobile Money Côte d'Ivoire
 
@@ -930,7 +930,7 @@ axios({
 
 ## Tab: Côte d'Ivoire › MOOV COTE D'IVOIRE
 
-[MTN COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]
+[MTN COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
 
 #### Moov Money Côte d'Ivoire
 
@@ -998,7 +998,7 @@ axios({
 
 ## Tab: Côte d'Ivoire › WAVE COTE D'IVOIRE
 
-[MTN COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]
+[MTN COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
 
 #### Wave Côte d'Ivoire
 
@@ -1072,7 +1072,7 @@ axios({
 
 ## Tab: Côte d'Ivoire › ORANGE COTE D'IVOIRE
 
-[MTN COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]
+[MTN COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
 
 #### Orange Money Côte d'Ivoire
 
@@ -1135,6 +1135,93 @@ axios({
   "payment_url": "https://mpayment.orange-money.com/ci/mpayment/abstract/v1nt2o36xeetqwcnicn4qbmstwc30hpdg5hdnveaynzugmtrdejl8dyh1lvkwnjb"
 }
 ```
+
+---
+
+## Tab: Côte d'Ivoire › DJAMO COTE D'IVOIRE
+
+[MTN COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
+
+#### Djamo Côte d'Ivoire
+
+Djamo permet à vos clients de payer depuis leur compte Djamo (Djamo vers Djamo uniquement). L'API crée une demande de paiement et renvoie un lien (payment\_url) que le client ouvre pour valider le paiement dans son application Djamo.
+
+Déroulement du paiement
+
+1\. Appelez l'endpoint : la transaction est créée au statut PENDING. 2. Redirigez le client vers payment\_url (ou affichez-le en QR code s'il paie depuis un autre appareil). 3. Le client valide dans son application Djamo, puis Djamo le renvoie vers return\_url (ou cancel\_url s'il annule). 4. Le statut final vous est envoyé par webhook ; vous pouvez aussi le lire avec l'API de statut. Sans paiement sous 1 heure, la demande expire et la transaction passe FAILED.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/transactions/public/requesttopay/djamo_ci`
+
+##### Méthode
+
+POST
+
+##### Corps de la requête
+
+| Paramètre | Statut | Description | Exemple |
+| --- | --- | --- | --- |
+| phoneNumber | Obligatoire | Numéro du compte Djamo du client : 225 suivi des 10 chiffres | 2250700000000 |
+| amount | Obligatoire | Montant en XOF (entre 10 et 2 000 000) | 1000 |
+| shop | Obligatoire | Id de la boutique (menu Développeur FeexPay) | Ayg9lkjkhurIvNp |
+| first\_name | Optionnel | Prénom client | FeexPay |
+| last\_name | Optionnel | Nom client | FeexPay |
+| email | Optionnel | Adresse e-mail du client | client@example.com |
+| return\_url | Optionnel | URL vers laquelle Djamo renvoie le client après un paiement réussi | https://votre-site.com/merci |
+| cancel\_url | Optionnel | URL vers laquelle Djamo renvoie le client s'il annule le paiement | https://votre-site.com/panier |
+| description | Optionnel | Description du paiement, affichée au client dans Djamo (100 caractères maximum) | Commande 123 |
+| callback\_info | Optionnel | Informations additionnelles renvoyées par le webhook | order\_12345 |
+
+##### Entetes (Headers)
+
+Ajoutez `Authorization: Bearer <votre-api-key>`
+
+Important
+
+Sans cet entete, votre requête sera refusée.
+
+##### Exemple (axios)
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/transactions/public/requesttopay/djamo_ci",
+  method: 'post',
+  headers: {
+    Authorization: 'Bearer fp_M6tuzYgsYl39d6kJvdaLmYGQcEAWvLRivVhbeK4UCwbDiyMlj9UPMO',
+  },
+  data: {
+    shop: 'Ayg9lkjkhurIvNp',
+    amount: 1000,
+    phoneNumber: '2250700000000',
+    first_name: 'FeexPay',
+    last_name: 'FeexPay',
+    return_url: 'https://votre-site.com/merci',
+    cancel_url: 'https://votre-site.com/panier',
+    description: 'Commande 123'
+  }
+});
+```
+
+##### Réponse de la requête (exemple)
+
+```json
+{
+  "reference": "9LpRcBGrTkPN",
+  "status": "PENDING",
+  "payment_url": "https://pay.djamo.com/c/ch_01JD2X4B7K9M",
+  "url": "https://pay.djamo.com/c/ch_01JD2X4B7K9M",
+  "description": "Commande 123",
+  "callback_info": null,
+  "phone_number": "2250700000000"
+}
+```
+
+La réponse est toujours PENDING : le paiement n'est confirmé qu'après validation par le client. Ne livrez jamais sur la seule base de la redirection vers return\_url : confirmez le statut par le webhook ou l'API de statut.
+
+URL de retour
+
+return\_url et cancel\_url doivent être des URL publiques avec un nom de domaine (ex. https://votre-site.com/merci). Une adresse locale comme http://localhost:3000 est refusée par Djamo : FeexPay utilise alors sa page de confirmation par défaut.
 
 ---
 

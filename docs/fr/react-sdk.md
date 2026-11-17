@@ -4,7 +4,7 @@ title: "React"
 group: sdks
 lang: fr
 source: https://docs.feexpay.me/?section=react-sdk&version=v2
-updated_at: 2026-10-10T13:38:59.990Z
+updated_at: 2026-11-17T14:20:58.694Z
 ---
 
 # React
@@ -120,7 +120,7 @@ import { FeexPayButton } from 'react-sdk-feexpay';
 -   `case` : Type de paiement
     -   `MOBILE` : Paiement mobile uniquement
     -   `CARD` : Carte uniquement (pour carte, utilisez `currency` = `CAD` ou `USD`)
-    -   `WALLET` : Wallet uniquement
+    -   `WALLET` : Wallet uniquement (B-MO au Bénin, Wave au Sénégal, Wave et Djamo en Côte d'Ivoire)
     -   Laisser vide pour afficher les trois
 -   `currency`: Devise (CAD, USD acceptés pour carte)
 -   `mode`: Mode **SANDBOX** ou **LIVE**
@@ -198,7 +198,7 @@ export default function Checkout() {
 -   `case` : Type de paiement
     -   `MOBILE` : Paiement mobile uniquement
     -   `CARD` : Carte uniquement
-    -   `WALLET` : Wallet uniquement
+    -   `WALLET` : Wallet uniquement (B-MO au Bénin, Wave au Sénégal, Wave et Djamo en Côte d'Ivoire)
     -   Laisser vide pour afficher les trois
 -   `currency`: Devise (CAD, USD acceptés pour carte)
 -   `mode`: Mode **SANDBOX** ou **LIVE**

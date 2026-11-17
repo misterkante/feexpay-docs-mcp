@@ -4,7 +4,7 @@ title: "JavaScript"
 group: sdks
 lang: fr
 source: https://docs.feexpay.me/?section=javascript-sdk&version=v2
-updated_at: 2026-11-13T14:52:32.783Z
+updated_at: 2026-11-17T14:20:58.694Z
 ---
 
 # JavaScript
@@ -120,7 +120,7 @@ FeexPayButton.init("render", {
     | --- | --- |
     | Benin | MTN, MOOV, CELTIIS, CORIS, BMO |
     | Togo | MOOV, TOGOCOM |
-    | Côte d'Ivoire | MTN, ORANGE, MOOV, WAVE |
+    | Côte d'Ivoire | MTN, ORANGE, MOOV, WAVE, DJAMO |
     | Senegal | ORANGE, WAVE, FREE |
     | Burkina Faso | ORANGE, MOOV, WAVE |
     | Congo-Brazzaville | MTN |

@@ -4,7 +4,7 @@ title: "Méthodes de paiement"
 group: gettingStarted
 lang: fr
 source: https://docs.feexpay.me/?section=payment-methods&version=v2
-updated_at: 2026-11-13T14:52:32.783Z
+updated_at: 2026-11-17T14:20:58.694Z
 ---
 
 # Méthodes de paiement
@@ -68,6 +68,10 @@ Wave
 ![Orange](https://docs.feexpay.me/operator/orange.png)
 
 Orange
+
+![Djamo](https://docs.feexpay.me/operator/djamo.png)
+
+Djamo
 
 🇸🇳![Drapeau SN](https://docs.feexpay.me/flags/sn.svg)
 

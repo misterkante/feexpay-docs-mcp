@@ -1,7 +1,7 @@
 {
   "source": "https://docs.feexpay.me/",
   "api_version": "v2",
-  "generated_at": "2026-11-13T14:52:32.783Z",
+  "generated_at": "2026-11-17T14:20:58.694Z",
   "langs": [
     "en",
     "fr"
@@ -63,9 +63,9 @@
       "title": "Méthodes de paiement",
       "group": "gettingStarted",
       "source": "https://docs.feexpay.me/?section=payment-methods&version=v2",
-      "hash": "f894037f4e59cf8f",
-      "updated_at": "2026-11-13T14:52:32.783Z",
-      "chars": 1988
+      "hash": "ddbce2339ffd7b0f",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 2049
     },
     {
       "id": "dashboard",
@@ -233,9 +233,9 @@
       "title": "API - Payin",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-rest-integrations&version=v2",
-      "hash": "e8e311cdf8ad8b94",
-      "updated_at": "2026-11-13T14:52:32.783Z",
-      "chars": 35607
+      "hash": "18039e28bd3640af",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 39088
     },
     {
       "id": "api-rest-status",
@@ -253,9 +253,9 @@
       "title": "API - Payout",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=services-payout&version=v2",
-      "hash": "4599c619afd53494",
-      "updated_at": "2026-11-13T14:52:32.783Z",
-      "chars": 26485
+      "hash": "a1a2227a2bd49adb",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 28741
     },
     {
       "id": "api-payout-status",
@@ -283,9 +283,9 @@
       "title": "API — Transaction history",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-payment-history&version=v2",
-      "hash": "57221664b1fbfd2f",
-      "updated_at": "2026-11-13T14:52:32.783Z",
-      "chars": 7915
+      "hash": "b11b94705a3dc266",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 7931
     },
     {
       "id": "orm-utils",
@@ -293,9 +293,9 @@
       "title": "ORM Utils",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=orm-utils&version=v2",
-      "hash": "1eb637136c683e21",
-      "updated_at": "2026-11-13T14:52:32.783Z",
-      "chars": 1737
+      "hash": "6357610742646453",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 1760
     },
     {
       "id": "idempotency",
@@ -333,9 +333,9 @@
       "title": "JavaScript",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=javascript-sdk&version=v2",
-      "hash": "cf918cab4158b09c",
-      "updated_at": "2026-11-13T14:52:32.783Z",
-      "chars": 3715
+      "hash": "bd2266d618c18720",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 3722
     },
     {
       "id": "react-sdk",
@@ -343,9 +343,9 @@
       "title": "React",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=react-sdk&version=v2",
-      "hash": "e519b3568f100210",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 5341
+      "hash": "b3ea461e2a7cf5e7",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 5473
     },
     {
       "id": "php-sdk",
@@ -353,9 +353,9 @@
       "title": "PHP",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=php-sdk&version=v2",
-      "hash": "5208c4a5c4bf2312",
-      "updated_at": "2026-10-14T10:10:02.461Z",
-      "chars": 5822
+      "hash": "d93375262754e85c",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 6891
     },
     {
       "id": "flutter-android-sdk",
@@ -483,9 +483,9 @@
       "title": "Méthodes de paiement",
       "group": "gettingStarted",
       "source": "https://docs.feexpay.me/?section=payment-methods&version=v2",
-      "hash": "ca072133dde5ffaf",
-      "updated_at": "2026-11-13T14:52:32.783Z",
-      "chars": 1991
+      "hash": "adc2ac099dd78d85",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 2052
     },
     {
       "id": "dashboard",
@@ -653,9 +653,9 @@
       "title": "API - Payin",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-rest-integrations&version=v2",
-      "hash": "9d0da15031b5c625",
-      "updated_at": "2026-11-13T14:52:32.783Z",
-      "chars": 36945
+      "hash": "534bae571e2ec830",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 40553
     },
     {
       "id": "api-rest-status",
@@ -673,9 +673,9 @@
       "title": "API - Payout",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=services-payout&version=v2",
-      "hash": "b331dbb9c2eaf9a7",
-      "updated_at": "2026-11-13T14:52:32.783Z",
-      "chars": 28312
+      "hash": "fdb12e0597207deb",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 30675
     },
     {
       "id": "api-payout-status",
@@ -703,9 +703,9 @@
       "title": "API — Historique des transactions",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-payment-history&version=v2",
-      "hash": "2ea0b5a5225c4d82",
-      "updated_at": "2026-11-13T14:52:32.783Z",
-      "chars": 8290
+      "hash": "36280cdcc53cb081",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 8306
     },
     {
       "id": "orm-utils",
@@ -713,9 +713,9 @@
       "title": "ORM Utils",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=orm-utils&version=v2",
-      "hash": "4667dbbc1df8363a",
-      "updated_at": "2026-11-13T14:52:32.783Z",
-      "chars": 1849
+      "hash": "7669f05d7135d6d0",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 1872
     },
     {
       "id": "idempotency",
@@ -753,9 +753,9 @@
       "title": "JavaScript",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=javascript-sdk&version=v2",
-      "hash": "799f65c6f3fd34d8",
-      "updated_at": "2026-11-13T14:52:32.783Z",
-      "chars": 3900
+      "hash": "f0fa719647423eb8",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 3907
     },
     {
       "id": "react-sdk",
@@ -763,9 +763,9 @@
       "title": "React",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=react-sdk&version=v2",
-      "hash": "ccf8cc3b26f19f81",
-      "updated_at": "2026-10-10T13:38:59.990Z",
-      "chars": 5604
+      "hash": "b1a27b77b1b89b9d",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 5734
     },
     {
       "id": "php-sdk",
@@ -773,9 +773,9 @@
       "title": "PHP",
       "group": "sdks",
       "source": "https://docs.feexpay.me/?section=php-sdk&version=v2",
-      "hash": "302bfd750351e8b3",
-      "updated_at": "2026-10-14T10:10:02.461Z",
-      "chars": 6086
+      "hash": "2c311e81d1876c91",
+      "updated_at": "2026-11-17T14:20:58.694Z",
+      "chars": 7182
     },
     {
       "id": "flutter-android-sdk",

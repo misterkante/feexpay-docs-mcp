@@ -4,7 +4,7 @@ title: "PHP"
 group: sdks
 lang: en
 source: https://docs.feexpay.me/?section=php-sdk&version=v2
-updated_at: 2026-10-14T10:10:02.461Z
+updated_at: 2026-11-17T14:20:58.694Z
 ---
 
 # PHP
@@ -63,7 +63,7 @@ var_dump($status);
 
 ### 4\. Payment via URL (redirect)
 
-For networks **ORANGE SN, WAVE SN, ORANGE CI, WAVE CI**, use `requestToPayWeb`. This method returns a payment URL to which you should redirect the customer.
+For networks **ORANGE SN, WAVE SN, ORANGE CI, WAVE CI, DJAMO CI**, use `requestToPayWeb`. This method returns a payment URL to which you should redirect the customer.
 
 Note: only the listed networks are accepted by `requestToPayWeb`.
 
@@ -74,7 +74,7 @@ $skeleton = new Feexpay\FeexpayPhp\FeexpayClass("shop's id", "token key API", "c
 $response = $skeleton->requestToPayWeb(
   1000,
   "22670168713",
-  "ORANGE BF", // ORANGE SN, WAVE SN, ORANGE CI, WAVE CI
+  "ORANGE BF", // ORANGE SN, WAVE SN, ORANGE CI, WAVE CI, DJAMO CI
   "Jon Doe",
   "jondoe@gmail.com",
   json_encode(["order_id" => "1042"]), // callback_info
@@ -97,7 +97,35 @@ var_dump($status);
 
 `requestToPayWeb` returns `["payment_url", "reference", "order_id"]`, or `false` if the parameters are rejected.
 
-### 5\. Card payment (VISA / MASTERCARD)
+### 5\. Djamo payment (Côte d'Ivoire)
+
+`paiementDjamo` creates a **Djamo** payment request and returns the Djamo page (`payment_url`) to redirect the customer to. They approve the payment in their Djamo app, then come back to `return_url`.
+
+```php
+// paiementDjamo(amount, phoneNumber, firstName = "", lastName = "", email = "", description = "",
+//               callback_info = "", return_url = "", cancel_url = "")
+$djamo = $skeleton->paiementDjamo(
+  1000,
+  "2250700000000",  // 225 + 10 digits
+  "Jon",
+  "Doe",
+  "jondoe@gmail.com",
+  "Commande 123"
+);
+
+if ($djamo === null) {
+  echo $skeleton->getLastError()["message"];
+  exit();
+}
+
+$reference = $djamo["reference"]; // keep it to check the payment
+header("Location: " . $djamo["payment_url"]);
+exit();
+```
+
+By default, `return_url` and `cancel_url` are the constructor's `callback_url` and `error_callback_url`. On `return_url`, always confirm the payment server-side with `isPaymentSuccessful($reference, $amount)` before delivering. Without payment within 1 hour, the request expires.
+
+### 6\. Card payment (VISA / MASTERCARD)
 
 ```php
 // paiementCard(amount, currency, firstName, lastName, email, phoneNumber, city, zip, country)
@@ -127,7 +155,7 @@ exit();
 
 Warning: keep the exact parameter order. For `paiementCard`, all arguments are required and `country` is a 2-letter ISO code (`BJ`, `CI`, `SN`…). The method returns `["url", "payment_url", "reference"]`, or `null` on failure (reason via `getLastError()`).
 
-### 6\. UI-side payment button (e.g., Laravel)
+### 7\. Payment button in the UI (e.g. Laravel)
 
 Add a button and initialize the SDK to display the payment modal.
 

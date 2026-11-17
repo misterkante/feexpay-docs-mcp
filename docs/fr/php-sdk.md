@@ -4,7 +4,7 @@ title: "PHP"
 group: sdks
 lang: fr
 source: https://docs.feexpay.me/?section=php-sdk&version=v2
-updated_at: 2026-10-14T10:10:02.461Z
+updated_at: 2026-11-17T14:20:58.694Z
 ---
 
 # PHP
@@ -63,7 +63,7 @@ var_dump($status);
 
 ### 4\. Paiement via URL (redirection)
 
-Pour les réseaux **ORANGE SN, WAVE SN, ORANGE CI, WAVE CI**, utilisez `requestToPayWeb`. Cette méthode retourne une URL de paiement vers laquelle rediriger le client.
+Pour les réseaux **ORANGE SN, WAVE SN, ORANGE CI, WAVE CI, DJAMO CI**, utilisez `requestToPayWeb`. Cette méthode retourne une URL de paiement vers laquelle rediriger le client.
 
 NB: seuls les réseaux listés sont acceptés par `requestToPayWeb`.
 
@@ -74,7 +74,7 @@ $skeleton = new Feexpay\FeexpayPhp\FeexpayClass("shop's id", "token key API", "c
 $response = $skeleton->requestToPayWeb(
   1000,
   "22670168713",
-  "ORANGE BF", // ORANGE SN, WAVE SN, ORANGE CI, WAVE CI
+  "ORANGE BF", // ORANGE SN, WAVE SN, ORANGE CI, WAVE CI, DJAMO CI
   "Jon Doe",
   "jondoe@gmail.com",
   json_encode(["order_id" => "1042"]), // callback_info
@@ -97,7 +97,35 @@ var_dump($status);
 
 `requestToPayWeb` renvoie `["payment_url", "reference", "order_id"]`, ou `false` si les paramètres sont refusés.
 
-### 5\. Paiement par cartes (VISA / MASTERCARD)
+### 5\. Paiement Djamo (Côte d'Ivoire)
+
+`paiementDjamo` crée une demande de paiement **Djamo** et renvoie la page Djamo (`payment_url`) vers laquelle rediriger le client. Il valide le paiement dans son application Djamo, puis revient sur `return_url`.
+
+```php
+// paiementDjamo(amount, phoneNumber, firstName = "", lastName = "", email = "", description = "",
+//               callback_info = "", return_url = "", cancel_url = "")
+$djamo = $skeleton->paiementDjamo(
+  1000,
+  "2250700000000",  // 225 + 10 chiffres
+  "Jon",
+  "Doe",
+  "jondoe@gmail.com",
+  "Commande 123"
+);
+
+if ($djamo === null) {
+  echo $skeleton->getLastError()["message"];
+  exit();
+}
+
+$reference = $djamo["reference"]; // à conserver pour vérifier le paiement
+header("Location: " . $djamo["payment_url"]);
+exit();
+```
+
+Par défaut, `return_url` et `cancel_url` valent le `callback_url` et le `error_callback_url` du constructeur. Sur `return_url`, confirmez toujours le paiement côté serveur avec `isPaymentSuccessful($reference, $montant)` avant de livrer. Sans paiement sous 1 heure, la demande expire.
+
+### 6\. Paiement par cartes (VISA / MASTERCARD)
 
 ```php
 // paiementCard(amount, currency, firstName, lastName, email, phoneNumber, city, zip, country)
@@ -127,7 +155,7 @@ exit();
 
 Attention : respectez l'ordre exact des paramètres. Pour `paiementCard`, tous les arguments sont obligatoires et `country` est un code ISO à 2 lettres (`BJ`, `CI`, `SN`…). La méthode renvoie `["url", "payment_url", "reference"]`, ou `null` en cas d'échec (raison via `getLastError()`).
 
-### 6\. Bouton de paiement côté interface (ex: Laravel)
+### 7\. Bouton de paiement côté interface (ex: Laravel)
 
 Ajoutez un bouton et initialisez le SDK pour afficher la modale de paiement.
 

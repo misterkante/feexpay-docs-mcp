@@ -4,7 +4,7 @@ title: "API - Payout"
 group: api
 lang: fr
 source: https://docs.feexpay.me/?section=services-payout&version=v2
-updated_at: 2026-11-13T14:52:32.783Z
+updated_at: 2026-11-17T14:20:58.694Z
 ---
 
 # API - Payout
@@ -93,7 +93,7 @@ axios({
 
 ## Tab: Côte d'Ivoire
 
-[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]
+[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
 
 #### Payout MTN Côte d'Ivoire
 
@@ -580,7 +580,7 @@ axios({
 
 ## Tab: Côte d'Ivoire › ORANGE COTE D'IVOIRE
 
-[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]
+[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
 
 #### Payout Orange Côte d'Ivoire
 
@@ -654,7 +654,7 @@ Une fois la réponse reçue, vérifiez le statut avec la <strong>reference</stro
 
 ## Tab: Côte d'Ivoire › MOOV COTE D'IVOIRE
 
-[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]
+[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
 
 #### Payout Moov Côte d'Ivoire
 
@@ -728,7 +728,7 @@ Une fois la réponse reçue, vérifiez le statut avec la <strong>reference</stro
 
 ## Tab: Côte d'Ivoire › WAVE COTE D'IVOIRE
 
-[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]
+[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
 
 #### Payout Wave Côte d'Ivoire
 
@@ -783,6 +783,80 @@ axios({
 Suivi du statut
 
 Une fois la réponse reçue, vérifiez le statut avec la <strong>reference</strong> après environ 5 minutes (voir la section Status des payouts).
+
+##### Réponse de la requête (exemple)
+
+```json
+{
+  "reference": "a19d2d2d-8635-4489-bb6b-57cf070e5792",
+  "status": "PENDING",
+  "message": "Payout request accepted",
+  "description": "Paiement client",
+  "phone_number": "2290167919150",
+  "amount": 10,
+  "callback_info": null
+}
+```
+
+---
+
+## Tab: Côte d'Ivoire › DJAMO COTE D'IVOIRE
+
+[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
+
+#### Payout Djamo Côte d'Ivoire
+
+Permet d'effectuer des transferts vers un compte Djamo en Côte d'Ivoire (entre 500 et 500 000 XOF par transfert). Le bénéficiaire doit avoir un compte Djamo.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/djamo_ci`
+
+##### Méthode
+
+POST
+
+##### Corps de la requête
+
+| Paramètre | Statut | Description | Exemple |
+| --- | --- | --- | --- |
+| phoneNumber | Obligatoire | Numéro du compte Djamo du bénéficiaire : 225 suivi des 10 chiffres | 2250700000000 |
+| amount | Obligatoire | Montant en XOF (entre 500 et 500 000) | 5000 |
+| shop | Obligatoire | Id de la boutique (menu Développeur sur FeexPay) | Ayg9lkjkhurIvNp |
+| email | Optionnel | L'adresse mail du client qui reçoit les sous | johndoe@gmail.com |
+| motif | Obligatoire | Motif du transfert, visible par le bénéficiaire (100 caractères maximum) | FeexPay |
+| callback\_info | Optionnel | Informations additionnelles renvoyées par le webhook | order\_12345 |
+
+##### Entetes (Headers)
+
+Ajoutez `Authorization: Bearer <votre-api-key>` dans les headers.
+
+Important
+
+Sans cet entête au niveau de votre requête vous ne serez pas autorisé(e) et votre requête n'aboutira pas.
+
+##### Exemple (axios)
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/payouts/public/wave_ci",
+  method: 'post',
+  headers: {
+    Authorization: 'Bearer fp_M6tuzYgsYl39d6kJvdaLmYGQcEAWvLRivVhbeK4UCwbDiyMlj9UPMO',
+  },
+  data: {
+    phoneNumber: '2250700000000',
+    amount: 5000,
+    shop: 'Ayg9lkjkhurIvNp',
+    email: 'johndoe@gmail.com',
+    motif: 'Remboursement commande 123'
+  }
+});
+```
+
+Suivi du statut
+
+Une fois la réponse reçue, vérifiez le statut avec la <strong>reference</strong> après environ 5 minutes (voir la section Status des payouts). Pour Djamo, la réponse est généralement PENDING : le statut final arrive par webhook.
 
 ##### Réponse de la requête (exemple)
 

@@ -4,7 +4,7 @@ title: "API - Payout"
 group: api
 lang: en
 source: https://docs.feexpay.me/?section=services-payout&version=v2
-updated_at: 2026-11-13T14:52:32.783Z
+updated_at: 2026-11-17T14:20:58.694Z
 ---
 
 # API - Payout
@@ -93,7 +93,7 @@ axios({
 
 ## Tab: Côte d'Ivoire
 
-[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]
+[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
 
 #### Payout MTN Côte d'Ivoire
 
@@ -580,7 +580,7 @@ axios({
 
 ## Tab: Côte d'Ivoire › ORANGE COTE D'IVOIRE
 
-[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]
+[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
 
 #### Payout Orange Côte d'Ivoire
 
@@ -654,7 +654,7 @@ Once the response is received, check the status with the <strong>reference</stro
 
 ## Tab: Côte d'Ivoire › MOOV COTE D'IVOIRE
 
-[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]
+[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
 
 #### Payout Moov Côte d'Ivoire
 
@@ -728,7 +728,7 @@ Once the response is received, check the status with the <strong>reference</stro
 
 ## Tab: Côte d'Ivoire › WAVE COTE D'IVOIRE
 
-[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]
+[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
 
 #### Payout Wave Côte d'Ivoire
 
@@ -783,6 +783,80 @@ axios({
 Status Tracking
 
 Once the response is received, check the status with the <strong>reference</strong> after about 5 minutes (see the Payout Status section).
+
+##### Response (example)
+
+```json
+{
+  "reference": "a19d2d2d-8635-4489-bb6b-57cf070e5792",
+  "status": "PENDING",
+  "message": "Payout request accepted",
+  "description": "Paiement client",
+  "phone_number": "2290167919150",
+  "amount": 10,
+  "callback_info": null
+}
+```
+
+---
+
+## Tab: Côte d'Ivoire › DJAMO COTE D'IVOIRE
+
+[MTN COTE D'IVOIRE]  [ORANGE COTE D'IVOIRE]  [MOOV COTE D'IVOIRE]  [WAVE COTE D'IVOIRE]  [DJAMO COTE D'IVOIRE]
+
+#### Djamo Côte d'Ivoire payout
+
+Send transfers to a Djamo account in Côte d'Ivoire (between 500 and 500,000 XOF per transfer). The recipient must have a Djamo account.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/djamo_ci`
+
+##### Method
+
+POST
+
+##### Request body
+
+| Parameter | Status | Description | Example |
+| --- | --- | --- | --- |
+| phoneNumber | Required | Recipient's Djamo account number: 225 followed by the 10 digits | 2250700000000 |
+| amount | Required | Amount in XOF (between 500 and 500,000) | 5000 |
+| shop | Required | Shop ID (FeexPay Developer menu) | Ayg9lkjkhurIvNp |
+| email | Optional | Customer email address receiving the funds | johndoe@gmail.com |
+| motif | Required | Reason for the transfer, visible to the recipient (100 characters maximum) | FeexPay |
+| callback\_info | Optional | Additional information returned by the webhook | order\_12345 |
+
+##### Headers
+
+Add `Authorization: Bearer <votre-api-key>` to the headers.
+
+Important
+
+Without this header in your request, you will not be authorized and your request will not succeed.
+
+##### Example (axios)
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/payouts/public/wave_ci",
+  method: 'post',
+  headers: {
+    Authorization: 'Bearer fp_M6tuzYgsYl39d6kJvdaLmYGQcEAWvLRivVhbeK4UCwbDiyMlj9UPMO',
+  },
+  data: {
+    phoneNumber: '2250700000000',
+    amount: 5000,
+    shop: 'Ayg9lkjkhurIvNp',
+    email: 'johndoe@gmail.com',
+    motif: 'Remboursement commande 123'
+  }
+});
+```
+
+Status Tracking
+
+Once the response is received, check the status with the <strong>reference</strong> after about 5 minutes (see the Payout Status section). For Djamo, the response is usually PENDING: the final status is sent to your webhook.
 
 ##### Response (example)
 
