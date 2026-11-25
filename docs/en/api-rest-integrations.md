@@ -4,7 +4,7 @@ title: "API - Payin"
 group: api
 lang: en
 source: https://docs.feexpay.me/?section=api-rest-integrations&version=v2
-updated_at: 2026-11-17T14:20:58.694Z
+updated_at: 2026-11-25T15:33:43.610Z
 ---
 
 # API - Payin
@@ -15,7 +15,7 @@ Welcome to the FeexPay API Payin section. Learn how to integrate our payment sol
 
 Please note that the minimum amount is 100 and the maximum is 2,000,000 XOF
 
- [Benin]  [Togo]  [Côte d'Ivoire]  [Congo Brazzaville]  [Senegal]  [Burkina Faso] 
+ [Benin]  [Togo]  [Côte d'Ivoire]  [Congo Brazzaville]  [Senegal]  [Burkina Faso]  [Nigeria] 
 
 ### Available networks
 
@@ -408,6 +408,114 @@ axios({
   "phone_number": "22366694381"
 }
 ```
+
+---
+
+## Tab: Nigeria
+
+[BANK TRANSFER]  [PAY WITH BANK]
+
+##### Collecting payments in Nigeria
+
+In Nigeria, your customers do not pay with mobile money but from their bank account. FeexPay offers two methods. Choose the one that fits your checkout, or offer both to your customers.
+
+|  | Bank Transfer | Pay with Bank |
+| --- | --- | --- |
+| How it works | FeexPay generates a temporary bank account reserved for this payment. The customer sends a transfer to it from their banking app. | The customer picks their bank (Opay, PalmPay…) and is redirected to it to approve the payment. |
+| What you receive | An account number, the bank, the exact amount and an expiry time | A payment link (payment\_url) |
+| What you must do | Show this information to your customer | Redirect your customer to the link |
+| Customer banks | All Nigerian banks | Only the banks in the list (/banks route) |
+| Minimum amount | NGN 100 | NGN 200 |
+
+All amounts are in naira (NGN), as whole numbers. Nigeria is only available on API v2.
+
+How do I know the customer has paid?
+
+The creation response always returns the PENDING status: the customer has not paid yet. Never deliver based on this response. The final status (SUCCESSFUL or FAILED) is sent to you by webhook (see the Webhooks section), and you can check it at any time with the reference (see the Payin status section).
+
+#### Bank Transfer (transfer to a temporary account)
+
+##### The flow in 4 steps
+
+1.  You call the API with the amount: FeexPay returns a temporary bank account (bank\_account) and the exact amount to transfer (amount\_expected).
+2.  You show your customer: the bank name, the account number, the account name, the exact amount and the deadline (expires\_at). A countdown and a Copy button make payment easier.
+3.  The customer opens their banking app (GTBank, Access, Opay, Kuda…) and makes a regular transfer to this account.
+4.  As soon as the transfer is received, the transaction becomes SUCCESSFUL: you receive the webhook and your Bank Transfer balance is credited.
+
+Show this clearly to your customer
+
+-   The amount to transfer is amount\_expected, to the naira. A transfer of a different amount is sent back to the customer by the bank and the payment stays pending.
+-   The account is only valid until expires\_at. After that time, the customer must start a new payment.
+-   Each account can only be used once: do not reuse it for another payment.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/transactions/public/requesttopay/bank_transfer_ng`
+
+##### Method
+
+POST
+
+##### Request body
+
+| Parameter | Status | Description | Example |
+| --- | --- | --- | --- |
+| amount | Required | Amount to collect in NGN (whole number, 100 to 10,000,000) | 5000 |
+| shop | Required | Shop ID (FeexPay Developer menu) | Ayg9lkjkhurIvNp |
+| description | Optional | Payment description (40 characters max) | Order 1234 |
+| first\_name | Optional | Customer first name | Ada |
+| last\_name | Optional | Customer last name | Okafor |
+| email | Optional | Customer email | ada@example.com |
+| callback\_info | Optional | Additional information returned by the webhook | order\_12345 |
+
+##### Headers
+
+Add `Authorization: Bearer <votre-api-key>`
+
+Important
+
+Without this header, your request will be rejected.
+
+##### Example (axios)
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/transactions/public/requesttopay/bank_transfer_ng",
+  method: 'post',
+  headers: { Authorization: 'Bearer fp_votre_api_key' },
+  data: { shop: 'Ayg9lkjkhurIvNp', amount: 5000, description: 'Order 1234', email: 'ada@example.com' }
+});
+```
+
+##### Response (example)
+
+```json
+{
+  "reference": "241065f1-1b48-4c1e-b044-ef306500b535",
+  "status": "PENDING",
+  "message": "Accepted",
+  "description": "Order 1234",
+  "callback_info": null,
+  "amount_expected": 5000,
+  "bank_account": {
+    "account_name": "FEE-CHKOUT",
+    "account_number": "1494901612",
+    "bank_name": "Wema Bank",
+    "bank_code": "035",
+    "expires_at": "2026-11-20T17:43:59.845Z"
+  }
+}
+```
+
+##### Response fields to display
+
+| Parameter | Description | Example |
+| --- | --- | --- |
+| amount\_expected | Exact amount the customer must transfer, in NGN | 5000 |
+| bank\_account.account\_number | Number of the temporary account to pay into | 1494901612 |
+| bank\_account.account\_name | Account name (show it to the customer) | FEE-CHKOUT |
+| bank\_account.bank\_name | Bank of the temporary account | Wema Bank |
+| bank\_account.expires\_at | Transfer deadline (UTC, ISO 8601) | 2026-11-20T17:43:59Z |
 
 ---
 
@@ -1480,3 +1588,127 @@ axios({
   "payment_url": "https://pay.wave.com/c/cos-xxxxx"
 }
 ```
+
+---
+
+## Tab: Nigeria › PAY WITH BANK
+
+[BANK TRANSFER]  [PAY WITH BANK]
+
+##### Collecting payments in Nigeria
+
+In Nigeria, your customers do not pay with mobile money but from their bank account. FeexPay offers two methods. Choose the one that fits your checkout, or offer both to your customers.
+
+|  | Bank Transfer | Pay with Bank |
+| --- | --- | --- |
+| How it works | FeexPay generates a temporary bank account reserved for this payment. The customer sends a transfer to it from their banking app. | The customer picks their bank (Opay, PalmPay…) and is redirected to it to approve the payment. |
+| What you receive | An account number, the bank, the exact amount and an expiry time | A payment link (payment\_url) |
+| What you must do | Show this information to your customer | Redirect your customer to the link |
+| Customer banks | All Nigerian banks | Only the banks in the list (/banks route) |
+| Minimum amount | NGN 100 | NGN 200 |
+
+All amounts are in naira (NGN), as whole numbers. Nigeria is only available on API v2.
+
+How do I know the customer has paid?
+
+The creation response always returns the PENDING status: the customer has not paid yet. Never deliver based on this response. The final status (SUCCESSFUL or FAILED) is sent to you by webhook (see the Webhooks section), and you can check it at any time with the reference (see the Payin status section).
+
+#### Pay with Bank (redirect to the bank)
+
+##### The flow in 4 steps
+
+1.  You fetch the list of available banks (/banks route below) and offer it to your customer.
+2.  The customer picks their bank: you call the API with the bank code (bank\_code) and your return address (redirect\_url).
+3.  You redirect your customer to the returned payment\_url. They log in to their bank and approve the payment.
+4.  The bank sends the customer back to your redirect\_url, and you receive the webhook with the final status.
+
+Good to know
+
+-   The customer coming back to your redirect\_url does not prove payment: wait for the webhook or check the status.
+-   Minimum amount: NGN 200.
+
+##### Step 1: list of available banks
+
+Returns the banks your customers can use with Pay with Bank. Pass the code field as bank\_code.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/transactions/public/requesttopay/pay_with_bank_ng/banks`
+
+##### Method
+
+GET
+
+```json
+{
+  "banks": [
+    { "code": "100004", "name": "Opay" },
+    { "code": "100033", "name": "PalmPay" }
+  ]
+}
+```
+
+##### Pay with Bank (redirect to the bank)
+
+##### URL
+
+`https://api-v2.feexpay.me/api/transactions/public/requesttopay/pay_with_bank_ng`
+
+##### Method
+
+POST
+
+##### Request body
+
+| Parameter | Status | Description | Example |
+| --- | --- | --- | --- |
+| amount | Required | Amount to collect in NGN (whole number, 200 to 10,000,000) | 5000 |
+| bank\_code | Required | Code of the bank chosen by the customer (/banks route) | 100004 |
+| redirect\_url | Optional | Where to send the customer back after payment (not to be confused with payment\_url). Default: https://feexpay.me | https://myshop.com/thanks |
+| shop | Required | Shop ID (FeexPay Developer menu) | Ayg9lkjkhurIvNp |
+| description | Optional | Payment description (40 characters max) | Order 1234 |
+| first\_name | Optional | Customer first name | Ada |
+| last\_name | Optional | Customer last name | Okafor |
+| email | Optional | Customer email | ada@example.com |
+| callback\_info | Optional | Additional information returned by the webhook | order\_12345 |
+
+##### Headers
+
+Add `Authorization: Bearer <votre-api-key>`
+
+Important
+
+Without this header, your request will be rejected.
+
+##### Example (axios)
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/transactions/public/requesttopay/pay_with_bank_ng",
+  method: 'post',
+  headers: { Authorization: 'Bearer fp_votre_api_key' },
+  data: { shop: 'Ayg9lkjkhurIvNp', amount: 5000, bank_code: '100004', redirect_url: 'https://myshop.com/thanks', email: 'ada@example.com' }
+});
+```
+
+##### Response (example)
+
+```json
+{
+  "reference": "8f1c2d3e-4b5a-4c6d-9e7f-0a1b2c3d4e5f",
+  "status": "PENDING",
+  "message": "Accepted",
+  "description": "",
+  "callback_info": null,
+  "payment_url": "https://checkout.korapay.com/pay-with-bank/KPY-PAY-xxxx",
+  "url": "https://checkout.korapay.com/pay-with-bank/KPY-PAY-xxxx",
+  "bank_name": "Opay"
+}
+```
+
+##### Response fields to display
+
+| Parameter | Description | Example |
+| --- | --- | --- |
+| payment\_url | Payment link to redirect the customer to (their bank's page) | https://… |
+| bank\_name | Bank chosen by the customer | Opay |

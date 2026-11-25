@@ -4,7 +4,7 @@ title: "API - Payout"
 group: api
 lang: fr
 source: https://docs.feexpay.me/?section=services-payout&version=v2
-updated_at: 2026-11-17T14:20:58.694Z
+updated_at: 2026-11-25T15:33:43.610Z
 ---
 
 # API - Payout
@@ -19,7 +19,7 @@ Comportement V2 : statut PENDING au lancement
 
 Sur la V2, le lancement d'un payout renvoie immédiatement un statut PENDING. Vous devez ensuite vérifier le statut final (SUCCESSFUL ou FAILED) via la section Statut des payouts.
 
- [Bénin]  [Côte d'Ivoire]  [Togo]  [Sénégal]  [Congo]  [Burkina Faso] 
+ [Bénin]  [Côte d'Ivoire]  [Togo]  [Sénégal]  [Congo]  [Burkina Faso]  [Nigeria] 
 
 ### Réseaux disponibles
 
@@ -429,6 +429,147 @@ axios({
   "callback_info": null
 }
 ```
+
+---
+
+## Tab: Nigeria
+
+[BANK TRANSFER]  [PAY WITH BANK]
+
+#### Payout au Nigeria : virement vers un compte bancaire — BANK TRANSFER
+
+Au Nigeria, un payout est un virement en nairas vers n'importe quel compte bancaire nigérian (banques classiques, Opay, PalmPay, Kuda…). Le bénéficiaire est identifié par sa banque (bank\_code) et son numéro de compte à 10 chiffres (account\_number).
+
+Quel solde est débité ?
+
+Il existe deux routes de payout, qui font exactement le même virement. La seule différence est le solde débité : /bank\_transfer\_ng débite votre solde Bank Transfer, /pay\_with\_bank\_ng débite votre solde Pay with Bank. Utilisez celle du solde sur lequel vous avez des fonds.
+
+##### Le parcours en 4 étapes
+
+1.  Récupérez la liste des banques (route /ng/banks) pour obtenir le bank\_code du bénéficiaire.
+2.  Vérifiez le compte (route /ng/resolve\_account) : FeexPay renvoie le nom du titulaire. Affichez-le pour confirmation avant d'envoyer l'argent.
+3.  Lancez le payout. La réponse renvoie le statut PENDING : le virement est en cours.
+4.  Le statut final (SUCCESSFUL ou FAILED) arrive par webhook, en général en quelques minutes. En cas d'échec, le montant débité est automatiquement recrédité sur votre solde.
+
+Tous les montants sont en nairas (NGN), en nombre entier. Le Nigeria est disponible uniquement sur l'API v2.
+
+##### Étape 1 : liste des banques
+
+Renvoie toutes les banques nigérianes acceptées pour un payout. Passez le champ code dans bank\_code.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/ng/banks`
+
+##### Méthode
+
+GET
+
+```json
+{
+  "banks": [
+    { "code": "044", "name": "Access Bank" },
+    { "code": "058", "name": "Guaranty Trust Bank" },
+    { "code": "100004", "name": "Opay" }
+  ]
+}
+```
+
+##### Étape 2 : vérifier le compte du bénéficiaire
+
+Renvoie le nom du titulaire du compte. Si le compte n'existe pas, l'API répond 400 avec le code INVALID\_BANK\_ACCOUNT. Cette vérification est aussi faite automatiquement au lancement du payout, avant tout débit de votre solde.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/ng/resolve_account`
+
+##### Méthode
+
+POST
+
+##### Corps de la requête
+
+| Paramètre | Statut | Description | Exemple |
+| --- | --- | --- | --- |
+| bank\_code | Obligatoire | Code de la banque du bénéficiaire (route /ng/banks) | 058 |
+| account\_number | Obligatoire | Numéro de compte du bénéficiaire (NUBAN, 10 chiffres) | 0123456789 |
+
+```json
+{
+  "bank_code": "058",
+  "bank_name": "Guaranty Trust Bank",
+  "account_number": "0123456789",
+  "account_name": "ADA OKAFOR"
+}
+```
+
+##### Étape 3 : lancer le payout
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/bank_transfer_ng`
+
+##### Méthode
+
+POST
+
+##### Corps de la requête
+
+| Paramètre | Statut | Description | Exemple |
+| --- | --- | --- | --- |
+| amount | Obligatoire | Montant à envoyer en NGN (entier, de 100 à 10 000 000) | 25000 |
+| shop | Obligatoire | Id de la boutique (menu Développeur FeexPay) | Ayg9lkjkhurIvNp |
+| bank\_code | Obligatoire | Code de la banque du bénéficiaire (route /ng/banks) | 058 |
+| account\_number | Obligatoire | Numéro de compte du bénéficiaire (NUBAN, 10 chiffres) | 0123456789 |
+| motif | Optionnel | Motif du virement | Salary November |
+| callback\_info | Optionnel | Informations additionnelles renvoyées par le webhook | payout\_789 |
+
+##### Entetes (Headers)
+
+Ajoutez `Authorization: Bearer <votre-api-key>`
+
+Important
+
+Sans cet entete, votre requête sera refusée.
+
+##### Exemple (axios)
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/payouts/public/bank_transfer_ng",
+  method: 'post',
+  headers: { Authorization: 'Bearer fp_votre_api_key' },
+  data: { shop: 'Ayg9lkjkhurIvNp', amount: 25000, bank_code: '058', account_number: '0123456789', motif: 'Salary November' }
+});
+```
+
+##### Réponse de la requête (exemple)
+
+```json
+{
+  "reference": "c7e1f0a2-5b3d-4e8f-9a6c-2d4b8e1f3a57",
+  "message": "Accepted",
+  "status": "PENDING",
+  "description": "Salary November",
+  "bank_code": "058",
+  "account_number": "0123456789",
+  "account_name": "ADA OKAFOR",
+  "amount": 25000,
+  "callback_info": null
+}
+```
+
+Frais
+
+Les frais de payout s'ajoutent au montant envoyé : votre solde est débité du montant plus les frais. Le bénéficiaire reçoit exactement amount.
+
+Suivi du statut
+
+Une fois la réponse reçue, vérifiez le statut avec la **reference** après environ 5 minutes (voir la section Status des payouts).
+
+##### Erreurs fréquentes
+
+<table class="min-w-full text-sm text-left text-gray-700 dark:text-gray-300"><tbody><tr class="border-b border-gray-100 dark:border-gray-700/60 align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">400 INVALID_BANK_ACCOUNT</td><td class="py-2 pr-4">Le compte n'existe pas pour cette banque. Rien n'est débité.</td></tr><tr class="border-b border-gray-100 dark:border-gray-700/60 align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">400 (validation)</td><td class="py-2 pr-4">amount hors limites (100 à 10 000 000 NGN), bank_code ou account_number mal formé.</td></tr><tr class="border-b border-gray-100 dark:border-gray-700/60 align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">Solde insuffisant</td><td class="py-2 pr-4">Le solde choisi ne couvre pas le montant plus les frais.</td></tr><tr class="align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">202 PENDING, message Processing</td><td class="py-2 pr-4">Notre partenaire n'a pas encore confirmé la réception. Ne relancez pas le payout : le statut final arrivera par webhook.</td></tr></tbody></table>
 
 ---
 
@@ -1141,3 +1282,144 @@ axios({
   "callback_info": null
 }
 ```
+
+---
+
+## Tab: Nigeria › PAY WITH BANK
+
+[BANK TRANSFER]  [PAY WITH BANK]
+
+#### Payout au Nigeria : virement vers un compte bancaire — PAY WITH BANK
+
+Au Nigeria, un payout est un virement en nairas vers n'importe quel compte bancaire nigérian (banques classiques, Opay, PalmPay, Kuda…). Le bénéficiaire est identifié par sa banque (bank\_code) et son numéro de compte à 10 chiffres (account\_number).
+
+Quel solde est débité ?
+
+Il existe deux routes de payout, qui font exactement le même virement. La seule différence est le solde débité : /bank\_transfer\_ng débite votre solde Bank Transfer, /pay\_with\_bank\_ng débite votre solde Pay with Bank. Utilisez celle du solde sur lequel vous avez des fonds.
+
+##### Le parcours en 4 étapes
+
+1.  Récupérez la liste des banques (route /ng/banks) pour obtenir le bank\_code du bénéficiaire.
+2.  Vérifiez le compte (route /ng/resolve\_account) : FeexPay renvoie le nom du titulaire. Affichez-le pour confirmation avant d'envoyer l'argent.
+3.  Lancez le payout. La réponse renvoie le statut PENDING : le virement est en cours.
+4.  Le statut final (SUCCESSFUL ou FAILED) arrive par webhook, en général en quelques minutes. En cas d'échec, le montant débité est automatiquement recrédité sur votre solde.
+
+Tous les montants sont en nairas (NGN), en nombre entier. Le Nigeria est disponible uniquement sur l'API v2.
+
+##### Étape 1 : liste des banques
+
+Renvoie toutes les banques nigérianes acceptées pour un payout. Passez le champ code dans bank\_code.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/ng/banks`
+
+##### Méthode
+
+GET
+
+```json
+{
+  "banks": [
+    { "code": "044", "name": "Access Bank" },
+    { "code": "058", "name": "Guaranty Trust Bank" },
+    { "code": "100004", "name": "Opay" }
+  ]
+}
+```
+
+##### Étape 2 : vérifier le compte du bénéficiaire
+
+Renvoie le nom du titulaire du compte. Si le compte n'existe pas, l'API répond 400 avec le code INVALID\_BANK\_ACCOUNT. Cette vérification est aussi faite automatiquement au lancement du payout, avant tout débit de votre solde.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/ng/resolve_account`
+
+##### Méthode
+
+POST
+
+##### Corps de la requête
+
+| Paramètre | Statut | Description | Exemple |
+| --- | --- | --- | --- |
+| bank\_code | Obligatoire | Code de la banque du bénéficiaire (route /ng/banks) | 058 |
+| account\_number | Obligatoire | Numéro de compte du bénéficiaire (NUBAN, 10 chiffres) | 0123456789 |
+
+```json
+{
+  "bank_code": "058",
+  "bank_name": "Guaranty Trust Bank",
+  "account_number": "0123456789",
+  "account_name": "ADA OKAFOR"
+}
+```
+
+##### Étape 3 : lancer le payout
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/pay_with_bank_ng`
+
+##### Méthode
+
+POST
+
+##### Corps de la requête
+
+| Paramètre | Statut | Description | Exemple |
+| --- | --- | --- | --- |
+| amount | Obligatoire | Montant à envoyer en NGN (entier, de 100 à 10 000 000) | 25000 |
+| shop | Obligatoire | Id de la boutique (menu Développeur FeexPay) | Ayg9lkjkhurIvNp |
+| bank\_code | Obligatoire | Code de la banque du bénéficiaire (route /ng/banks) | 058 |
+| account\_number | Obligatoire | Numéro de compte du bénéficiaire (NUBAN, 10 chiffres) | 0123456789 |
+| motif | Optionnel | Motif du virement | Salary November |
+| callback\_info | Optionnel | Informations additionnelles renvoyées par le webhook | payout\_789 |
+
+##### Entetes (Headers)
+
+Ajoutez `Authorization: Bearer <votre-api-key>`
+
+Important
+
+Sans cet entete, votre requête sera refusée.
+
+##### Exemple (axios)
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/payouts/public/pay_with_bank_ng",
+  method: 'post',
+  headers: { Authorization: 'Bearer fp_votre_api_key' },
+  data: { shop: 'Ayg9lkjkhurIvNp', amount: 25000, bank_code: '058', account_number: '0123456789', motif: 'Salary November' }
+});
+```
+
+##### Réponse de la requête (exemple)
+
+```json
+{
+  "reference": "c7e1f0a2-5b3d-4e8f-9a6c-2d4b8e1f3a57",
+  "message": "Accepted",
+  "status": "PENDING",
+  "description": "Salary November",
+  "bank_code": "058",
+  "account_number": "0123456789",
+  "account_name": "ADA OKAFOR",
+  "amount": 25000,
+  "callback_info": null
+}
+```
+
+Frais
+
+Les frais de payout s'ajoutent au montant envoyé : votre solde est débité du montant plus les frais. Le bénéficiaire reçoit exactement amount.
+
+Suivi du statut
+
+Une fois la réponse reçue, vérifiez le statut avec la **reference** après environ 5 minutes (voir la section Status des payouts).
+
+##### Erreurs fréquentes
+
+<table class="min-w-full text-sm text-left text-gray-700 dark:text-gray-300"><tbody><tr class="border-b border-gray-100 dark:border-gray-700/60 align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">400 INVALID_BANK_ACCOUNT</td><td class="py-2 pr-4">Le compte n'existe pas pour cette banque. Rien n'est débité.</td></tr><tr class="border-b border-gray-100 dark:border-gray-700/60 align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">400 (validation)</td><td class="py-2 pr-4">amount hors limites (100 à 10 000 000 NGN), bank_code ou account_number mal formé.</td></tr><tr class="border-b border-gray-100 dark:border-gray-700/60 align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">Solde insuffisant</td><td class="py-2 pr-4">Le solde choisi ne couvre pas le montant plus les frais.</td></tr><tr class="align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">202 PENDING, message Processing</td><td class="py-2 pr-4">Notre partenaire n'a pas encore confirmé la réception. Ne relancez pas le payout : le statut final arrivera par webhook.</td></tr></tbody></table>

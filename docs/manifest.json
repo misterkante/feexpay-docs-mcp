@@ -1,7 +1,7 @@
 {
   "source": "https://docs.feexpay.me/",
   "api_version": "v2",
-  "generated_at": "2026-11-17T14:20:58.694Z",
+  "generated_at": "2026-11-25T15:33:43.610Z",
   "langs": [
     "en",
     "fr"
@@ -63,9 +63,9 @@
       "title": "Méthodes de paiement",
       "group": "gettingStarted",
       "source": "https://docs.feexpay.me/?section=payment-methods&version=v2",
-      "hash": "ddbce2339ffd7b0f",
-      "updated_at": "2026-11-17T14:20:58.694Z",
-      "chars": 2049
+      "hash": "7a537403daf3480a",
+      "updated_at": "2026-11-25T15:33:43.610Z",
+      "chars": 2289
     },
     {
       "id": "dashboard",
@@ -233,9 +233,9 @@
       "title": "API - Payin",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-rest-integrations&version=v2",
-      "hash": "18039e28bd3640af",
-      "updated_at": "2026-11-17T14:20:58.694Z",
-      "chars": 39088
+      "hash": "a12ca20a0b411e00",
+      "updated_at": "2026-11-25T15:33:43.610Z",
+      "chars": 48134
     },
     {
       "id": "api-rest-status",
@@ -253,9 +253,9 @@
       "title": "API - Payout",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=services-payout&version=v2",
-      "hash": "a1a2227a2bd49adb",
-      "updated_at": "2026-11-17T14:20:58.694Z",
-      "chars": 28741
+      "hash": "aea735db387be6a1",
+      "updated_at": "2026-11-25T15:33:43.610Z",
+      "chars": 39236
     },
     {
       "id": "api-payout-status",
@@ -483,9 +483,9 @@
       "title": "Méthodes de paiement",
       "group": "gettingStarted",
       "source": "https://docs.feexpay.me/?section=payment-methods&version=v2",
-      "hash": "adc2ac099dd78d85",
-      "updated_at": "2026-11-17T14:20:58.694Z",
-      "chars": 2052
+      "hash": "5798a70cf18b482f",
+      "updated_at": "2026-11-25T15:33:43.610Z",
+      "chars": 2292
     },
     {
       "id": "dashboard",
@@ -653,9 +653,9 @@
       "title": "API - Payin",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=api-rest-integrations&version=v2",
-      "hash": "534bae571e2ec830",
-      "updated_at": "2026-11-17T14:20:58.694Z",
-      "chars": 40553
+      "hash": "8a4a8f1c58d08fab",
+      "updated_at": "2026-11-25T15:33:43.610Z",
+      "chars": 50075
     },
     {
       "id": "api-rest-status",
@@ -673,9 +673,9 @@
       "title": "API - Payout",
       "group": "api",
       "source": "https://docs.feexpay.me/?section=services-payout&version=v2",
-      "hash": "fdb12e0597207deb",
-      "updated_at": "2026-11-17T14:20:58.694Z",
-      "chars": 30675
+      "hash": "fd3b16cbb93ad5ef",
+      "updated_at": "2026-11-25T15:33:43.610Z",
+      "chars": 41728
     },
     {
       "id": "api-payout-status",

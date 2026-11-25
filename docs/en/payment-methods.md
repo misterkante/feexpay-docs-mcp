@@ -4,7 +4,7 @@ title: "Méthodes de paiement"
 group: gettingStarted
 lang: en
 source: https://docs.feexpay.me/?section=payment-methods&version=v2
-updated_at: 2026-11-17T14:20:58.694Z
+updated_at: 2026-11-25T15:33:43.610Z
 ---
 
 # Méthodes de paiement
@@ -108,6 +108,18 @@ Moov
 ![MTN](https://docs.feexpay.me/operator/mtn.png)
 
 MTN
+
+🇳🇬![Drapeau NG](https://docs.feexpay.me/flags/ng.svg)
+
+### Nigeria
+
+![Bank Transfer](https://docs.feexpay.me/operator/bank_transfer.png)
+
+Bank Transfer
+
+![Pay with Bank](https://docs.feexpay.me/operator/bank_transfer.png)
+
+Pay with Bank
 
 ### Carte bancaire
 

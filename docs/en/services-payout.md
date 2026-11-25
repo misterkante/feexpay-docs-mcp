@@ -4,7 +4,7 @@ title: "API - Payout"
 group: api
 lang: en
 source: https://docs.feexpay.me/?section=services-payout&version=v2
-updated_at: 2026-11-17T14:20:58.694Z
+updated_at: 2026-11-25T15:33:43.610Z
 ---
 
 # API - Payout
@@ -19,7 +19,7 @@ V2 behavior: PENDING status on launch
 
 On V2, launching a payout immediately returns a PENDING status. You must then verify the final status (SUCCESSFUL or FAILED) via the Payout Status section.
 
- [Benin]  [Côte d'Ivoire]  [Togo]  [Senegal]  [Congo]  [Burkina Faso] 
+ [Benin]  [Côte d'Ivoire]  [Togo]  [Senegal]  [Congo]  [Burkina Faso]  [Nigeria] 
 
 ### Available networks
 
@@ -429,6 +429,147 @@ axios({
   "callback_info": null
 }
 ```
+
+---
+
+## Tab: Nigeria
+
+[BANK TRANSFER]  [PAY WITH BANK]
+
+#### Payouts in Nigeria: transfer to a bank account — BANK TRANSFER
+
+In Nigeria, a payout is a naira transfer to any Nigerian bank account (traditional banks, Opay, PalmPay, Kuda…). The recipient is identified by their bank (bank\_code) and their 10-digit account number (account\_number).
+
+Which balance is debited?
+
+There are two payout routes that make exactly the same transfer. The only difference is the balance debited: /bank\_transfer\_ng debits your Bank Transfer balance, /pay\_with\_bank\_ng debits your Pay with Bank balance. Use the one whose balance has funds.
+
+##### The flow in 4 steps
+
+1.  Fetch the list of banks (/ng/banks route) to get the recipient's bank\_code.
+2.  Verify the account (/ng/resolve\_account route): FeexPay returns the account holder's name. Show it for confirmation before sending money.
+3.  Start the payout. The response returns the PENDING status: the transfer is in progress.
+4.  The final status (SUCCESSFUL or FAILED) arrives by webhook, usually within a few minutes. If it fails, the debited amount is automatically credited back to your balance.
+
+All amounts are in naira (NGN), as whole numbers. Nigeria is only available on API v2.
+
+##### Step 1: list of banks
+
+Returns all Nigerian banks accepted for payouts. Pass the code field as bank\_code.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/ng/banks`
+
+##### Method
+
+GET
+
+```json
+{
+  "banks": [
+    { "code": "044", "name": "Access Bank" },
+    { "code": "058", "name": "Guaranty Trust Bank" },
+    { "code": "100004", "name": "Opay" }
+  ]
+}
+```
+
+##### Step 2: verify the recipient's account
+
+Returns the account holder's name. If the account does not exist, the API responds 400 with the INVALID\_BANK\_ACCOUNT code. This check is also done automatically when you start the payout, before your balance is debited.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/ng/resolve_account`
+
+##### Method
+
+POST
+
+##### Request body
+
+| Parameter | Status | Description | Example |
+| --- | --- | --- | --- |
+| bank\_code | Required | Recipient's bank code (/ng/banks route) | 058 |
+| account\_number | Required | Recipient's account number (NUBAN, 10 digits) | 0123456789 |
+
+```json
+{
+  "bank_code": "058",
+  "bank_name": "Guaranty Trust Bank",
+  "account_number": "0123456789",
+  "account_name": "ADA OKAFOR"
+}
+```
+
+##### Step 3: start the payout
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/bank_transfer_ng`
+
+##### Method
+
+POST
+
+##### Request body
+
+| Parameter | Status | Description | Example |
+| --- | --- | --- | --- |
+| amount | Required | Amount to send in NGN (whole number, 100 to 10,000,000) | 25000 |
+| shop | Required | Shop ID (FeexPay Developer menu) | Ayg9lkjkhurIvNp |
+| bank\_code | Required | Recipient's bank code (/ng/banks route) | 058 |
+| account\_number | Required | Recipient's account number (NUBAN, 10 digits) | 0123456789 |
+| motif | Optional | Transfer reason | Salary November |
+| callback\_info | Optional | Additional information returned by the webhook | payout\_789 |
+
+##### Headers
+
+Add `Authorization: Bearer <votre-api-key>`
+
+Important
+
+Without this header, your request will be rejected.
+
+##### Example (axios)
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/payouts/public/bank_transfer_ng",
+  method: 'post',
+  headers: { Authorization: 'Bearer fp_votre_api_key' },
+  data: { shop: 'Ayg9lkjkhurIvNp', amount: 25000, bank_code: '058', account_number: '0123456789', motif: 'Salary November' }
+});
+```
+
+##### Response (example)
+
+```json
+{
+  "reference": "c7e1f0a2-5b3d-4e8f-9a6c-2d4b8e1f3a57",
+  "message": "Accepted",
+  "status": "PENDING",
+  "description": "Salary November",
+  "bank_code": "058",
+  "account_number": "0123456789",
+  "account_name": "ADA OKAFOR",
+  "amount": 25000,
+  "callback_info": null
+}
+```
+
+Fees
+
+Payout fees are added to the amount sent: your balance is debited with the amount plus fees. The recipient receives exactly amount.
+
+Status Tracking
+
+Once the response is received, check the status with the **reference** after about 5 minutes (see the Payout Status section).
+
+##### Common errors
+
+<table class="min-w-full text-sm text-left text-gray-700 dark:text-gray-300"><tbody><tr class="border-b border-gray-100 dark:border-gray-700/60 align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">400 INVALID_BANK_ACCOUNT</td><td class="py-2 pr-4">The account does not exist at this bank. Nothing is debited.</td></tr><tr class="border-b border-gray-100 dark:border-gray-700/60 align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">400 (validation)</td><td class="py-2 pr-4">amount out of range (NGN 100 to 10,000,000), or malformed bank_code or account_number.</td></tr><tr class="border-b border-gray-100 dark:border-gray-700/60 align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">Insufficient balance</td><td class="py-2 pr-4">The chosen balance does not cover the amount plus fees.</td></tr><tr class="align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">202 PENDING, message Processing</td><td class="py-2 pr-4">Our partner has not confirmed receipt yet. Do not retry the payout: the final status will arrive by webhook.</td></tr></tbody></table>
 
 ---
 
@@ -1141,3 +1282,144 @@ axios({
   "callback_info": null
 }
 ```
+
+---
+
+## Tab: Nigeria › PAY WITH BANK
+
+[BANK TRANSFER]  [PAY WITH BANK]
+
+#### Payouts in Nigeria: transfer to a bank account — PAY WITH BANK
+
+In Nigeria, a payout is a naira transfer to any Nigerian bank account (traditional banks, Opay, PalmPay, Kuda…). The recipient is identified by their bank (bank\_code) and their 10-digit account number (account\_number).
+
+Which balance is debited?
+
+There are two payout routes that make exactly the same transfer. The only difference is the balance debited: /bank\_transfer\_ng debits your Bank Transfer balance, /pay\_with\_bank\_ng debits your Pay with Bank balance. Use the one whose balance has funds.
+
+##### The flow in 4 steps
+
+1.  Fetch the list of banks (/ng/banks route) to get the recipient's bank\_code.
+2.  Verify the account (/ng/resolve\_account route): FeexPay returns the account holder's name. Show it for confirmation before sending money.
+3.  Start the payout. The response returns the PENDING status: the transfer is in progress.
+4.  The final status (SUCCESSFUL or FAILED) arrives by webhook, usually within a few minutes. If it fails, the debited amount is automatically credited back to your balance.
+
+All amounts are in naira (NGN), as whole numbers. Nigeria is only available on API v2.
+
+##### Step 1: list of banks
+
+Returns all Nigerian banks accepted for payouts. Pass the code field as bank\_code.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/ng/banks`
+
+##### Method
+
+GET
+
+```json
+{
+  "banks": [
+    { "code": "044", "name": "Access Bank" },
+    { "code": "058", "name": "Guaranty Trust Bank" },
+    { "code": "100004", "name": "Opay" }
+  ]
+}
+```
+
+##### Step 2: verify the recipient's account
+
+Returns the account holder's name. If the account does not exist, the API responds 400 with the INVALID\_BANK\_ACCOUNT code. This check is also done automatically when you start the payout, before your balance is debited.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/ng/resolve_account`
+
+##### Method
+
+POST
+
+##### Request body
+
+| Parameter | Status | Description | Example |
+| --- | --- | --- | --- |
+| bank\_code | Required | Recipient's bank code (/ng/banks route) | 058 |
+| account\_number | Required | Recipient's account number (NUBAN, 10 digits) | 0123456789 |
+
+```json
+{
+  "bank_code": "058",
+  "bank_name": "Guaranty Trust Bank",
+  "account_number": "0123456789",
+  "account_name": "ADA OKAFOR"
+}
+```
+
+##### Step 3: start the payout
+
+##### URL
+
+`https://api-v2.feexpay.me/api/payouts/public/pay_with_bank_ng`
+
+##### Method
+
+POST
+
+##### Request body
+
+| Parameter | Status | Description | Example |
+| --- | --- | --- | --- |
+| amount | Required | Amount to send in NGN (whole number, 100 to 10,000,000) | 25000 |
+| shop | Required | Shop ID (FeexPay Developer menu) | Ayg9lkjkhurIvNp |
+| bank\_code | Required | Recipient's bank code (/ng/banks route) | 058 |
+| account\_number | Required | Recipient's account number (NUBAN, 10 digits) | 0123456789 |
+| motif | Optional | Transfer reason | Salary November |
+| callback\_info | Optional | Additional information returned by the webhook | payout\_789 |
+
+##### Headers
+
+Add `Authorization: Bearer <votre-api-key>`
+
+Important
+
+Without this header, your request will be rejected.
+
+##### Example (axios)
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/payouts/public/pay_with_bank_ng",
+  method: 'post',
+  headers: { Authorization: 'Bearer fp_votre_api_key' },
+  data: { shop: 'Ayg9lkjkhurIvNp', amount: 25000, bank_code: '058', account_number: '0123456789', motif: 'Salary November' }
+});
+```
+
+##### Response (example)
+
+```json
+{
+  "reference": "c7e1f0a2-5b3d-4e8f-9a6c-2d4b8e1f3a57",
+  "message": "Accepted",
+  "status": "PENDING",
+  "description": "Salary November",
+  "bank_code": "058",
+  "account_number": "0123456789",
+  "account_name": "ADA OKAFOR",
+  "amount": 25000,
+  "callback_info": null
+}
+```
+
+Fees
+
+Payout fees are added to the amount sent: your balance is debited with the amount plus fees. The recipient receives exactly amount.
+
+Status Tracking
+
+Once the response is received, check the status with the **reference** after about 5 minutes (see the Payout Status section).
+
+##### Common errors
+
+<table class="min-w-full text-sm text-left text-gray-700 dark:text-gray-300"><tbody><tr class="border-b border-gray-100 dark:border-gray-700/60 align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">400 INVALID_BANK_ACCOUNT</td><td class="py-2 pr-4">The account does not exist at this bank. Nothing is debited.</td></tr><tr class="border-b border-gray-100 dark:border-gray-700/60 align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">400 (validation)</td><td class="py-2 pr-4">amount out of range (NGN 100 to 10,000,000), or malformed bank_code or account_number.</td></tr><tr class="border-b border-gray-100 dark:border-gray-700/60 align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">Insufficient balance</td><td class="py-2 pr-4">The chosen balance does not cover the amount plus fees.</td></tr><tr class="align-top"><td class="py-2 pr-4 font-mono whitespace-nowrap">202 PENDING, message Processing</td><td class="py-2 pr-4">Our partner has not confirmed receipt yet. Do not retry the payout: the final status will arrive by webhook.</td></tr></tbody></table>

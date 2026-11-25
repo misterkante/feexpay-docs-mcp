@@ -4,7 +4,7 @@ title: "API - Payin"
 group: api
 lang: fr
 source: https://docs.feexpay.me/?section=api-rest-integrations&version=v2
-updated_at: 2026-11-17T14:20:58.694Z
+updated_at: 2026-11-25T15:33:43.610Z
 ---
 
 # API - Payin
@@ -15,7 +15,7 @@ Bienvenue dans la section API Payin de FeexPay. Découvrez comment intégrer nos
 
 Veuillez noter que le montant minimum est de 100 et le maximum est de 2.000.000 XOF
 
- [Bénin]  [Togo]  [Côte d'Ivoire]  [Congo Brazzaville]  [Sénégal]  [Burkina Faso] 
+ [Bénin]  [Togo]  [Côte d'Ivoire]  [Congo Brazzaville]  [Sénégal]  [Burkina Faso]  [Nigeria] 
 
 ### Réseaux disponibles
 
@@ -408,6 +408,114 @@ axios({
   "phone_number": "22366694381"
 }
 ```
+
+---
+
+## Tab: Nigeria
+
+[BANK TRANSFER]  [PAY WITH BANK]
+
+##### Encaisser au Nigeria
+
+Au Nigeria, vos clients ne paient pas par mobile money mais depuis leur compte bancaire. FeexPay propose deux méthodes. Choisissez celle qui convient à votre parcours, ou proposez les deux à vos clients.
+
+|  | Bank Transfer | Pay with Bank |
+| --- | --- | --- |
+| Principe | FeexPay génère un compte bancaire temporaire, réservé à ce paiement. Le client y fait un virement depuis l'application de sa banque. | Le client choisit sa banque (Opay, PalmPay…) et est redirigé vers elle pour valider le paiement. |
+| Ce que vous recevez | Un numéro de compte, la banque, le montant exact et une date d'expiration | Un lien de paiement (payment\_url) |
+| Ce que vous devez faire | Afficher ces informations à votre client | Rediriger votre client vers le lien |
+| Banques du client | Toutes les banques nigérianes | Uniquement les banques de la liste (route /banks) |
+| Montant minimum | 100 NGN | 200 NGN |
+
+Tous les montants sont en nairas (NGN), en nombre entier. Le Nigeria est disponible uniquement sur l'API v2.
+
+Comment savoir si le client a payé ?
+
+La réponse de création renvoie toujours le statut PENDING : le client n'a pas encore payé. Ne livrez jamais sur la base de cette réponse. Le statut final (SUCCESSFUL ou FAILED) vous est envoyé par webhook (voir la section Webhooks), et vous pouvez le consulter à tout moment avec la référence (voir la section Statut des payins).
+
+#### Bank Transfer (virement vers un compte temporaire)
+
+##### Le parcours en 4 étapes
+
+1.  Vous appelez l'API avec le montant : FeexPay vous renvoie un compte bancaire temporaire (bank\_account) et le montant exact à virer (amount\_expected).
+2.  Vous affichez à votre client : le nom de la banque, le numéro de compte, le nom du compte, le montant exact et l'heure limite (expires\_at). Un compte à rebours et un bouton « Copier » facilitent le paiement.
+3.  Le client ouvre l'application de sa banque (GTBank, Access, Opay, Kuda…) et fait un virement classique vers ce compte.
+4.  Dès que le virement est reçu, la transaction passe en SUCCESSFUL : vous recevez le webhook et votre solde Bank Transfer est crédité.
+
+À afficher clairement à votre client
+
+-   Le montant à virer est amount\_expected, au naira près. Un virement d'un autre montant est renvoyé au client par la banque et le paiement reste en attente.
+-   Le compte n'est valable que jusqu'à expires\_at. Après cette heure, le client doit relancer un nouveau paiement.
+-   Chaque compte ne sert qu'une seule fois : ne le réutilisez pas pour un autre paiement.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/transactions/public/requesttopay/bank_transfer_ng`
+
+##### Méthode
+
+POST
+
+##### Corps de la requête
+
+| Paramètre | Statut | Description | Exemple |
+| --- | --- | --- | --- |
+| amount | Obligatoire | Montant à encaisser en NGN (entier, de 100 à 10 000 000) | 5000 |
+| shop | Obligatoire | Id de la boutique (menu Développeur FeexPay) | Ayg9lkjkhurIvNp |
+| description | Optionnel | Description du paiement (40 caractères maximum) | Order 1234 |
+| first\_name | Optionnel | Prénom client | Ada |
+| last\_name | Optionnel | Nom client | Okafor |
+| email | Optionnel | E-mail du client | ada@example.com |
+| callback\_info | Optionnel | Informations additionnelles renvoyées par le webhook | order\_12345 |
+
+##### Entetes (Headers)
+
+Ajoutez `Authorization: Bearer <votre-api-key>`
+
+Important
+
+Sans cet entete, votre requête sera refusée.
+
+##### Exemple (axios)
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/transactions/public/requesttopay/bank_transfer_ng",
+  method: 'post',
+  headers: { Authorization: 'Bearer fp_votre_api_key' },
+  data: { shop: 'Ayg9lkjkhurIvNp', amount: 5000, description: 'Order 1234', email: 'ada@example.com' }
+});
+```
+
+##### Réponse de la requête (exemple)
+
+```json
+{
+  "reference": "241065f1-1b48-4c1e-b044-ef306500b535",
+  "status": "PENDING",
+  "message": "Accepted",
+  "description": "Order 1234",
+  "callback_info": null,
+  "amount_expected": 5000,
+  "bank_account": {
+    "account_name": "FEE-CHKOUT",
+    "account_number": "1494901612",
+    "bank_name": "Wema Bank",
+    "bank_code": "035",
+    "expires_at": "2026-11-20T17:43:59.845Z"
+  }
+}
+```
+
+##### Champs de la réponse à afficher
+
+| Paramètre | Description | Exemple |
+| --- | --- | --- |
+| amount\_expected | Montant exact que le client doit virer, en NGN | 5000 |
+| bank\_account.account\_number | Numéro du compte temporaire à créditer | 1494901612 |
+| bank\_account.account\_name | Nom du compte (à afficher au client) | FEE-CHKOUT |
+| bank\_account.bank\_name | Banque du compte temporaire | Wema Bank |
+| bank\_account.expires\_at | Heure limite du virement (UTC, format ISO 8601) | 2026-11-20T17:43:59Z |
 
 ---
 
@@ -1480,3 +1588,127 @@ axios({
   "payment_url": "https://pay.wave.com/c/cos-xxxxx"
 }
 ```
+
+---
+
+## Tab: Nigeria › PAY WITH BANK
+
+[BANK TRANSFER]  [PAY WITH BANK]
+
+##### Encaisser au Nigeria
+
+Au Nigeria, vos clients ne paient pas par mobile money mais depuis leur compte bancaire. FeexPay propose deux méthodes. Choisissez celle qui convient à votre parcours, ou proposez les deux à vos clients.
+
+|  | Bank Transfer | Pay with Bank |
+| --- | --- | --- |
+| Principe | FeexPay génère un compte bancaire temporaire, réservé à ce paiement. Le client y fait un virement depuis l'application de sa banque. | Le client choisit sa banque (Opay, PalmPay…) et est redirigé vers elle pour valider le paiement. |
+| Ce que vous recevez | Un numéro de compte, la banque, le montant exact et une date d'expiration | Un lien de paiement (payment\_url) |
+| Ce que vous devez faire | Afficher ces informations à votre client | Rediriger votre client vers le lien |
+| Banques du client | Toutes les banques nigérianes | Uniquement les banques de la liste (route /banks) |
+| Montant minimum | 100 NGN | 200 NGN |
+
+Tous les montants sont en nairas (NGN), en nombre entier. Le Nigeria est disponible uniquement sur l'API v2.
+
+Comment savoir si le client a payé ?
+
+La réponse de création renvoie toujours le statut PENDING : le client n'a pas encore payé. Ne livrez jamais sur la base de cette réponse. Le statut final (SUCCESSFUL ou FAILED) vous est envoyé par webhook (voir la section Webhooks), et vous pouvez le consulter à tout moment avec la référence (voir la section Statut des payins).
+
+#### Pay with Bank (redirection vers la banque)
+
+##### Le parcours en 4 étapes
+
+1.  Vous récupérez la liste des banques disponibles (route /banks ci-dessous) et la proposez à votre client.
+2.  Le client choisit sa banque : vous appelez l'API avec le code de la banque (bank\_code) et l'adresse de retour (redirect\_url).
+3.  Vous redirigez votre client vers le payment\_url renvoyé. Il se connecte à sa banque et valide le paiement.
+4.  La banque renvoie le client sur votre redirect\_url, et vous recevez le webhook avec le statut final.
+
+Bon à savoir
+
+-   Le retour du client sur votre redirect\_url ne prouve pas le paiement : attendez le webhook ou vérifiez le statut.
+-   Montant minimum : 200 NGN.
+
+##### Étape 1 : liste des banques disponibles
+
+Renvoie les banques que vos clients peuvent utiliser avec Pay with Bank. Passez le champ code dans bank\_code.
+
+##### URL
+
+`https://api-v2.feexpay.me/api/transactions/public/requesttopay/pay_with_bank_ng/banks`
+
+##### Méthode
+
+GET
+
+```json
+{
+  "banks": [
+    { "code": "100004", "name": "Opay" },
+    { "code": "100033", "name": "PalmPay" }
+  ]
+}
+```
+
+##### Pay with Bank (redirection vers la banque)
+
+##### URL
+
+`https://api-v2.feexpay.me/api/transactions/public/requesttopay/pay_with_bank_ng`
+
+##### Méthode
+
+POST
+
+##### Corps de la requête
+
+| Paramètre | Statut | Description | Exemple |
+| --- | --- | --- | --- |
+| amount | Obligatoire | Montant à encaisser en NGN (entier, de 200 à 10 000 000) | 5000 |
+| bank\_code | Obligatoire | Code de la banque choisie par le client (route /banks) | 100004 |
+| redirect\_url | Optionnel | Adresse où renvoyer le client après le paiement (à ne pas confondre avec payment\_url). Par défaut : https://feexpay.me | https://myshop.com/thanks |
+| shop | Obligatoire | Id de la boutique (menu Développeur FeexPay) | Ayg9lkjkhurIvNp |
+| description | Optionnel | Description du paiement (40 caractères maximum) | Order 1234 |
+| first\_name | Optionnel | Prénom client | Ada |
+| last\_name | Optionnel | Nom client | Okafor |
+| email | Optionnel | E-mail du client | ada@example.com |
+| callback\_info | Optionnel | Informations additionnelles renvoyées par le webhook | order\_12345 |
+
+##### Entetes (Headers)
+
+Ajoutez `Authorization: Bearer <votre-api-key>`
+
+Important
+
+Sans cet entete, votre requête sera refusée.
+
+##### Exemple (axios)
+
+```javascript
+axios({
+  url: "https://api-v2.feexpay.me/api/transactions/public/requesttopay/pay_with_bank_ng",
+  method: 'post',
+  headers: { Authorization: 'Bearer fp_votre_api_key' },
+  data: { shop: 'Ayg9lkjkhurIvNp', amount: 5000, bank_code: '100004', redirect_url: 'https://myshop.com/thanks', email: 'ada@example.com' }
+});
+```
+
+##### Réponse de la requête (exemple)
+
+```json
+{
+  "reference": "8f1c2d3e-4b5a-4c6d-9e7f-0a1b2c3d4e5f",
+  "status": "PENDING",
+  "message": "Accepted",
+  "description": "",
+  "callback_info": null,
+  "payment_url": "https://checkout.korapay.com/pay-with-bank/KPY-PAY-xxxx",
+  "url": "https://checkout.korapay.com/pay-with-bank/KPY-PAY-xxxx",
+  "bank_name": "Opay"
+}
+```
+
+##### Champs de la réponse à afficher
+
+| Paramètre | Description | Exemple |
+| --- | --- | --- |
+| payment\_url | Lien de paiement vers lequel rediriger le client (page de sa banque) | https://… |
+| bank\_name | Banque choisie par le client | Opay |
